@@ -1,9 +1,7 @@
 import React from "react";
 
-const Home = () => (
-  <div>
-    <p className="text-warning">react home</p>
-  </div>
-);
+const Home = () => {
+  return <div>Home</div>;
+};
 
 export default Home;
