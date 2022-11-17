@@ -1,7 +1,212 @@
-import React from "react";
+import React, { useState } from "react";
+import "../../../src/index.scss";
+import { HiOutlineBars3 } from "react-icons/hi2";
+import { NavLink } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
+import { AiOutlineSearch } from "react-icons/ai";
+import { BsBag } from "react-icons/bs";
+import { IoCloseSharp } from "react-icons/io5";
 
 const Header = () => {
-  return <div>Header</div>;
+  const [handleSearch, setHandleSearch] = useState(false);
+  const [handleDropDown, setHandleDropDown] = useState(false);
+  const [handleAccountDropDown, setHandleAccountDropDown] = useState(false);
+  const handleMouseOver = (e) => {
+    setHandleDropDown(true);
+  };
+  const handleClickAccount = (e) => {
+    setHandleAccountDropDown(!handleAccountDropDown);
+    setHandleDropDown(!handleDropDown);
+  };
+  const handleMouseOver1 = (e) => {
+    setHandleDropDown(!handleDropDown);
+  };
+  const handleOnBlur = (e) => {
+    setHandleDropDown(false);
+  };
+  return (
+    <div className="h-[50px] w-full relative">
+      <div
+        className={`bg-[#00000079] transition-all duration-700 absolute left-0 right-0 h-[100vh] z-[1] ${
+          handleSearch === true || handleDropDown === true
+            ? "opacity-100"
+            : "opacity-0"
+        } `}
+      ></div>
+
+      <div className="grid grid-cols-12 py-[25px] header-container relative z-[2] bg-white ">
+        <div className="col-span-9 flex items-center nav-container">
+          <NavLink to="/">
+            <HiOutlineBars3 className="text-[22px] mr-[15px]" />
+          </NavLink>
+          <img src="/images/logo.png" alt="asd" className="mr-[32px]" />
+          <NavLink
+            to="/"
+            exact
+            activeClassName="selected"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "red",
+            }}
+            style={{ marginRight: "37px" }}
+          >
+            <div className="nav-link">Home</div>
+          </NavLink>
+          <NavLink
+            to="/shop"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "red",
+            }}
+            style={{ marginRight: "37px", position: "relative" }}
+          >
+            <div
+              className="flex items-end leading-[16px] nav-link"
+              onMouseOver={(e) => handleMouseOver(e)}
+              onMouseOut={(e) => handleOnBlur(e)}
+            >
+              Shop
+              <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
+            </div>
+            <div
+              className="absolute w-[280px] flex flex-col p-[20px] top-[64px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+              onMouseOver={(e) => handleMouseOver(e)}
+              onMouseOut={(e) => handleOnBlur(e)}
+            >
+              <NavLink to="/1" className="py-[4px] pl-[10px]">
+                Fashion1
+              </NavLink>
+              <NavLink to="/2" className="py-[4px] pl-[10px]">
+                Fashion2
+              </NavLink>
+              <NavLink to="/3" className="py-[4px] pl-[10px]">
+                Fashion3
+              </NavLink>
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/pages"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "red",
+            }}
+            style={{ marginRight: "37px", position: "relative" }}
+          >
+            <div
+              className="flex items-end leading-[16px] nav-link"
+              onMouseOver={(e) => handleMouseOver(e)}
+              onMouseOut={(e) => handleOnBlur(e)}
+            >
+              Pages
+              <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
+            </div>
+            <div
+              className="absolute w-[280px] flex flex-col p-[20px] top-[64px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+              onMouseOver={(e) => handleMouseOver(e)}
+              onMouseOut={(e) => handleOnBlur(e)}
+            >
+              <NavLink to="/1" className="py-[4px] pl-[10px]">
+                About Us
+              </NavLink>
+              <NavLink to="/2" className="py-[4px] pl-[10px]">
+                Contact Us
+              </NavLink>
+              <NavLink to="/3" className="py-[4px] pl-[10px]">
+                FAQ's
+              </NavLink>
+            </div>
+          </NavLink>
+          <NavLink
+            to="/blog"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "red",
+            }}
+            style={{ marginRight: "37px" }}
+          >
+            <div className="flex items-end leading-[16px] nav-link">Blog</div>
+          </NavLink>
+        </div>
+        <div className="col-span-3 flex items-center place-content-end ">
+          {/* search filed */}
+          <div
+            className={`fixed ${
+              handleSearch === false ? "-top-[100%]" : "top-0"
+            } left-0 right-0 h-auto bg-white px-[53px] z-[10] transition-all duration-700`}
+          >
+            <div className="capitalize text-[#666] text-left mt-[80px]">
+              What are you looking for?
+            </div>
+            <IoCloseSharp
+              className="absolute top-[10%] right-[50px] text-[22px] hover:rotate-[180deg] transition-all duration-300"
+              onClick={() => {
+                setHandleSearch(!handleSearch);
+              }}
+            />
+            <div className="flex border-b-2 w-full py-[20px] items-center">
+              <input
+                type="text"
+                placeholder="Search our product "
+                className="input-search-field w-full"
+              />
+              <AiOutlineSearch className="text-[28px] text-gray-500 cursor-pointer" />
+            </div>
+            <div className="flex w-full justify-center mb-[30px] mt-[15px]">
+              <div className="font-semibold tracking-wide">Popular Search:</div>
+              <div className="underline text-gray-500 ml-[10px]">
+                theme-nora
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="flex search-field items-center mr-[34px]"
+            onClick={() => {
+              setHandleSearch(!handleSearch);
+            }}
+          >
+            <AiOutlineSearch className="mr-[10px]" />
+            Search
+          </div>
+          <div className="relative">
+            <div
+              className="flex items-center cursor-pointer nav-link"
+              onClick={(e) => handleClickAccount(e)}
+            >
+              My Account
+              <IoIosArrowDown className="text-[12px] ml-[6px]" />
+            </div>
+            <div
+              className={`absolute w-[280px] flex flex-col p-[20px] top-[58px] right-0 nav-account-dropdown z-[10] bg-white border-[1px] border-solid ${
+                handleAccountDropDown === true
+                  ? "visible scale-y-100"
+                  : "invisible scale-y-0"
+              }`}
+              onMouseOver={(e) => handleMouseOver(e)}
+            >
+              <NavLink to="/1" className="py-[4px] pl-[10px]">
+                Log in
+              </NavLink>
+              <NavLink to="/2" className="py-[4px] pl-[10px]">
+                Create account
+              </NavLink>
+              <NavLink to="/3" className="py-[4px] pl-[10px]">
+                Wishlist
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="flex items-center ml-[34px]">
+            <BsBag className="mr-[7px] text-[22px]" />
+            <div className="h-[18px] w-[18px] bg-black rounded-full text-white flex items-center justify-center text-[12px]">
+              0
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Header;
