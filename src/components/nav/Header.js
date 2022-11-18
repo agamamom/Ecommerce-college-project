@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../../src/index.scss";
+import MobileNavDropDown from "./MobileNavDropDown/MobileNavDropDown";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
@@ -11,6 +12,7 @@ const Header = () => {
   const [handleSearch, setHandleSearch] = useState(false);
   const [handleDropDown, setHandleDropDown] = useState(false);
   const [handleAccountDropDown, setHandleAccountDropDown] = useState(false);
+  const [handleNavMobileDropDown, setHandleNavMobileDropDown] = useState(false);
   const handleMouseOver = (e) => {
     setHandleDropDown(true);
   };
@@ -18,8 +20,8 @@ const Header = () => {
     setHandleAccountDropDown(!handleAccountDropDown);
     setHandleDropDown(!handleDropDown);
   };
-  const handleMouseOver1 = (e) => {
-    setHandleDropDown(!handleDropDown);
+  const handleClickNavMobile = (e) => {
+    setHandleNavMobileDropDown(!handleNavMobileDropDown);
   };
   const handleOnBlur = (e) => {
     setHandleDropDown(false);
@@ -34,23 +36,25 @@ const Header = () => {
         } `}
       ></div>
 
-      <div className="grid grid-cols-12 py-[25px] header-container relative z-[2] bg-white ">
+      <div className="grid grid-cols-12 py-[25px] header-container relative z-[200] bg-white ">
         <div className="col-span-9 flex items-center nav-container">
-          <NavLink to="/">
-            <HiOutlineBars3 className="text-[22px] mr-[15px]" />
+          <NavLink to="/" className="mobile:block laptop:hidden">
+            <div className="" onClick={(e) => handleClickNavMobile(e)}>
+              <HiOutlineBars3 className="text-[22px] mr-[15px]" />
+            </div>
           </NavLink>
           <img src="/images/logo.png" alt="asd" className="mr-[32px]" />
           <NavLink
             to="/"
             exact
-            activeClassName="selected"
+            className="nav-link-border"
             activeStyle={{
               fontWeight: "bold",
               color: "red",
             }}
             style={{ marginRight: "37px" }}
           >
-            <div className="nav-link">Home</div>
+            <div className="">Home</div>
           </NavLink>
           <NavLink
             to="/shop"
@@ -58,6 +62,7 @@ const Header = () => {
               fontWeight: "bold",
               color: "red",
             }}
+            className="nav-link-border"
             style={{ marginRight: "37px", position: "relative" }}
           >
             <div
@@ -69,7 +74,7 @@ const Header = () => {
               <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
             </div>
             <div
-              className="absolute w-[280px] flex flex-col p-[20px] top-[64px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+              className="absolute w-[280px] flex flex-col p-[20px] top-[62px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
               onMouseOver={(e) => handleMouseOver(e)}
               onMouseOut={(e) => handleOnBlur(e)}
             >
@@ -91,6 +96,7 @@ const Header = () => {
               fontWeight: "bold",
               color: "red",
             }}
+            className="nav-link-border"
             style={{ marginRight: "37px", position: "relative" }}
           >
             <div
@@ -102,7 +108,7 @@ const Header = () => {
               <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
             </div>
             <div
-              className="absolute w-[280px] flex flex-col p-[20px] top-[64px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+              className="absolute w-[280px] flex flex-col p-[20px] top-[62px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
               onMouseOver={(e) => handleMouseOver(e)}
               onMouseOut={(e) => handleOnBlur(e)}
             >
@@ -124,8 +130,9 @@ const Header = () => {
               color: "red",
             }}
             style={{ marginRight: "37px" }}
+            className="nav-link-border"
           >
-            <div className="flex items-end leading-[16px] nav-link">Blog</div>
+            <div className="flex items-end leading-[16px]">Blog</div>
           </NavLink>
         </div>
         <div className="col-span-3 flex items-center place-content-end ">
@@ -169,7 +176,7 @@ const Header = () => {
             <AiOutlineSearch className="mr-[10px]" />
             Search
           </div>
-          <div className="relative">
+          <div className="">
             <div
               className="flex items-center cursor-pointer nav-link"
               onClick={(e) => handleClickAccount(e)}
@@ -178,7 +185,7 @@ const Header = () => {
               <IoIosArrowDown className="text-[12px] ml-[6px]" />
             </div>
             <div
-              className={`absolute w-[280px] flex flex-col p-[20px] top-[58px] right-0 nav-account-dropdown z-[10] bg-white border-[1px] border-solid ${
+              className={`absolute w-[280px] flex flex-col p-[20px] top-[100%] right-0 nav-account-dropdown z-[10] bg-white border-[1px] border-solid ${
                 handleAccountDropDown === true
                   ? "visible scale-y-100"
                   : "invisible scale-y-0"
@@ -197,13 +204,20 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="flex items-center ml-[34px]">
-            <BsBag className="mr-[7px] text-[22px]" />
+          <div className="flex items-center ml-[34px] cart-field">
+            <BsBag className="mr-[7px] text-[22px] " />
             <div className="h-[18px] w-[18px] bg-black rounded-full text-white flex items-center justify-center text-[12px]">
               0
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className={`absolute w-[100vw] nav-dropDown-mobile flex flex-col top-[92px] left-0 z-[1] border-[1px] border-solid ${
+          handleNavMobileDropDown === true && "-top-[339px]"
+        }`}
+      >
+        <MobileNavDropDown />
       </div>
     </div>
   );
