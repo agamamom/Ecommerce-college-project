@@ -20,6 +20,7 @@
     "firebase": "^9.6.7",
     "lodash": "^4.17.20",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.6.0",
     "react-datepicker": "^3.2.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
