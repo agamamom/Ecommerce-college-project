@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
-const LanguageDropDown = () => {
+const LanguageDropDown = ({ className = "" }) => {
   const items = [
     {
       label: (
@@ -33,20 +33,20 @@ const LanguageDropDown = () => {
   return (
     <Dropdown menu={{ items }} trigger={["click"]}>
       <div
-        className="flex items-center "
+        className="flex items-center hover-langDropdown"
         onClick={() => setArrow(!arrow)}
         onMouse={() => setArrow(!arrow)}
       >
         <div
           onClick={(e) => e.preventDefault()}
-          className="tracking-wide font-semibold cursor-pointer"
+          className={`tracking-wide font-semibold cursor-pointer ${className} transition-all duration-300`}
         >
           {chooseLang}
         </div>
         <DownOutlined
           className={`text-[10px] ml-[6px] transition-all duration-300 ${
             arrow === true ? "rotate-[180deg]" : "rotate-[0deg]"
-          }`}
+          } ${className}`}
         />
       </div>
     </Dropdown>

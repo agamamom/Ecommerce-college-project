@@ -4,7 +4,8 @@ import "../../../../src/index.scss";
 import { useHistory } from "react-router-dom";
 import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import { BsPercent } from "react-icons/bs";
-
+import { MdPhoneInTalk } from "react-icons/md";
+import { IoMailOpen } from "react-icons/io5";
 function GetItem(label, key, children, type, link) {
   return {
     key,
@@ -89,6 +90,19 @@ const MobileNavDropDown = () => {
             <div className="text-[#ff5635] tracking-wide font-semibold">
               Clearance Sales
             </div>
+          </div>
+        </div>
+        <div className="flex w-[316px] justify-between mt-[12px]">
+          <div className="flex items-center">
+            <MdPhoneInTalk />
+            <div className="tracking-wide ml-[6px]">+01-987-654-3210</div>
+          </div>
+          <div className="relative">
+            <div className="w-[0.4px] h-[100%] left-[50%] text-[#5E5C5C] bg-[#5E5C5C] -translate-x-[50%]"></div>
+          </div>
+          <div className="flex items-center">
+            <IoMailOpen />
+            <div className="tracking-wide ml-[6px]">contact@store.com</div>
           </div>
         </div>
       </div>

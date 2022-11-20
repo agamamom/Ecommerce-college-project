@@ -11,12 +11,11 @@ body {
 }
 
 .header-container {
-  padding: 25px 30px;
   width: 100%;
   .nav-container > .nav-link-border {
     padding: 8px;
     border-bottom: 2.5px solid transparent;
-    transition: all 0.3s;
+
     .nav-link::after {
       display: block;
       content: "";
@@ -48,7 +47,7 @@ body {
   }
   .nav-container > .nav-link-border:hover {
     border-bottom: 2.5px solid black;
-    transition: all 0.3s;
+    transition: ease-in 0.1s;
     .nav-dropdown {
       visibility: visible;
       transform: scaleY(1);
@@ -105,6 +104,16 @@ body {
   .ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light {
     width: 100%;
   }
+}
+.text-white {
+  color: white;
+}
+
+.clearance-sales:hover .icon-percent {
+  color: white;
+}
+.hover-langDropdown:hover .text-white {
+  color: #ff5635;
 }
 
 @keyframes mymove {
