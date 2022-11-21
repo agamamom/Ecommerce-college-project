@@ -116,6 +116,51 @@ body {
   color: #ff5635;
 }
 
+.carousel-container {
+  .swiper {
+    .swiper-button-prev {
+      left: 40px;
+      &::before {
+        content: "prev";
+        color: transparent;
+        background-image: url("../public/images/carousel/left-arrow.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      &::after {
+        display: none;
+        visibility: hidden;
+      }
+    }
+    &:hover .swiper-button-prev::before,
+    &:hover .swiper-button-next::before {
+      opacity: 1;
+    }
+    .swiper-button-next {
+      right: 40px;
+      &::before {
+        content: "prev";
+        color: transparent;
+        background-image: url("../public/images/carousel/right-arrow.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      &::after {
+        display: none;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
 @keyframes mymove {
   0% {
     height: 192px;
