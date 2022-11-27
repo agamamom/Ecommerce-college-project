@@ -27,15 +27,16 @@ const Header = () => {
   const handleOnBlur = (e) => {
     setHandleDropDown(false);
   };
+  console.log(handleDropDown);
   return (
     <>
       <NavTop />
       <div className="h-[72px] w-full relative flex items-center">
         <div
-          className={`bg-[#00000079] transition-all duration-700 absolute top-0 h-[100vh] w-full z-[1] ${
+          className={`bg-[#00000079] transition-all duration-700 absolute top-0 h-[100vh] w-full z-[2]  ${
             handleSearch === true || handleDropDown === true
-              ? "opacity-100"
-              : "opacity-0"
+              ? "opacity-100 visible"
+              : "opacity-0 invisible"
           } `}
         ></div>
 
@@ -77,7 +78,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[62px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+21px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -111,7 +112,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[62px] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+21px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >

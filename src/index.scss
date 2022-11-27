@@ -53,6 +53,7 @@ body {
       transform: scaleY(1);
     }
   }
+
   .nav-link {
     .icon-hover {
       transition: all 0.3s;
@@ -98,6 +99,7 @@ body {
     height: 40px;
   }
 }
+
 .nav-dropDown-mobile {
   transition: all 0.3s;
   transform-origin: center top 0;
@@ -161,6 +163,15 @@ body {
   }
 }
 
+.category-backgroundImg {
+  background-image: url("https://cdn.shopify.com/s/files/1/0568/8134/8814/files/category-img-04_490x650.jpg?v=1622714998");
+}
+.category-backgroundImg2 {
+  background-image: url("https://cdn.shopify.com/s/files/1/0568/8134/8814/files/category-img-02_490x650.jpg?v=1622714887");
+}
+.category-backgroundImg3 {
+  background-image: url("https://cdn.shopify.com/s/files/1/0568/8134/8814/files/category-img-01_490x650.jpg?v=1622714710");
+}
 @keyframes mymove {
   0% {
     height: 192px;
