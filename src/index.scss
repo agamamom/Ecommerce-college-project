@@ -172,6 +172,50 @@ body {
 .category-backgroundImg3 {
   background-image: url("https://cdn.shopify.com/s/files/1/0568/8134/8814/files/category-img-01_490x650.jpg?v=1622714710");
 }
+
+.shoptoget-text {
+  z-index: 7;
+  color: #ffc934;
+  text-decoration: none;
+  white-space: normal;
+  width: 327px;
+  height: 23px;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: none;
+  max-width: none;
+  text-align: left;
+  line-height: 22px;
+  letter-spacing: 0px;
+  font-weight: 700;
+  font-size: 18px;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  transform: translate(0px, 0px);
+  visibility: visible;
+}
+.timepieces-text {
+  z-index: 6;
+  color: rgb(51, 62, 72);
+  text-decoration: none;
+  white-space: normal;
+  width: 449px;
+  height: 147px;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: none;
+  max-width: none;
+  text-align: left;
+  line-height: 48px;
+  letter-spacing: 0px;
+  font-weight: 300;
+  font-size: 46px;
+  transform-origin: 50% 50%;
+  opacity: 1;
+  transform: translate(0px, 0px);
+  visibility: visible;
+}
+
 @keyframes mymove {
   0% {
     height: 192px;

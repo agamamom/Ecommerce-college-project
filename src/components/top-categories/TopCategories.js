@@ -14,29 +14,6 @@ const TopCategories = () => {
           Add our new arrivals to your weekly lineup.
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-[30px]">
-        <div className="relative">
-          <div className="category-backgroundImg h-[608px]"></div>
-          <div className="flex flex-col justify-center items-center absolute">
-            <div>Lingerie Collection</div>
-            <div>-8 Items-</div>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="category-backgroundImg2 h-[608px]"></div>
-          <div className="flex flex-col justify-center items-center absolute">
-            <div>Women's Collection</div>
-            <div>-20 Items-</div>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="category-backgroundImg3 h-[608px]"></div>
-          <div className="flex flex-col justify-center items-center absolute">
-            <div>Footwear Collection</div>
-            <div>-18 Items-</div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
