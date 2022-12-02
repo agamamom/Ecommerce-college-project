@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "../components/carousel/Carousel";
+import SpecialOffer from "../components/special-offer/SpecialOffer";
 import TopCategories from "../components/top-categories/TopCategories";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <div className="w-full overflow-hidden">
       <Carousel />
       <TopCategories />
+      <SpecialOffer />
     </div>
   );
 };

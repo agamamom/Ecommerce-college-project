@@ -91,7 +91,7 @@ export const fadeIn2 = {
   animate: {
     y: 0,
     opacity: 1,
-    transition: { type: "tween", duration: 0.3, delay: 1.3 },
+    transition: { type: "tween", duration: 0.3, delay: 0.3 },
   },
 };
 export const fadeIn3 = {
@@ -101,7 +101,17 @@ export const fadeIn3 = {
   animate: {
     y: 0,
     opacity: 1,
-    transition: { type: "tween", duration: 0.3, delay: 1.9 },
+    transition: { type: "tween", duration: 0.3, delay: 0.9 },
+  },
+};
+export const fadeIn4 = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "tween", duration: 0.3, delay: 1.5 },
   },
 };
 
@@ -125,7 +135,7 @@ export const fadeInLeft = {
   animate: {
     x: 0,
     opacity: 1,
-    transition: { type: "tween", duration: 1.1 },
+    transition: { type: "tween", duration: 1.1, delay: 0.3 },
   },
 };
 
