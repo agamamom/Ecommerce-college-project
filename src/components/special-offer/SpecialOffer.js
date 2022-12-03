@@ -3,6 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import ProductSO from "../product-specialOffer/ProductSO";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -82,33 +83,43 @@ const SpecialOffer = () => {
             </Box>
             <TabPanel value={value} index={0}>
               <div className="">
-                <div className="grid grid-cols-4">
-                  <div className="h-full">
-                    <div className="px-[24px] pt-[20px] pb-[14px]">
-                      <div className="relative">
-                        <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
-                          <a href="#" rel="tag" className="text-[#768b9e]">
-                            Audio Speakers
-                          </a>
-                        </span>
-                        <a href="#" class="block">
-                          <h2 class="text-[14px] leading-[18px] h-[36px]">
-                            Wireless Audio System Multiroom 360
-                          </h2>
-                          <div class="mb-[10px] w-full relative">
-                            <img
-                              width="300"
-                              height="300"
-                              src="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                              class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto align-middle"
-                              alt=""
-                              loading="lazy"
-                            />
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                <div className="grid grid-cols-4 products">
+                  <ProductSO
+                    categories="Audio Speakers"
+                    name="Wireless Audio System Multiroom 360"
+                    pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                    price="$2,299.00"
+                  />
+                  <ProductSO
+                    categories="Laptop, Ultrabooks"
+                    name="Tablet Red EliteBook Revolve 810 G2"
+                    pic="	https://electro.madrasthemes.com/wp-content/uploads/2016/03/apptablet-300x300.png"
+                    price="$2,100.00"
+                  />
+                  <ProductSO
+                    categories="Headphones"
+                    name="White Solo 2 Wireless"
+                    pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/uniheadphone-300x300.png"
+                    price="$248.00"
+                  />
+                  <ProductSO
+                    categories="Smartphone"
+                    name="Smartphone 6S 32GB LTE"
+                    pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/GoldPhone-1-300x300.png"
+                    price="$1,109.00"
+                  />
+                  <ProductSO
+                    categories="Headphones"
+                    name="White Solo 2 Wireless"
+                    pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/uniheadphone-300x300.png"
+                    price="$248.00"
+                  />
+                  <ProductSO
+                    categories="Smartphone"
+                    name="Smartphone 6S 32GB LTE"
+                    pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/GoldPhone-1-300x300.png"
+                    price="$1,109.00"
+                  />
                 </div>
               </div>
             </TabPanel>

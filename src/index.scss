@@ -235,6 +235,46 @@ body {
   }
 }
 
+.hover-area {
+  border: none;
+  position: relative;
+  background-color: #fff;
+  display: none;
+  margin-bottom: 4px;
+  padding-top: 8px;
+}
+
+.products .product:hover {
+  z-index: 999;
+  position: relative;
+}
+
+.products .product::after {
+  content: "";
+  border-right: 1px solid #eaeaea;
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  height: 80%;
+  transform: translateY(-50%);
+}
+
+.products .product:hover .hover-area {
+  display: block;
+  padding-top: 8px;
+  border-top: 1px solid #eaeaea;
+}
+
+.product:hover .product-inner {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  box-shadow: 0 0 6px 0 rgb(1 1 1 / 30%);
+  background-color: #fff;
+}
+
 @keyframes mymove {
   0% {
     height: 192px;
