@@ -244,12 +244,18 @@ body {
   padding-top: 8px;
 }
 
-.products .product:hover {
+.product:hover,
+.product-fullBorder:hover {
   z-index: 999;
   position: relative;
+  transition: all 0.3s;
 }
 
-.products .product::after {
+.product-fullBorder {
+  border: 1.5px solid #f4f4f4;
+}
+
+.product::after {
   content: "";
   border-right: 1px solid #eaeaea;
   display: block;
@@ -260,21 +266,78 @@ body {
   transform: translateY(-50%);
 }
 
-.products .product:hover .hover-area {
+.product:hover .hover-area,
+.product-fullBorder:hover .hover-area {
   display: block;
   padding-top: 8px;
   border-top: 1px solid #eaeaea;
 }
 
-.product:hover .product-inner {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  box-shadow: 0 0 6px 0 rgb(1 1 1 / 30%);
-  background-color: #fff;
+.product:hover,
+.product-fullBorder:hover {
+  .product-inner {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    box-shadow: 0 0 6px 0 rgb(1 1 1 / 30%);
+    background-color: #fff;
+  }
+  .cart-icon-container {
+    background: #fed400;
+  }
 }
 
+.hover-text-black:hover {
+  color: black;
+}
+
+.special-offer-right {
+  .MuiBox-root {
+    &.css-19kzrtu {
+      padding: 0;
+    }
+  }
+}
+.cart-icon-container {
+  background: #c7c9cb68;
+  cursor: pointer;
+}
+.BestDeal-nav-item + .BestDeal-nav-item {
+  margin-left: 33.2px;
+}
+.BestDeal-nav-item {
+  .BestDeal-nav-link {
+    padding: 9px 0 13px;
+    text-align: center;
+    color: #333e48;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+  }
+  .BestDeal-nav-link.active {
+    font-weight: 700;
+    position: relative;
+    &::after {
+      content: " ";
+      border-bottom: 2px solid #fed400;
+      display: block;
+      position: absolute;
+      bottom: 3px;
+      width: 100%;
+    }
+  }
+}
+
+.BestSellers-nav-link.active {
+  &::after {
+    content: " ";
+    border-bottom: 2px solid #fed400;
+    display: block;
+    position: absolute;
+    bottom: 3px;
+    width: 100%;
+  }
+}
 @keyframes mymove {
   0% {
     height: 192px;
