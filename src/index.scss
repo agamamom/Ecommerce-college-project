@@ -235,6 +235,17 @@ body {
   }
 }
 
+.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
+  margin-right: 20px;
+  &.Mui-selected {
+    color: black;
+  }
+}
+
+.MuiTabs-indicator.css-1aquho2-MuiTabs-indicator {
+  background-color: #fed400;
+}
+
 .hover-area {
   border: none;
   position: relative;
@@ -328,16 +339,66 @@ body {
   }
 }
 
-.BestSellers-nav-link.active {
-  &::after {
-    content: " ";
-    border-bottom: 2px solid #fed400;
-    display: block;
+.bestSellers-line {
+  // &::after {
+  //   content: " ";
+  //   border-bottom: 1px solid #a7a59ca5;
+  //   display: block;
+  //   position: absolute;
+  //   top: 47px;
+  //   width: 100%;
+  // }
+  // & #simple-tabpanel-0 {
+  //   clear: both;
+  // }
+  // & #simple-tabpanel-1 {
+  //   clear: both;
+  // }
+  // & #simple-tabpanel-3 {
+  //   clear: both;
+  // }
+  & #simple-tab-0 {
     position: absolute;
-    bottom: 3px;
-    width: 100%;
+    left: 0;
+  }
+  & #simple-tab-1 {
+    border: 2px solid #fed400;
+    border-radius: 20px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    min-height: 30px;
+    color: black;
+    position: absolute;
+    right: 38%;
+  }
+  & #simple-tab-2 {
+    position: absolute;
+    right: 23%;
+  }
+  & #simple-tab-3 {
+    position: absolute;
+    right: 10%;
+  }
+  & #simple-tab-4 {
+    position: absolute;
+    right: 0;
   }
 }
+
+.bestSellers-line .MuiBox-root.css-1gsv261 {
+  border: none;
+}
+
+.MuiTabs-flexContainer.MuiTabs-centered.css-1wf8b0h-MuiTabs-flexContainer {
+  height: 62px;
+  align-items: center;
+  position: relative;
+}
+
 @keyframes mymove {
   0% {
     height: 192px;
