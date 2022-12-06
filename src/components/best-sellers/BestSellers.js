@@ -4,7 +4,15 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
-import ProductSO from "../product-specialOffer/ProductSO";
+import ProductBS from "../product-specialOffer/ProductBS";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay } from "swiper";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
+import ReactTooltip from "react-tooltip";
+import { IoIosGitCompare } from "react-icons/io";
+import { CiHeart } from "react-icons/ci";
 
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
@@ -57,14 +65,14 @@ function a11yProps(index) {
 }
 
 const BestSellers = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(2);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
     <div className="bg-white px-[45px] mt-[40px] bestSellers-line">
-      <div className="w-[100%] bg-red-50">
+      <div className="w-[100%]">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}
@@ -72,23 +80,93 @@ const BestSellers = () => {
             aria-label="basic tabs example"
             centered
           >
-            <AntTabTitle label="Best Sellers" {...a11yProps(0)} />
-            <AntTabTop20 label="Top 20" {...a11yProps(1)} disabled />
+            <AntTabTitle label="Best Sellers" {...a11yProps(0)} disabled />
+            <AntTabTop20 label="Top 8" {...a11yProps(1)} disabled />
             <AntTab label="Smart Phones & Tablets" {...a11yProps(2)} />
             {/* <Tab label="Smart Phones & Tablets"  /> */}
             <AntTab label="Laptops & Computers" {...a11yProps(3)} />
             <AntTab label="Video Cameras" {...a11yProps(4)} />
           </Tabs>
         </Box>
-        <TabPanel value={value} index={0}>
-          hello
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Item Two
-        </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+          <Swiper slidesPerView={1} spaceBetween={30} className="mySwiper">
+            <SwiperSlide>
+              <div className="grid grid-cols-4">
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+                <ProductBS
+                  categories="Audio Speakers"
+                  name="Wireless Audio System Multiroom 360"
+                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
+                  price="$2,299.00"
+                  productBorderRight="product"
+                />
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </TabPanel>
+        <TabPanel value={value} index={3}>
+          <SwiperSlide>Slide 2</SwiperSlide>
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <SwiperSlide>Slide 3</SwiperSlide>
+        </TabPanel>
+      </div>
+      <div className="mb-[39px] mt-[50px]">
+        <a href="#">
+          <img
+            src="	https://electro.madrasthemes.com/wp-content/uploads/2018/04/home-v5-banner.png"
+            alt=""
+            className="max-w-full h-auto"
+          />
+        </a>
       </div>
     </div>
   );

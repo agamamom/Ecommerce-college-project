@@ -4,7 +4,7 @@ import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 
-const ProductSO = ({
+const ProductBS = ({
   categories,
   name,
   pic,
@@ -13,32 +13,40 @@ const ProductSO = ({
   productBorderRight,
 }) => {
   return (
-    <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
-      <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
-        <div className="relative">
+    <div
+      className={`h-full ${productBorder} ${productBorderRight} relative mb-[15px]`}
+    >
+      <div className="pr-[24px] pt-[20px] pb-[14px] flex relative product-inner">
+        {/* LEFT */}
+        <div className="relative w-[50%]">
+          {/* HInh */}
+          <div class="mb-[10px] w-full relative">
+            <img
+              width="300"
+              height="300"
+              src={pic}
+              class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto align-middle"
+              alt=""
+              loading="lazy"
+            />
+          </div>
+          {/* HInh */}
+        </div>
+        {/* LEFT */}
+
+        {/* RIght */}
+        <div className="">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
             <a href="#" rel="tag" className="text-[#768b9e]">
               {categories}
             </a>
           </span>
           <a href="#" class="block">
-            <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
+            <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[14px]">
               {name}
             </h2>
-            <div class="mb-[10px] w-full relative">
-              <img
-                width="300"
-                height="300"
-                src={pic}
-                class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto align-middle"
-                alt=""
-                loading="lazy"
-              />
-            </div>
           </a>
-        </div>
-        <div className="">
-          <div className="mb-[7px] clear-both flex justify-between items-center h-[36px]">
+          <div className="mb-[12px] mt-[16px] clear-both flex justify-between items-center h-[36px]">
             <span className="text-[20px] relative">{price}</span>
             <div className="p-[12px] cart-icon-container rounded-[50%]">
               <p data-tip data-for="happyFace">
@@ -63,9 +71,10 @@ const ProductSO = ({
             </div>
           </div>
         </div>
+        {/* RIght */}
       </div>
     </div>
   );
 };
 
-export default ProductSO;
+export default ProductBS;
