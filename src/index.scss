@@ -445,6 +445,27 @@ body {
   border-top-right-radius: 19px;
   border-bottom-right-radius: 19px;
 }
+.hover-iconSocial-facebook:hover {
+  color: rgba(4, 4, 152, 0.749);
+}
+.hover-iconSocial-whatsApp:hover {
+  color: rgba(0, 128, 0, 0.637);
+}
+.hover-iconSocial-pinterest:hover {
+  color: #f9411cbe;
+}
+.hover-iconSocial-linkedin:hover {
+  color: rgba(3, 67, 185, 0.625);
+}
+.hover-iconSocial-instagram:hover {
+  color: #ff5635;
+}
+.hover-iconSocial-youtube:hover {
+  color: red;
+}
+.footer-rightSide li {
+  margin-bottom: 10px;
+}
 @keyframes mymove {
   0% {
     height: 192px;
