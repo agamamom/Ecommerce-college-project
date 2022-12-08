@@ -1,7 +1,7 @@
 import { Menu } from "antd";
 import React, { useState } from "react";
 import "../../../../src/index.scss";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import { BsPercent } from "react-icons/bs";
 import { MdPhoneInTalk } from "react-icons/md";
@@ -35,7 +35,7 @@ const rootSubmenuKeys = ["sub2", "sub4"];
 const MobileNavDropDown = () => {
   const [openKeys, setOpenKeys] = useState([""]);
   const [currentLang, setCurrentLang] = useState("en");
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const handleLang = (lang) => {
     setCurrentLang(lang);
@@ -57,9 +57,9 @@ const MobileNavDropDown = () => {
     console.log("keys2", keys2.key);
     const handleNavigate = () => {
       if (keys2.key === "5") {
-        history.push("/login5");
+        navigate("/login5");
       } else if (keys2.key === "6") {
-        history.push("/login6");
+        navigate("/login6");
       }
     };
     return handleNavigate();

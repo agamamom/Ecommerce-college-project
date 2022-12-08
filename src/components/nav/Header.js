@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../../src/index.scss";
 import MobileNavDropDown from "./MobileNavDropDown/MobileNavDropDown";
 import { HiOutlineBars3 } from "react-icons/hi2";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
@@ -42,13 +42,13 @@ const Header = () => {
 
         <div className="grid grid-cols-12 px-[30px] h-full header-container relative z-[200] bg-white ">
           <div className="col-span-9 flex items-center nav-container">
-            <NavLink to="/" className="mobile:block laptop:hidden">
+            <Link to="/" className="mobile:block laptop:hidden">
               <div className="" onClick={(e) => handleClickNavMobile(e)}>
                 <HiOutlineBars3 className="text-[22px] mr-[15px]" />
               </div>
-            </NavLink>
+            </Link>
             <img src="/images/logo.png" alt="asd" className="mr-[32px]" />
-            <NavLink
+            <Link
               to="/"
               exact
               className="nav-link-border"
@@ -59,8 +59,8 @@ const Header = () => {
               style={{ marginRight: "37px" }}
             >
               <div className="text-black">Home</div>
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to="/shop"
               activeStyle={{
                 fontWeight: "bold",
@@ -82,19 +82,19 @@ const Header = () => {
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
-                <NavLink to="/1" className="py-[4px] pl-[10px]">
+                <Link to="/1" className="py-[4px] pl-[10px]">
                   Fashion1
-                </NavLink>
-                <NavLink to="/2" className="py-[4px] pl-[10px]">
+                </Link>
+                <Link to="/2" className="py-[4px] pl-[10px]">
                   Fashion2
-                </NavLink>
-                <NavLink to="/3" className="py-[4px] pl-[10px]">
+                </Link>
+                <Link to="/3" className="py-[4px] pl-[10px]">
                   Fashion3
-                </NavLink>
+                </Link>
               </div>
-            </NavLink>
+            </Link>
 
-            <NavLink
+            <Link
               to="/pages"
               activeStyle={{
                 fontWeight: "bold",
@@ -116,18 +116,18 @@ const Header = () => {
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
-                <NavLink to="/1" className="py-[4px] pl-[10px]">
+                <Link to="/1" className="py-[4px] pl-[10px]">
                   About Us
-                </NavLink>
-                <NavLink to="/2" className="py-[4px] pl-[10px]">
+                </Link>
+                <Link to="/2" className="py-[4px] pl-[10px]">
                   Contact Us
-                </NavLink>
-                <NavLink to="/3" className="py-[4px] pl-[10px]">
+                </Link>
+                <Link to="/3" className="py-[4px] pl-[10px]">
                   FAQ's
-                </NavLink>
+                </Link>
               </div>
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to="/blog"
               activeStyle={{
                 fontWeight: "bold",
@@ -139,7 +139,7 @@ const Header = () => {
               <div className="flex items-end leading-[16px] text-black">
                 Blog
               </div>
-            </NavLink>
+            </Link>
           </div>
           <div className="col-span-3 flex items-center place-content-end ">
             {/* search filed */}
@@ -200,15 +200,17 @@ const Header = () => {
                 }`}
                 onMouseOver={(e) => handleMouseOver(e)}
               >
-                <NavLink to="/1" className="py-[4px] pl-[10px]">
+                <Link to="/login" className="py-[4px] pl-[10px]">
                   Log in
-                </NavLink>
-                <NavLink to="/2" className="py-[4px] pl-[10px]">
-                  Create account
-                </NavLink>
-                <NavLink to="/3" className="py-[4px] pl-[10px]">
+                </Link>
+
+                <Link to="/register" className="py-[4px] pl-[10px]">
+                  Register
+                </Link>
+
+                <Link to="/wishlist" className="py-[4px] pl-[10px]">
                   Wishlist
-                </NavLink>
+                </Link>
               </div>
             </div>
 
