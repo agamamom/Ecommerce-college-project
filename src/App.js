@@ -7,20 +7,18 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
+import Shop from "./pages/Shop/Shop";
 
 const App = () => {
   return (
     <>
-      <ToastContainer />
+      <Header />
       <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index path="/" element={<Home />} />
-        </Route>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
 
-        <Route>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Routes>
     </>
   );

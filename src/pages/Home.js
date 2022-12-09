@@ -10,7 +10,7 @@ import TopCategories from "../components/top-categories/TopCategories";
 
 const Home = () => {
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full">
       <Carousel />
       <TopCategories />
       <SpecialOffer />
