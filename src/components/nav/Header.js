@@ -27,14 +27,15 @@ const Header = () => {
   const handleOnBlur = (e) => {
     setHandleDropDown(false);
   };
-  console.log(handleDropDown);
   return (
     <>
       <NavTop />
       <div className="h-[72px] w-full relative flex items-center">
         <div
           className={`bg-[#00000079] transition-all duration-700 absolute top-0 h-[100vh] w-full z-[2]  ${
-            handleSearch === true || handleDropDown === true
+            handleSearch === true ||
+            handleDropDown === true ||
+            handleAccountDropDown === true
               ? "opacity-100 visible"
               : "opacity-0 invisible"
           } `}
@@ -198,17 +199,31 @@ const Header = () => {
                     ? "visible scale-y-100"
                     : "invisible scale-y-0"
                 }`}
-                onMouseOver={(e) => handleMouseOver(e)}
               >
-                <Link to="/login" className="py-[4px] pl-[10px]">
-                  Log in
-                </Link>
+                <div
+                  onClick={(e) => handleClickAccount(e)}
+                  onmousedown={(e) => handleOnBlur(e)}
+                >
+                  <Link to="/login" className="py-[4px] pl-[10px]">
+                    Log in
+                  </Link>
+                </div>
 
-                <Link to="/register" className="py-[4px] pl-[10px]">
+                <Link
+                  to="/register"
+                  className="py-[4px] pl-[10px]"
+                  onClick={(e) => handleClickAccount(e)}
+                  onmousedown={(e) => handleOnBlur(e)}
+                >
                   Register
                 </Link>
 
-                <Link to="/wishlist" className="py-[4px] pl-[10px]">
+                <Link
+                  to="/wishlist"
+                  className="py-[4px] pl-[10px]"
+                  onClick={(e) => handleClickAccount(e)}
+                  onmousedown={(e) => handleOnBlur(e)}
+                >
                   Wishlist
                 </Link>
               </div>

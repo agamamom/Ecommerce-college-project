@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import firebase from "firebase/compat/app";
+import * as firebase from "firebase";
 const firebaseConfig = {
   apiKey: "AIzaSyCZAXTWHffiYgo4quvccJuxFPs69VfnCOw",
   authDomain: "ecommerce-finalterm.firebaseapp.com",
@@ -13,5 +12,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// export
 export const auth = firebase.auth();
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
