@@ -1,7 +1,139 @@
-import React from "react";
+import React, { useState } from "react";
+import { auth, googleAuthProvider } from "../../firebase";
+import { toast } from "react-toastify";
+import { Button } from "antd";
+import { MailOutlined, GoogleOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { FiMail } from "react-icons/fi";
+import { BsGoogle } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  return <div>Login</div>;
+  const [email, setEmail] = useState("nightoverskill@gmail.com");
+  const [password, setPassword] = useState("1234567");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  let dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    // console.table(email, password);
+    try {
+      const result = await auth.signInWithEmailAndPassword(email, password);
+      // console.log(result);
+      const { user } = result;
+      const idTokenResult = await user.getIdTokenResult();
+
+      dispatch({
+        type: "LOGGED_IN_USER",
+        payload: {
+          email: user.email,
+          token: idTokenResult.token,
+        },
+      });
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+      setLoading(false);
+    }
+  };
+
+  const googleLogin = async () => {
+    auth
+      .signInWithPopup(googleAuthProvider)
+      .then(async (result) => {
+        const { user } = result;
+        const idTokenResult = await user.getIdTokenResult();
+        dispatch({
+          type: "LOGGED_IN_USER",
+          payload: {
+            email: user.email,
+            token: idTokenResult.token,
+          },
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
+  };
+
+  const loginForm = () => (
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <input
+          type="email"
+          className="form-control"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Your email"
+          autoFocus
+        />
+      </div>
+
+      <div className="form-group">
+        <input
+          type="password"
+          className="form-control"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Your password"
+        />
+      </div>
+
+      <br />
+      <Button
+        onClick={handleSubmit}
+        type="primary"
+        className="mb-3"
+        block
+        shape="round"
+        size="large"
+        disabled={!email || password.length < 6}
+      >
+        <div className="flex justify-center items-center">
+          <FiMail className="mr-[10px] text-[20px]" />
+          <span>Login with Email/Password</span>
+        </div>
+      </Button>
+    </form>
+  );
+
+  return (
+    <div className="container p-5">
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          {loading ? (
+            <h4 className="text-danger text-[30px] uppercase tracking-wider">
+              Loading...
+            </h4>
+          ) : (
+            <h1 className="text-[30px] uppercase tracking-wider">Login</h1>
+          )}
+
+          {loginForm()}
+
+          <Button
+            onClick={googleLogin}
+            type="danger"
+            className="mb-3"
+            block
+            shape="round"
+            size="large"
+          >
+            <div className="flex justify-center items-center">
+              <BsGoogle className="mr-[10px] text-[20px]" />
+              <span>Login with Google</span>
+            </div>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Login;

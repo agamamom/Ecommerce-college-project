@@ -8,8 +8,15 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import { IoCloseSharp } from "react-icons/io5";
 import NavTop from "../nav/NavTop";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import firebase from "firebase";
 
 const Header = () => {
+  let dispatch = useDispatch();
+  let { user } = useSelector((state) => ({ ...state }));
+  console.log("USER NEF", user);
+  const navigate = useNavigate();
   const [handleSearch, setHandleSearch] = useState(false);
   const [handleDropDown, setHandleDropDown] = useState(false);
   const [handleAccountDropDown, setHandleAccountDropDown] = useState(false);
@@ -27,6 +34,18 @@ const Header = () => {
   const handleOnBlur = (e) => {
     setHandleDropDown(false);
   };
+
+  const logout = () => {
+    firebase.auth().signOut();
+    dispatch({
+      type: "LOGOUT",
+      payload: null,
+    });
+    navigate("/login");
+    setHandleAccountDropDown(!handleAccountDropDown);
+    setHandleDropDown(!handleDropDown);
+  };
+
   return (
     <>
       <NavTop />
@@ -59,7 +78,7 @@ const Header = () => {
               }}
               style={{ marginRight: "37px" }}
             >
-              <div className="text-black">Home</div>
+              <div className="text-black font-medium text-[18px]">Home</div>
             </Link>
             <Link
               to="/shop"
@@ -71,7 +90,7 @@ const Header = () => {
               style={{ marginRight: "37px", position: "relative" }}
             >
               <div
-                className="flex items-end leading-[16px] nav-link text-black"
+                className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -79,7 +98,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+21px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+14px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -105,7 +124,7 @@ const Header = () => {
               style={{ marginRight: "37px", position: "relative" }}
             >
               <div
-                className="flex items-end leading-[16px] nav-link text-black"
+                className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -113,7 +132,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+21px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+14px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -137,7 +156,7 @@ const Header = () => {
               style={{ marginRight: "37px" }}
               className="nav-link-border"
             >
-              <div className="flex items-end leading-[16px] text-black">
+              <div className="flex items-end leading-[16px] text-black font-medium text-[18px]">
                 Blog
               </div>
             </Link>
@@ -190,7 +209,8 @@ const Header = () => {
                 className="flex items-center cursor-pointer nav-link"
                 onClick={(e) => handleClickAccount(e)}
               >
-                My Account
+                {user?.email ? user?.email.split("@")[0] : "My Account"}
+
                 <IoIosArrowDown className="text-[12px] ml-[6px]" />
               </div>
               <div
@@ -200,32 +220,45 @@ const Header = () => {
                     : "invisible scale-y-0"
                 }`}
               >
-                <div
-                  onClick={(e) => handleClickAccount(e)}
-                  onmousedown={(e) => handleOnBlur(e)}
-                >
-                  <Link to="/login" className="py-[4px] pl-[10px]">
-                    Log in
-                  </Link>
-                </div>
+                {!user ? (
+                  <>
+                    <div
+                      onClick={(e) => handleClickAccount(e)}
+                      onmousedown={(e) => handleOnBlur(e)}
+                    >
+                      <Link to="/login" className="py-[6px] pl-[10px]">
+                        Log in
+                      </Link>
+                    </div>
 
-                <Link
-                  to="/register"
-                  className="py-[4px] pl-[10px]"
-                  onClick={(e) => handleClickAccount(e)}
-                  onmousedown={(e) => handleOnBlur(e)}
-                >
-                  Register
-                </Link>
-
-                <Link
-                  to="/wishlist"
-                  className="py-[4px] pl-[10px]"
-                  onClick={(e) => handleClickAccount(e)}
-                  onmousedown={(e) => handleOnBlur(e)}
-                >
-                  Wishlist
-                </Link>
+                    <Link
+                      to="/register"
+                      className="py-[6px] pl-[10px]"
+                      onClick={(e) => handleClickAccount(e)}
+                      onmousedown={(e) => handleOnBlur(e)}
+                    >
+                      Register
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className="py-[6px] pl-[10px] cursor-pointer"
+                      onClick={logout}
+                      onmousedown={(e) => handleOnBlur(e)}
+                    >
+                      Logout
+                    </div>
+                    <Link
+                      to="/wishlist"
+                      className="py-[6px] pl-[10px]"
+                      onClick={(e) => handleClickAccount(e)}
+                      onmousedown={(e) => handleOnBlur(e)}
+                    >
+                      Wishlist
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
 
