@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import { toast } from "react-toastify";
 import { Button } from "antd";
 import { MailOutlined, GoogleOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FiMail } from "react-icons/fi";
 import { BsGoogle } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("nightoverskill@gmail.com");
   const [password, setPassword] = useState("1234567");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { user } = useSelector((state) => ({ ...state }));
+
+  useEffect(() => {
+    if (user && user.token) navigate("/");
+  }, [user]);
 
   let dispatch = useDispatch();
 
@@ -130,6 +135,10 @@ const Login = () => {
               <span>Login with Google</span>
             </div>
           </Button>
+
+          <Link to="/forgot/password" className="float-right text-danger">
+            Forgot Password
+          </Link>
         </div>
       </div>
     </div>
