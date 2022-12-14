@@ -15,7 +15,6 @@ import firebase from "firebase";
 const Header = () => {
   let dispatch = useDispatch();
   let { user } = useSelector((state) => ({ ...state }));
-  console.log("USER NEF", user);
   const navigate = useNavigate();
   const [handleSearch, setHandleSearch] = useState(false);
   const [handleDropDown, setHandleDropDown] = useState(false);

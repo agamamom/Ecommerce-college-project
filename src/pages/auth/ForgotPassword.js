@@ -21,6 +21,8 @@ const ForgotPassword = () => {
       handleCodeInApp: true,
     };
 
+    console.log("cònig", config);
+
     await auth
       .sendPasswordResetEmail(email, config)
       .then(() => {
@@ -36,7 +38,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="container col-md-6 offset-md-3 p-5">
+    <div className="col-md-6 p-5 m-auto">
       {loading ? (
         <h4 className="text-danger">Loading</h4>
       ) : (

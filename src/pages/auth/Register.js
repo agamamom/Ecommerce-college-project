@@ -9,9 +9,10 @@ const Register = () => {
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => ({ ...state }));
+
   useEffect(() => {
     if (user && user.token) navigate("/");
-  }, [user]);
+  }, [navigate, user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

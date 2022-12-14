@@ -32,7 +32,7 @@ const RegisterComplete = () => {
         email,
         window.location.href
       );
-      console.log("RESULT", result);
+
       if (result.user.emailVerified) {
         // remove user email fom local storage
         window.localStorage.removeItem("emailForRegistration");

@@ -1,4 +1,4 @@
-@import "~antd/dist/antd.css";
+@import "~antd/dist/antd.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -124,7 +124,8 @@ body a {
   display: none;
   visibility: hidden;
 }
-.carousel-container .swiper:hover .swiper-button-prev::before, .carousel-container .swiper:hover .swiper-button-next::before {
+.carousel-container .swiper:hover .swiper-button-prev::before,
+.carousel-container .swiper:hover .swiper-button-next::before {
   opacity: 1;
 }
 .carousel-container .swiper .swiper-button-next {
@@ -285,4 +286,4 @@ body a {
   100% {
     height: 492px;
   }
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */
