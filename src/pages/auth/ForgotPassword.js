@@ -21,8 +21,6 @@ const ForgotPassword = () => {
       handleCodeInApp: true,
     };
 
-    console.log("cònig", config);
-
     await auth
       .sendPasswordResetEmail(email, config)
       .then(() => {

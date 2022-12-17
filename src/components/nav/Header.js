@@ -60,7 +60,7 @@ const Header = () => {
         ></div>
 
         <div className="grid grid-cols-12 px-[30px] h-full header-container relative z-[200] bg-white ">
-          <div className="col-span-9 flex items-center nav-container">
+          <div className="col-span-9 flex items-center nav-container ">
             <Link to="/" className="mobile:block laptop:hidden">
               <div className="" onClick={(e) => handleClickNavMobile(e)}>
                 <HiOutlineBars3 className="text-[22px] mr-[15px]" />
@@ -75,7 +75,12 @@ const Header = () => {
                 fontWeight: "bold",
                 color: "red",
               }}
-              style={{ marginRight: "37px" }}
+              style={{
+                marginRight: "37px",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
               <div className="text-black font-medium text-[18px]">Home</div>
             </Link>
@@ -86,7 +91,13 @@ const Header = () => {
                 color: "red",
               }}
               className="nav-link-border"
-              style={{ marginRight: "37px", position: "relative" }}
+              style={{
+                marginRight: "37px",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                position: "relative",
+              }}
             >
               <div
                 className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
@@ -97,7 +108,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+14px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -120,7 +131,13 @@ const Header = () => {
                 color: "red",
               }}
               className="nav-link-border"
-              style={{ marginRight: "37px", position: "relative" }}
+              style={{
+                marginRight: "37px",
+                position: "relative",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
               <div
                 className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
@@ -131,7 +148,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[calc(100%+14px)] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -152,7 +169,12 @@ const Header = () => {
                 fontWeight: "bold",
                 color: "red",
               }}
-              style={{ marginRight: "37px" }}
+              style={{
+                marginRight: "37px",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+              }}
               className="nav-link-border"
             >
               <div className="flex items-end leading-[16px] text-black font-medium text-[18px]">

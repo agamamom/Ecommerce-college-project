@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
-import * as firebase from "firebase";
-require("firebase/auth");
+// import * as firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCZAXTWHffiYgo4quvccJuxFPs69VfnCOw",
   authDomain: "ecommerce-finalterm.firebaseapp.com",

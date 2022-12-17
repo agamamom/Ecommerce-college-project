@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,8 +14,10 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 import "antd/dist/antd.min.css";
 import History from "./pages/user/History";
 import UserRoute from "./components/routes/UserRoute";
+import AdminRoute from "./components/routes/AdminRoute";
 import Password from "./pages/user/Password";
 import Wishlist from "./pages/user/Wishlist";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
@@ -48,7 +50,7 @@ const App = () => {
     });
     // cleanup
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -85,6 +87,14 @@ const App = () => {
             <UserRoute>
               <Wishlist />
             </UserRoute>
+          }
+        />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
           }
         />
       </Routes>
