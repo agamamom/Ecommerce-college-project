@@ -5,7 +5,6 @@ import { currentAdmin } from "../../functions/auth";
 
 const AdminRoute = ({ children, ...rest }) => {
   const { user } = useSelector((state) => ({ ...state }));
-  console.log("user ne", user);
   const [ok, setOk] = useState(false);
 
   useEffect(() => {

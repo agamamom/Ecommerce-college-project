@@ -270,6 +270,28 @@ const Header = () => {
                     >
                       Logout
                     </div>
+
+                    {user && user.role === "subscriber" && (
+                      <Link
+                        to="/user/history"
+                        className="py-[6px] pl-[10px]"
+                        onClick={(e) => handleClickAccount(e)}
+                        onmousedown={(e) => handleOnBlur(e)}
+                      >
+                        Dashboard
+                      </Link>
+                    )}
+                    {user && user.role === "admin" && (
+                      <Link
+                        to="/admin/dashboard"
+                        className="py-[6px] pl-[10px]"
+                        onClick={(e) => handleClickAccount(e)}
+                        onmousedown={(e) => handleOnBlur(e)}
+                      >
+                        Dashboard
+                      </Link>
+                    )}
+
                     <Link
                       to="/wishlist"
                       className="py-[6px] pl-[10px]"
