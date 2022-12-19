@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AdminNav from "../../../components/nav/AdminNav";
+import AdminNav from "../../../components/nav/AdminNav/AdminNav";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import {
@@ -69,24 +69,6 @@ const CategoryCreate = () => {
 
   // step 4
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
-
-  const categoryForm = () => (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label>Name</label>
-        <input
-          type="text"
-          className="form-control"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          autoFocus
-          required
-        />
-        <br />
-        <button className="btn btn-outline-primary">Save</button>
-      </div>
-    </form>
-  );
 
   return (
     <div className="container-fluid">
