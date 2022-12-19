@@ -135,7 +135,7 @@ const AdminDashboard = () => {
                           <th>STT</th>
                           <th>Name</th>
                           <th>Description</th>
-                          <th class="text-end">Action</th>
+                          <th class="text-center">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -153,13 +153,21 @@ const AdminDashboard = () => {
                                     onClick={() => handleRemove(c.slug)}
                                     className="btn btn-sm float-right"
                                   >
-                                    <DeleteOutlined className="text-danger" />
+                                    <DeleteOutlined
+                                      className="text-danger"
+                                      style={{ fontSize: 20 }}
+                                    />
                                   </span>
                                 </div>
-                                <div className="col">
+                                <div className="col flex items-end">
                                   <Link to={`/admin/category/${c.slug}`}>
-                                    <span className="btn btn-sm float-right">
-                                      <EditOutlined className="text-warning" />
+                                    <span className="btn btn-sm flex justify-start ">
+                                      <EditOutlined
+                                        style={{
+                                          fontSize: 20,
+                                          color: "#009688",
+                                        }}
+                                      />
                                     </span>
                                   </Link>
                                 </div>

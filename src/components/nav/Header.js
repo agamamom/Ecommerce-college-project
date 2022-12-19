@@ -108,7 +108,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -148,7 +148,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-[1px] border-solid"
+                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid"
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
@@ -235,7 +235,7 @@ const Header = () => {
                 <IoIosArrowDown className="text-[12px] ml-[6px]" />
               </div>
               <div
-                className={`absolute w-[280px] flex flex-col p-[20px] top-[100%] right-0 nav-account-dropdown z-[10] bg-white border-[1px] border-solid ${
+                className={`absolute w-[280px] flex flex-col p-[20px] top-[100%] right-0 nav-account-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid ${
                   handleAccountDropDown === true
                     ? "visible scale-y-100"
                     : "invisible scale-y-0"
@@ -247,7 +247,10 @@ const Header = () => {
                       onClick={(e) => handleClickAccount(e)}
                       onmousedown={(e) => handleOnBlur(e)}
                     >
-                      <Link to="/login" className="py-[6px] pl-[10px]">
+                      <Link
+                        to="/login"
+                        className="py-[6px] pl-[10px] text-black"
+                      >
                         Log in
                       </Link>
                     </div>
@@ -263,13 +266,13 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <div
-                      className="py-[6px] pl-[10px] cursor-pointer"
+                    <Link
+                      className="py-[6px] pl-[10px] cursor-pointer text-[#000]"
                       onClick={logout}
                       onmousedown={(e) => handleOnBlur(e)}
                     >
                       Logout
-                    </div>
+                    </Link>
 
                     {user && user.role === "subscriber" && (
                       <Link

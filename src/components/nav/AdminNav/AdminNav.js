@@ -5,216 +5,181 @@ import "../../nav/AdminNav/dashboard.css";
 
 const AdminNav = () => (
   // <nav>
-  //   <ul classNameName="nav flex-column">
-  //     <li classNameName="nav-item">
-  //       <Link to="/admin/dashboard" classNameName="nav-link">
+  //   <ul classNameNameName="nav flex-column">
+  //     <li classNameNameName="nav-item">
+  //       <Link to="/admin/dashboard" classNameNameName="nav-link">
   //         Dashboard
   //       </Link>
   //     </li>
 
-  //     <li classNameName="nav-item">
-  //       <Link to="/admin/product" classNameName="nav-link">
+  //     <li classNameNameName="nav-item">
+  //       <Link to="/admin/product" classNameNameName="nav-link">
   //         Product
   //       </Link>
   //     </li>
 
-  //     <li classNameName="nav-item">
-  //       <Link to="/admin/products" classNameName="nav-link">
+  //     <li classNameNameName="nav-item">
+  //       <Link to="/admin/products" classNameNameName="nav-link">
   //         Products
   //       </Link>
   //     </li>
 
-  //     <li classNameName="nav-item">
-  //       <Link to="/admin/category" classNameName="nav-link">
+  //     <li classNameNameName="nav-item">
+  //       <Link to="/admin/category" classNameNameName="nav-link">
   //         Category
   //       </Link>
   //     </li>
 
-  //     <li classNameName="nav-item">
-  //       <Link to="/admin/sub" classNameName="nav-link">
+  //     <li classNameNameName="nav-item">
+  //       <Link to="/admin/sub" classNameNameName="nav-link">
   //         Sub Category
   //       </Link>
   //     </li>
 
-  //     <li classNameName="nav-item">
-  //       <Link to="/admin/coupon" classNameName="nav-link">
+  //     <li classNameNameName="nav-item">
+  //       <Link to="/admin/coupon" classNameNameName="nav-link">
   //         Coupon
   //       </Link>
   //     </li>
 
-  //     <li classNameName="nav-item">
-  //       <Link to="/user/password" classNameName="nav-link">
+  //     <li classNameNameName="nav-item">
+  //       <Link to="/user/password" classNameNameName="nav-link">
   //         Password
   //       </Link>
   //     </li>
   //   </ul>
   // </nav>
-  <aside className="navbar-aside ps ps--active-y" id="offcanvas_aside">
-    <div className="aside-top">
-      <a href="index.html" className="brand-wrap">
-        <img
-          src="assets/imgs/theme/logo.svg"
-          className="logo"
-          alt="Evara Dashboard"
-        />
-      </a>
-      <div>
-        <button className="btn btn-icon btn-aside-minimize">
-          {" "}
-          <i className="text-muted material-icons md-menu_open"></i>{" "}
-        </button>
-      </div>
-    </div>
-    <nav>
-      <ul className="menu-aside">
-        <li className="menu-item">
-          <a className="menu-link" href="index.html">
-            {" "}
-            <i className="icon material-icons md-home"></i>
-            <span className="text">Dashboard</span>
-          </a>
-        </li>
-        <li className="menu-item has-submenu active">
-          <a className="menu-link" href="page-products-list.html">
-            {" "}
-            <i className="icon material-icons md-shopping_bag"></i>
-            <span className="text">Products</span>
-          </a>
-          <div className="submenu" style={{ display: "none" }}>
-            <a href="page-products-list.html">Product List</a>
-            <a href="page-products-grid.html">Product grid</a>
-            <a href="page-products-grid-2.html">Product grid 2</a>
-            <a href="page-categories.html" className="active">
-              Categories
-            </a>
-          </div>
-        </li>
-        <li className="menu-item has-submenu">
-          <a className="menu-link" href="page-orders-1.html">
-            {" "}
-            <i className="icon material-icons md-shopping_cart"></i>
-            <span className="text">Orders</span>
-          </a>
-          <div className="submenu">
-            <a href="page-orders-1.html">Order list 1</a>
-            <a href="page-orders-2.html">Order list 2</a>
-            <a href="page-orders-detail.html">Order detail</a>
-            <a href="page-orders-tracking.html">Order tracking</a>
-            <a href="page-invoice.html">Invoice</a>
-          </div>
-        </li>
-        <li className="menu-item has-submenu">
-          <a className="menu-link" href="page-sellers-cards.html">
-            {" "}
-            <i className="icon material-icons md-store"></i>
-            <span className="text">Sellers</span>
-          </a>
-          <div className="submenu">
-            <a href="page-sellers-cards.html">Sellers cards</a>
-            <a href="page-sellers-list.html">Sellers list</a>
-            <a href="page-seller-detail.html">Seller profile</a>
-          </div>
-        </li>
-        <li className="menu-item has-submenu">
-          <a className="menu-link" href="page-form-product-1.html">
-            {" "}
-            <i className="icon material-icons md-add_box"></i>
-            <span className="text">Add product</span>
-          </a>
-          <div className="submenu">
-            <a href="page-form-product-1.html">Add product 1</a>
-            <a href="page-form-product-2.html">Add product 2</a>
-            <a href="page-form-product-3.html">Add product 3</a>
-            <a href="page-form-product-4.html">Add product 4</a>
-          </div>
-        </li>
-        <li className="menu-item has-submenu">
-          <a className="menu-link" href="page-transactions-1.html">
-            {" "}
-            <i className="icon material-icons md-monetization_on"></i>
-            <span className="text">Transactions</span>
-          </a>
-          <div className="submenu">
-            <a href="page-transactions-1.html">Transaction 1</a>
-            <a href="page-transactions-2.html">Transaction 2</a>
-            <a href="page-transactions-details.html">Transaction Details</a>
-          </div>
-        </li>
-        <li className="menu-item has-submenu">
-          <a className="menu-link" href="#">
-            {" "}
-            <i className="icon material-icons md-person"></i>
-            <span className="text">Account</span>
-          </a>
-          <div className="submenu">
-            <a href="page-account-login.html">User login</a>
-            <a href="page-account-register.html">User registration</a>
-            <a href="page-error-404.html">Error 404</a>
-          </div>
-        </li>
-        <li className="menu-item">
-          <a className="menu-link" href="page-reviews.html">
-            {" "}
-            <i className="icon material-icons md-comment"></i>
-            <span className="text">Reviews</span>
-          </a>
-        </li>
-        <li className="menu-item">
-          <a className="menu-link" href="page-brands.html">
-            {" "}
-            <i className="icon material-icons md-stars"></i>
-            <span className="text">Brands</span>{" "}
-          </a>
-        </li>
-        <li className="menu-item">
-          <a className="menu-link" disabled="" href="#">
-            {" "}
-            <i className="icon material-icons md-pie_chart"></i>
-            <span className="text">Statistics</span>
-          </a>
-        </li>
-      </ul>
-      <hr />
-      <ul className="menu-aside">
-        <li className="menu-item has-submenu">
-          <a className="menu-link" href="#">
-            {" "}
-            <i className="icon material-icons md-settings"></i>
-            <span className="text">Settings</span>
-          </a>
-          <div className="submenu">
-            <a href="page-settings-1.html">Setting sample 1</a>
-            <a href="page-settings-2.html">Setting sample 2</a>
-          </div>
-        </li>
-        <li className="menu-item">
-          <a className="menu-link" href="page-blank.html">
-            {" "}
-            <i className="icon material-icons md-local_offer"></i>
-            <span className="text"> Starter page </span>
-          </a>
-        </li>
-      </ul>
-      <br />
-      <br />
-    </nav>
-    <div className="ps__rail-x" style={{ left: 0, bottom: 0 }}>
-      <div
-        className="ps__thumb-x"
-        tabindex="0"
-        style={{ left: 0, width: 0 }}
-      ></div>
-    </div>
+  <aside
+    id="sidebar"
+    className="sidebar sidebar-default open"
+    role="navigation"
+  >
     <div
-      className="ps__rail-y"
-      style={{ top: 0, height: 714 + "px", right: 0 }}
+      className="sidebar-header header-cover"
+      style={{
+        backgroundImage:
+          "url(" +
+          "https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg" +
+          ")",
+      }}
     >
-      <div
-        className="ps__thumb-y"
-        tabindex="0"
-        style={{ top: 0, height: 673 + "px" }}
-      ></div>
+      <div className="top-bar"></div>
+
+      <button type="button" className="sidebar-toggle">
+        <i className="icon-material-sidebar-arrow"></i>
+      </button>
+
+      <div className="sidebar-image">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg" />
+      </div>
+
+      <a
+        data-toggle="dropdown"
+        className="sidebar-brand"
+        href="#settings-dropdown"
+      >
+        john.doe@gmail.com
+        <b className="caret"></b>
+      </a>
     </div>
+
+    <ul className="nav sidebar-nav">
+      <li className="dropdown">
+        <ul id="settings-dropdown" className="dropdown-menu">
+          <li>
+            <a href="#" tabindex="-1">
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">
+              Settings
+            </a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">
+              Help
+            </a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">
+              Exit
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i className="sidebar-icon md-inbox"></i>
+          Inbox
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i className="sidebar-icon md-star"></i>
+          Starred
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i className="sidebar-icon md-send"></i>
+          Sent Mail
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i className="sidebar-icon md-drafts"></i>
+          Drafts
+        </a>
+      </li>
+      <li className="divider"></li>
+      <li className="dropdown">
+        <a
+          className="ripple-effect dropdown-toggle"
+          href="#"
+          data-toggle="dropdown"
+        >
+          All Mail
+          <b className="caret"></b>
+        </a>
+        <ul className="dropdown-menu">
+          <li>
+            <a href="#" tabindex="-1">
+              Social
+              <span className="sidebar-badge">12</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">
+              Promo
+              <span className="sidebar-badge">0</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          Trash
+          <span className="sidebar-badge">3</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Spam
+          <span className="sidebar-badge">456</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Follow Up
+          <span className="sidebar-badge badge-circle">i</span>
+        </a>
+      </li>
+    </ul>
+
+    <div className="sidebar-divider"></div>
+
+    <div className="sidebar-text">Text</div>
   </aside>
 );
 
