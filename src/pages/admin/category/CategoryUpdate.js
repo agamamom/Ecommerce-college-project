@@ -59,19 +59,22 @@ const CategoryUpdate = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-2">
+      <div className="flex">
+        <div className="w-[300px] fixed text-[20px] admin-nav">
           <AdminNav />
         </div>
-        <div className="col">
-          {loading ? (
-            <h4 className="text-danger">Loading..</h4>
-          ) : (
-            <h4>Update category</h4>
-          )}
-          {categoryForm()}
-          <hr />
-        </div>
+        <main class="main-wrap">
+          <section class="content-main">
+            <div className="">
+              {loading ? (
+                <h4 className="text-danger">Loading..</h4>
+              ) : (
+                <h4>Update category</h4>
+              )}
+              {categoryForm()}
+            </div>
+          </section>
+        </main>
       </div>
     </div>
   );

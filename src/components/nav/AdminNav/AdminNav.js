@@ -1,10 +1,13 @@
 /* eslint-disable react/style-prop-object */
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../nav/AdminNav/dashboard.css";
+import { Navigation } from "react-minimal-side-navigation";
+import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
+import { AiOutlineBars } from "react-icons/ai";
 
-const AdminNav = () => (
-  // <nav>
+const AdminNav = () => {
+  // <nav className="w-[300px]">
   //   <ul classNameNameName="nav flex-column">
   //     <li classNameNameName="nav-item">
   //       <Link to="/admin/dashboard" classNameNameName="nav-link">
@@ -49,138 +52,72 @@ const AdminNav = () => (
   //     </li>
   //   </ul>
   // </nav>
-  <aside
-    id="sidebar"
-    className="sidebar sidebar-default open"
-    role="navigation"
-  >
-    <div
-      className="sidebar-header header-cover"
-      style={{
-        backgroundImage:
-          "url(" +
-          "https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg" +
-          ")",
-      }}
-    >
-      <div className="top-bar"></div>
-
-      <button type="button" className="sidebar-toggle">
-        <i className="icon-material-sidebar-arrow"></i>
-      </button>
-
-      <div className="sidebar-image">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg" />
-      </div>
-
-      <a
-        data-toggle="dropdown"
-        className="sidebar-brand"
-        href="#settings-dropdown"
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  return (
+    <>
+      <div
+        className={`fixed inset-y-0 left-0 w-[300px] z-30 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
+          isSidebarOpen ? "ease-out translate-x-0" : "ease-in -translate-x-full"
+        }`}
       >
-        john.doe@gmail.com
-        <b className="caret"></b>
-      </a>
-    </div>
+        <div className="flex py-[50px] px-[30px] justify-between border-b-[1px] border-[#00000026] border-solid ml-[12px]">
+          <img src="/images/logo.png" alt="" />
+        </div>
+        <Navigation
+          // you can use your own router's api to get pathname
+          activeItemId={location.pathname}
+          onSelect={({ itemId }) => {
+            navigate(itemId);
+          }}
+          items={[
+            {
+              title: "Dashboard",
+              itemId: "/admin/dashboard",
+              // you can use your own custom Icon component as well
+              // icon is optional
+            },
+            {
+              title: "Product",
+              itemId: "/admin/product",
 
-    <ul className="nav sidebar-nav">
-      <li className="dropdown">
-        <ul id="settings-dropdown" className="dropdown-menu">
-          <li>
-            <a href="#" tabindex="-1">
-              Profile
-            </a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">
-              Settings
-            </a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">
-              Help
-            </a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">
-              Exit
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          <i className="sidebar-icon md-inbox"></i>
-          Inbox
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i className="sidebar-icon md-star"></i>
-          Starred
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i className="sidebar-icon md-send"></i>
-          Sent Mail
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i className="sidebar-icon md-drafts"></i>
-          Drafts
-        </a>
-      </li>
-      <li className="divider"></li>
-      <li className="dropdown">
-        <a
-          className="ripple-effect dropdown-toggle"
-          href="#"
-          data-toggle="dropdown"
-        >
-          All Mail
-          <b className="caret"></b>
-        </a>
-        <ul className="dropdown-menu">
-          <li>
-            <a href="#" tabindex="-1">
-              Social
-              <span className="sidebar-badge">12</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">
-              Promo
-              <span className="sidebar-badge">0</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          Trash
-          <span className="sidebar-badge">3</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          Spam
-          <span className="sidebar-badge">456</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          Follow Up
-          <span className="sidebar-badge badge-circle">i</span>
-        </a>
-      </li>
-    </ul>
-
-    <div className="sidebar-divider"></div>
-
-    <div className="sidebar-text">Text</div>
-  </aside>
-);
+              subNav: [
+                {
+                  title: "Projects",
+                  itemId: "/management/projects",
+                },
+                {
+                  title: "Members",
+                  itemId: "/management/members",
+                },
+              ],
+            },
+            {
+              title: "Products",
+              itemId: "/admin/products",
+            },
+            {
+              title: "Category",
+              itemId: "/admin/category",
+            },
+            {
+              title: "Sub Category",
+              itemId: "/admin/sub",
+            },
+            {
+              title: "Coupon",
+              itemId: "/admin/coupon",
+            },
+            {
+              title: "Password",
+              itemId: "/user/password",
+            },
+          ]}
+        />
+      </div>
+    </>
+  );
+};
 
 export default AdminNav;
