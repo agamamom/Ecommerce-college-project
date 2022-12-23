@@ -20,11 +20,13 @@ import Wishlist from "./pages/user/Wishlist";
 import CategoryCreate from "./pages/admin/category/CategoryCreate";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
+import SubUpdate from "./pages/admin/sub/SubUpdate";
+import SubCreate from "./pages/admin/sub/SubCreate";
 
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { currentUser } from "./functions/auth";
-import SubCreate from "./pages/admin/sub/SubCreate";
+import ProductCreate from "./pages/admin/product/ProductCreate";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -121,6 +123,23 @@ const App = () => {
           element={
             <AdminRoute>
               <SubCreate />
+            </AdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/sub/:slug"
+          element={
+            <AdminRoute>
+              <SubUpdate />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/product"
+          element={
+            <AdminRoute>
+              <ProductCreate />
             </AdminRoute>
           }
         />
