@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { createProduct } from "../../../functions/product";
 import ProductCreateForm from "../../../components/forms/ProductCreateForm";
-import { getCategories } from "../../../functions/category";
+import { getCategories, getCategorySubs } from "../../../functions/category";
 
 const initialState = {
   title: "Macbook Pro",
@@ -24,6 +24,8 @@ const initialState = {
 
 const ProductCreate = () => {
   const [values, setValues] = useState(initialState);
+  const [subOptions, setSubOptions] = useState([]);
+  const [showSub, setShowSub] = useState(false);
 
   // redux
   const { user } = useSelector((state) => ({ ...state }));
@@ -55,6 +57,17 @@ const ProductCreate = () => {
     // console.log(e.target.name, " ----- ", e.target.value);
   };
 
+  const handleCategoryChange = (e) => {
+    e.preventDefault();
+    console.log("CLICKED CATEGORY", e.target.value);
+    setValues({ ...values, subs: [], category: e.target.value });
+    getCategorySubs(e.target.value).then((res) => {
+      console.log("SUB OPTIONS ON CATGORY CLICK", res);
+      setSubOptions(res.data);
+    });
+    setShowSub(true);
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -68,10 +81,16 @@ const ProductCreate = () => {
               <h4>Product create</h4>
               <hr />
 
+              {JSON.stringify(values.subs)}
+
               <ProductCreateForm
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
                 values={values}
+                handleCategoryChange={handleCategoryChange}
+                subOptions={subOptions}
+                showSub={showSub}
+                setValues={setValues}
               />
             </div>
           </section>
