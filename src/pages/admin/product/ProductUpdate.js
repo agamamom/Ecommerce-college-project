@@ -13,7 +13,6 @@ const initialState = {
   title: "",
   description: "",
   price: "",
-  categories: [],
   category: "",
   subs: [],
   shipping: "",
@@ -27,20 +26,43 @@ const initialState = {
 
 const ProductUpdate = () => {
   const [values, setValues] = useState(initialState);
+  const [categories, setCategories] = useState([]);
+  const [subOptions, setSubOptions] = useState([]);
+  const [arrayOfSubs, setArrayOfSubs] = useState([]);
+
   const { user } = useSelector((state) => ({ ...state }));
   // router
   let { slug } = useParams();
 
   useEffect(() => {
     loadProduct();
+    loadCategories();
   }, []);
 
   const loadProduct = () => {
     getProduct(slug).then((p) => {
       // console.log("single product", p);
+      // 1 load single proudct
       setValues({ ...values, ...p.data });
+      // 2 load single product category subs
+      getCategorySubs(p.data.category._id).then((res) => {
+        setSubOptions(res.data); // on first load, show default subs
+      });
+      // 3 prepare array of sub ids to show as default sub values in antd Select
+      let arr = [];
+      p.data.subs.map((s) => {
+        arr.push(s._id);
+      });
+      console.log("ARR", arr);
+      setArrayOfSubs((prev) => arr); // required for ant design select to work
     });
   };
+
+  const loadCategories = () =>
+    getCategories().then((c) => {
+      console.log("GET CATEGORIES IN UPDATE PRODUCT", c.data);
+      setCategories(c.data);
+    });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,6 +72,16 @@ const ProductUpdate = () => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     // console.log(e.target.name, " ----- ", e.target.value);
+  };
+
+  const handleCatagoryChange = (e) => {
+    e.preventDefault();
+    console.log("CLICKED CATEGORY", e.target.value);
+    setValues({ ...values, subs: [], category: e.target.value });
+    getCategorySubs(e.target.value).then((res) => {
+      console.log("SUB OPTIONS ON CATGORY CLICK", res);
+      setSubOptions(res.data);
+    });
   };
 
   return (
@@ -68,6 +100,11 @@ const ProductUpdate = () => {
                 handleChange={handleChange}
                 setValues={setValues}
                 values={values}
+                handleCatagoryChange={handleCatagoryChange}
+                categories={categories}
+                subOptions={subOptions}
+                arrayOfSubs={arrayOfSubs}
+                setArrayOfSubs={setArrayOfSubs}
               />
               <hr />
             </div>
