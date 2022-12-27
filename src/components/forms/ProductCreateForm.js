@@ -102,14 +102,13 @@ const ProductCreateForm = ({
 
       <div className="form-group">
         <label>Brand</label>
-        <select name="brand" className="form-control" onChange={handleChange}>
-          <option>Please select</option>
-          {brands.map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
+        <input
+          type="text"
+          name="brand"
+          className="form-control"
+          value={title}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="form-group">

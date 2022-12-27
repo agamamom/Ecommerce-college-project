@@ -87,7 +87,7 @@ const SpecialOffer = () => {
                 aria-label="basic tabs example"
                 centered
               >
-                <Tab label="Featured" {...a11yProps(0)} />
+                <Tab label="Most Viewed" {...a11yProps(0)} />
                 <Tab label="On Sale" {...a11yProps(1)} />
                 <Tab label="Top Rated" {...a11yProps(2)} />
               </Tabs>

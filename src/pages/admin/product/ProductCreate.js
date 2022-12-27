@@ -9,19 +9,19 @@ import FileUpload from "../../../components/forms/FileUpload";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const initialState = {
-  title: "Macbook Pro",
-  description: "This is the best Apple product",
-  price: "45000",
+  title: "",
+  description: "",
+  price: "",
   categories: [],
   category: "",
   subs: [],
-  shipping: "Yes",
-  quantity: "50",
+  shipping: "",
+  quantity: "",
   images: [],
   colors: ["Black", "Brown", "Silver", "White", "Blue"],
   brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
-  color: "White",
-  brand: "Apple",
+  color: "",
+  brand: "",
 };
 
 const ProductCreate = () => {
@@ -88,9 +88,9 @@ const ProductCreate = () => {
               )}
               <hr />
 
-              {JSON.stringify(values.images)}
+              <div className="mt-[20px]">Image</div>
 
-              <div className="p-[5px]">
+              <div className="p-[20px]">
                 <FileUpload
                   values={values}
                   setValues={setValues}
