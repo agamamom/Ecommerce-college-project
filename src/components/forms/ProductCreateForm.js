@@ -24,7 +24,6 @@ const ProductCreateForm = ({
     quantity,
     images,
     colors,
-    brands,
     color,
     brand,
   } = values;
@@ -106,7 +105,7 @@ const ProductCreateForm = ({
           type="text"
           name="brand"
           className="form-control"
-          value={title}
+          value={brand}
           onChange={handleChange}
         />
       </div>
