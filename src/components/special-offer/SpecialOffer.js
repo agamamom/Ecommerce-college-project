@@ -40,10 +40,11 @@ const SpecialOffer = () => {
   useEffect(() => {
     loadAllProducts();
   }, []);
+  console.log("product-title", products.title[0]);
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProductsByCount(8).then((res) => {
+    getProductsByCount(3).then((res) => {
       setProducts(res.data);
       setLoading(false);
     });

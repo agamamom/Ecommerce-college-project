@@ -13,7 +13,6 @@ const ProductSO = ({
   productBorderRight,
   product,
 }) => {
-  console.log("title", product.title);
   return (
     <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
       <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
@@ -25,7 +24,7 @@ const ProductSO = ({
           </span>
           <a href="#" class="block">
             <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
-              {product?.title}
+              {name}
             </h2>
             <div class="mb-[10px] w-full relative">
               <img
