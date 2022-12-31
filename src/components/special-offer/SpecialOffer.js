@@ -40,7 +40,6 @@ const SpecialOffer = () => {
   useEffect(() => {
     loadAllProducts();
   }, []);
-  console.log("product-title", products.title[0]);
 
   const loadAllProducts = () => {
     setLoading(true);
@@ -112,12 +111,13 @@ const SpecialOffer = () => {
                   {products.map((product) => (
                     <div key={product._id}>
                       <ProductSO
-                        categories="Audio Speakers"
                         name="Wireless Audio System Multiroom 360"
-                        pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                        price="$2,299.00"
+                        price={product.price}
                         productBorderRight="product"
-                        product={product}
+                        title={product.title}
+                        category={product.category}
+                        pics={product.images}
+                        products={products}
                       />
                     </div>
                   ))}

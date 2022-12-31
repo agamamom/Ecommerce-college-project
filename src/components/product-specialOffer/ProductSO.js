@@ -3,15 +3,16 @@ import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
+import ShowMoreText from "react-show-more-text";
 
 const ProductSO = ({
-  categories,
-  name,
-  pic,
+  pics,
   price,
   productBorder,
   productBorderRight,
-  product,
+  title,
+  category,
+  products,
 }) => {
   return (
     <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
@@ -19,18 +20,20 @@ const ProductSO = ({
         <div className="relative">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
             <a href="#" rel="tag" className="text-[#768b9e]">
-              {categories}
+              {category}
             </a>
           </span>
           <a href="#" class="block">
             <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
-              {name}
+              <ShowMoreText lines={2} truncatedEndingComponent={"... "}>
+                {`${title && title.substring(0, 25)}...`}
+              </ShowMoreText>
             </h2>
             <div class="mb-[10px] w-full relative">
               <img
                 width="300"
                 height="300"
-                src={pic}
+                src={pics && pics.length ? pics[0].url : ""}
                 class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto align-middle"
                 alt=""
                 loading="lazy"
