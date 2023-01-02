@@ -1,19 +1,50 @@
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 import ShowMoreText from "react-show-more-text";
+import { values } from "lodash";
 
-const ProductSO = ({
-  pics,
-  price,
-  productBorder,
-  productBorderRight,
-  title,
-  category,
-  products,
-}) => {
+const ProductSO = ({ productBorder, productBorderRight, product, pics }) => {
+  const [img, setImg] = useState([]);
+
+  const title = product?.title;
+  const category = product?.category;
+  const Image = product?.images;
+
+  // const imgItems = Object.values(Image || {}).map((value) => {
+  //   const valuess = value?.url;
+  //   console.log("types", typeof valuess);
+  // });
+
+  const imgItems = () => {
+    const valuessUrl = Object.values(Image || {}).map((value) => {
+      const valuess = [...value.url];
+      console.log("valsese", valuess);
+    });
+    return valuessUrl;
+  };
+  console.log("types", imgItems);
+  // const imgItems = Object.values(Image || {});
+  // console.log("sadad", imgItems);
+
+  // imgItems?.map((imgUrls) => {
+  //   console.log("umgURl", imgUrls.url);
+  // });
+
+  // const obj = useMemo(() => {
+  //   Image?.map((img) => {
+  //     const arr2 = Object.entries(img);
+  //     console.log("imgUrlsss", arr2);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   setImg(obj);
+  //   console.log("imgUrlsss", img);
+  // }, [obj]);
+
   return (
     <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
       <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
@@ -30,20 +61,20 @@ const ProductSO = ({
               </ShowMoreText>
             </h2>
             <div class="mb-[10px] w-full relative">
-              <img
+              {/* <img
                 width="300"
                 height="300"
                 src={pics && pics.length ? pics[0].url : ""}
                 class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto align-middle"
                 alt=""
                 loading="lazy"
-              />
+              /> */}
             </div>
           </a>
         </div>
         <div className="">
           <div className="mb-[7px] clear-both flex justify-between items-center h-[36px]">
-            <span className="text-[20px] relative">{price}</span>
+            {/* <span className="text-[20px] relative">{price}</span> */}
             <div className="p-[12px] cart-icon-container rounded-[50%]">
               <p data-tip data-for="happyFace">
                 <MdOutlineAddShoppingCart className="text-[17px] text-white" />

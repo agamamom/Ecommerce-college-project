@@ -37,6 +37,7 @@ const SpecialOffer = () => {
   const [value, setValue] = React.useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     loadAllProducts();
   }, []);
@@ -111,13 +112,12 @@ const SpecialOffer = () => {
                   {products.map((product) => (
                     <div key={product._id}>
                       <ProductSO
-                        name="Wireless Audio System Multiroom 360"
                         price={product.price}
                         productBorderRight="product"
-                        title={product.title}
+                        // title={product.title}
                         category={product.category}
                         pics={product.images}
-                        products={products}
+                        product={product}
                       />
                     </div>
                   ))}
