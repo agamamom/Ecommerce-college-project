@@ -44,11 +44,13 @@ const SpecialOffer = () => {
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProductsByCount(3).then((res) => {
-      setProducts(res.data);
+    getProductsByCount(3).then(async (res) => {
+      await setProducts(res.data);
       setLoading(false);
     });
   };
+  console.log("products", products);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -97,7 +99,7 @@ const SpecialOffer = () => {
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <Tabs
                 value={value}
-                onChange={handleChange}
+                onChange={() => handleChange()}
                 aria-label="basic tabs example"
                 centered
               >
@@ -109,18 +111,15 @@ const SpecialOffer = () => {
             <TabPanel value={value} index={0}>
               <div className="">
                 <div className="grid grid-cols-4 products">
-                  {products.map((product) => (
-                    <div key={product._id}>
-                      <ProductSO
-                        price={product.price}
-                        productBorderRight="product"
-                        // title={product.title}
-                        category={product.category}
-                        pics={product.images}
-                        product={product}
-                      />
-                    </div>
-                  ))}
+                  {products &&
+                    products.map((product) => (
+                      <div key={product._id}>
+                        <ProductSO
+                          productBorderRight="product"
+                          product={product}
+                        />
+                      </div>
+                    ))}
                 </div>
               </div>
             </TabPanel>
