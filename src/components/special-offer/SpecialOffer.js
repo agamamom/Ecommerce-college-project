@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ProductSO from "../product-specialOffer/ProductSO";
 import { getProductsByCount } from "../../functions/product";
+import LoadingCard from "../cards/LoadingCard";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,7 +45,7 @@ const SpecialOffer = () => {
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProductsByCount(3).then(async (res) => {
+    getProductsByCount(7).then(async (res) => {
       await setProducts(res.data);
       setLoading(false);
     });
@@ -110,16 +111,22 @@ const SpecialOffer = () => {
             </Box>
             <TabPanel value={value} index={0}>
               <div className="">
-                <div className="grid grid-cols-4 products">
-                  {products &&
-                    products.map((product) => (
-                      <div key={product._id}>
-                        <ProductSO
-                          productBorderRight="product"
-                          product={product}
-                        />
-                      </div>
-                    ))}
+                <div className="">
+                  {loading ? (
+                    <LoadingCard count={8} />
+                  ) : (
+                    <div className="grid grid-cols-4 products">
+                      {products &&
+                        products.map((product) => (
+                          <div key={product._id}>
+                            <ProductSO
+                              productBorderRight="product"
+                              product={product}
+                            />
+                          </div>
+                        ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </TabPanel>
