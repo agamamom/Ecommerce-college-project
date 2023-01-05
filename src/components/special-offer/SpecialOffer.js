@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ProductSO from "../product-specialOffer/ProductSO";
-import { getProductsByCount } from "../../functions/product";
+import { getProducts } from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
 
 function TabPanel(props) {
@@ -45,12 +45,12 @@ const SpecialOffer = () => {
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProductsByCount(7).then(async (res) => {
-      await setProducts(res.data);
+    // sort, order, limit
+    getProducts("createdAt", "desc", 7).then((res) => {
+      setProducts(res.data);
       setLoading(false);
     });
   };
-  console.log("products", products);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductSO from "../product-specialOffer/ProductSO";
 import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
+import { getProducts } from "../../functions/product";
+import LoadingBestDealCard from "../cards/LoadingBestDealCard";
 
 const BestDeal = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    loadAllProducts();
+  }, []);
+
+  const loadAllProducts = () => {
+    setLoading(true);
+    // sort, order, limit
+    getProducts("sold", "desc", 7).then((res) => {
+      setProducts(res.data);
+      setLoading(false);
+    });
+  };
+
   return (
     <div className="bg-[#f4f4f4] mt-[40px]">
       <div className="px-[45px] pt-[15px] pb-[30px]">
@@ -58,7 +75,7 @@ const BestDeal = () => {
         </ul>
         <div className="grid grid-cols-6 bg-white">
           <div className="grid grid-rows-2">
-            <ProductSO
+            {/* <ProductSO
               categories="Audio Speakers"
               name="Wireless Audio System Multiroom 360"
               pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
@@ -71,23 +88,21 @@ const BestDeal = () => {
               pic="	https://electro.madrasthemes.com/wp-content/uploads/2016/03/apptablet-300x300.png"
               price="$2,100.00"
               productBorderRight="product-fullBorder"
-            />
+            /> */}
+            {products &&
+              products.slice(0, 2).map((product) => (
+                <div key={product._id}>
+                  <ProductSO productBorderRight="product" product={product} />
+                </div>
+              ))}
           </div>
           <div className="grid grid-rows-2">
-            <ProductSO
-              categories="Audio Speakers"
-              name="Wireless Audio System Multiroom 360"
-              pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-              price="$2,299.00"
-              productBorderRight="product-fullBorder"
-            />
-            <ProductSO
-              categories="Laptop, Ultrabooks"
-              name="Tablet Red EliteBook Revolve 810 G2"
-              pic="	https://electro.madrasthemes.com/wp-content/uploads/2016/03/apptablet-300x300.png"
-              price="$2,100.00"
-              productBorderRight="product-fullBorder"
-            />
+            {products &&
+              products.slice(2, 4).map((product) => (
+                <div key={product._id}>
+                  <ProductSO productBorderRight="product" product={product} />
+                </div>
+              ))}
           </div>
           <div className="col-span-2 product">
             <div className="px-[24px] pt-[14px] pb-[14px] relative product-inner">
@@ -172,36 +187,20 @@ const BestDeal = () => {
             </div>
           </div>
           <div className="grid grid-rows-2">
-            <ProductSO
-              categories="Audio Speakers"
-              name="Wireless Audio System Multiroom 360"
-              pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-              price="$2,299.00"
-              productBorderRight="product-fullBorder"
-            />
-            <ProductSO
-              categories="Laptop, Ultrabooks"
-              name="Tablet Red EliteBook Revolve 810 G2"
-              pic="	https://electro.madrasthemes.com/wp-content/uploads/2016/03/apptablet-300x300.png"
-              price="$2,100.00"
-              productBorderRight="product-fullBorder"
-            />
+            {products &&
+              products.slice(4, 6).map((product) => (
+                <div key={product._id}>
+                  <ProductSO productBorderRight="product" product={product} />
+                </div>
+              ))}
           </div>
           <div className="grid grid-rows-2">
-            <ProductSO
-              categories="Audio Speakers"
-              name="Wireless Audio System Multiroom 360"
-              pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-              price="$2,299.00"
-              productBorderRight="product-fullBorder"
-            />
-            <ProductSO
-              categories="Laptop, Ultrabooks"
-              name="Tablet Red EliteBook Revolve 810 G2"
-              pic="	https://electro.madrasthemes.com/wp-content/uploads/2016/03/apptablet-300x300.png"
-              price="$2,100.00"
-              productBorderRight="product-fullBorder"
-            />
+            {products &&
+              products.slice(6, 8).map((product) => (
+                <div key={product._id}>
+                  <ProductSO productBorderRight="product" product={product} />
+                </div>
+              ))}
           </div>
         </div>
       </div>
