@@ -3,22 +3,40 @@ import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
+import { Link } from "react-router-dom";
 
 const ProductSO = ({ productBorder, productBorderRight, product }) => {
   const [img, setImg] = useState([]);
+
+  const SubsWithSpaces = (array, separator = " ") => {
+    return array.join(separator);
+  };
+  const arrSubs = [];
   if (product) {
-    const { images, title, description, slug } = product;
-    console.log("pcs ne", images[0].url);
+    product.subs.map((proSubs) => {
+      return arrSubs.push(proSubs["name"]);
+    });
   }
+  const result = arrSubs.join(", ");
+
+  // arrSubs.map((proSubs) => {
+  //   return (
+  //     <a href="#" rel="tag" className="text-[#768b9e]">
+  //       {proSubs}
+  //     </a>
+  //   );
+  // })
 
   return (
     <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
       <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
         <div className="relative">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
-            <a href="#" rel="tag" className="text-[#768b9e]"></a>
+            <div href="#" rel="tag" className="text-[#768b9e]">
+              {result}
+            </div>
           </span>
-          <a href="#" class="block">
+          <Link to={`/product/${product.slug}`} class="block">
             <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
               {product &&
                 `${product.title && product.title.substring(0, 25)}...`}
@@ -35,7 +53,7 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
                 />
               )}
             </div>
-          </a>
+          </Link>
         </div>
         <div className="">
           <div className="mb-[7px] clear-both flex justify-between items-center h-[36px]">

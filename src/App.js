@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -29,9 +31,18 @@ import { currentUser } from "./functions/auth";
 import ProductCreate from "./pages/admin/product/ProductCreate";
 import AllProducts from "./pages/admin/product/AllProducts";
 import ProductUpdate from "./pages/admin/product/ProductUpdate";
+import Product from "./pages/Product";
 
 const App = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -60,107 +71,116 @@ const App = () => {
 
   return (
     <>
-      <Header />
-      <ToastContainer />
+      {loading ? (
+        <div className="text-center bg-[#282c34] flex justify-center items-center w-[100%] h-[100vh]">
+          <ClimbingBoxLoader size={30} color={"#f37a24"} loading={loading} />
+        </div>
+      ) : (
+        <>
+          <Header />
+          <ToastContainer />
 
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="shop" element={<Shop />} />
 
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="/register/complete" element={<RegisterComplete />} />
-        <Route path="/forgot/password" element={<ForgotPassword />} />
-        <Route
-          path="/user/history"
-          element={
-            <UserRoute>
-              <History />
-            </UserRoute>
-          }
-        />
-        <Route
-          path="/user/password"
-          element={
-            <UserRoute>
-              <Password />
-            </UserRoute>
-          }
-        />
-        <Route
-          path="/user/wishlist"
-          element={
-            <UserRoute>
-              <Wishlist />
-            </UserRoute>
-          }
-        />
-        <Route
-          path="/admin/dashboard"
-          element={
-            <AdminRoute>
-              <AdminDashboard />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/admin/category"
-          element={
-            <AdminRoute>
-              <CategoryCreate />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/admin/category/:slug"
-          element={
-            <AdminRoute>
-              <CategoryUpdate />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/admin/sub"
-          element={
-            <AdminRoute>
-              <SubCreate />
-            </AdminRoute>
-          }
-        />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="/register/complete" element={<RegisterComplete />} />
+            <Route path="/forgot/password" element={<ForgotPassword />} />
+            <Route
+              path="/user/history"
+              element={
+                <UserRoute>
+                  <History />
+                </UserRoute>
+              }
+            />
+            <Route
+              path="/user/password"
+              element={
+                <UserRoute>
+                  <Password />
+                </UserRoute>
+              }
+            />
+            <Route
+              path="/user/wishlist"
+              element={
+                <UserRoute>
+                  <Wishlist />
+                </UserRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/category"
+              element={
+                <AdminRoute>
+                  <CategoryCreate />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/category/:slug"
+              element={
+                <AdminRoute>
+                  <CategoryUpdate />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/sub"
+              element={
+                <AdminRoute>
+                  <SubCreate />
+                </AdminRoute>
+              }
+            />
 
-        <Route
-          path="/admin/sub/:slug"
-          element={
-            <AdminRoute>
-              <SubUpdate />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/admin/product"
-          element={
-            <AdminRoute>
-              <ProductCreate />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/admin/products"
-          element={
-            <AdminRoute>
-              <AllProducts />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/admin/product/:slug"
-          element={
-            <AdminRoute>
-              <ProductUpdate />
-            </AdminRoute>
-          }
-        />
-      </Routes>
+            <Route
+              path="/admin/sub/:slug"
+              element={
+                <AdminRoute>
+                  <SubUpdate />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/product"
+              element={
+                <AdminRoute>
+                  <ProductCreate />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/products"
+              element={
+                <AdminRoute>
+                  <AllProducts />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/product/:slug"
+              element={
+                <AdminRoute>
+                  <ProductUpdate />
+                </AdminRoute>
+              }
+            />
+            <Route path="/product/:slug" element={<Product />} />
+          </Routes>
+        </>
+      )}
     </>
   );
 };

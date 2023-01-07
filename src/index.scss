@@ -487,3 +487,12 @@ body {
     height: 492px;
   }
 }
+
+.carousel-root .carousel .thumb img {
+  height: 100px;
+  object-fit: scale-down;
+}
+
+.carousel-root .carousel .control-dots .dot {
+  background-color: #333e48;
+}
