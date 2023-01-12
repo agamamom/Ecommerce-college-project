@@ -7,27 +7,38 @@ import { FiMail } from "react-icons/fi";
 import { BsGoogle } from "react-icons/bs";
 import { useNavigate, Link } from "react-router-dom";
 import { createOrUpdateUser } from "../../functions/auth";
-
+import { createBrowserHistory } from "history";
 const Login = () => {
   const [email, setEmail] = useState("nightoverskill@gmail.com");
   const [password, setPassword] = useState("1234567");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
-
+  let history = createBrowserHistory();
   useEffect(() => {
-    if (user && user.token) {
-      navigate("/");
+    let intended = history.location;
+    console.log("intended", intended);
+    if (intended) {
+      return;
+    } else {
+      if (user && user.token) {
+        navigate("/");
+      }
     }
-  }, [user]);
+  }, [user, navigate]);
 
   let dispatch = useDispatch();
 
   const roleBasedRedirect = (res) => {
-    if (res.data.role === "admin") {
-      navigate("/admin/dashboard");
+    let intended = history.location;
+    if (intended) {
+      history.back();
     } else {
-      navigate("/user/history");
+      if (res.data.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/user/history");
+      }
     }
   };
 
