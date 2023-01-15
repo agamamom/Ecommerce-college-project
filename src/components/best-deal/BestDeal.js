@@ -6,12 +6,25 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 import { getProducts } from "../../functions/product";
 import LoadingBestDealCard from "../cards/LoadingBestDealCard";
+import { Link } from "react-router-dom";
+import { getCategories } from "../../functions/category";
 
 const BestDeal = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingTitle, setLoadingTitle] = useState(false);
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     loadAllProducts();
+  }, []);
+
+  useEffect(() => {
+    setLoadingTitle(true);
+    getCategories().then((c) => {
+      setCategories(c.data);
+      setLoadingTitle(false);
+    });
   }, []);
 
   const loadAllProducts = () => {
@@ -27,68 +40,17 @@ const BestDeal = () => {
     <div className="bg-[#f4f4f4] mt-[40px]">
       <div className="px-[45px] pt-[15px] pb-[30px]">
         <ul class="text-[15px] mb-[15px] border-b-[1px] border-b-[#ddd] leading-[38px] whitespace-nowrap justify-center flex flex-wrap list-none">
-          <li class="BestDeal-nav-item">
-            <a href="#" class="active BestDeal-nav-link active">
-              Best Deals
-            </a>
+          <li class="BestDeal-nav-item mr-[22px]">
+            <div class="active BestDeal-nav-link active">Best Deals</div>
           </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              TV &amp; Audio
-            </a>
-          </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              Cameras
-            </a>
-          </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              Audio
-            </a>
-          </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              Smartphones
-            </a>
-          </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              GPS &amp; Navi
-            </a>
-          </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              Computers
-            </a>
-          </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              Portable Audio
-            </a>
-          </li>
-          <li class="BestDeal-nav-item">
-            <a class="BestDeal-nav-link" href="">
-              Accessories
-            </a>
-          </li>
+          {categories.map((c) => (
+            <div className="mx-[20px]">
+              <Link to={`/category/${c.slug}`}>{c.name}</Link>
+            </div>
+          ))}
         </ul>
         <div className="grid grid-cols-6 bg-white">
           <div className="grid grid-rows-2">
-            {/* <ProductSO
-              categories="Audio Speakers"
-              name="Wireless Audio System Multiroom 360"
-              pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-              price="$2,299.00"
-              productBorderRight="product-fullBorder"
-            />
-            <ProductSO
-              categories="Laptop, Ultrabooks"
-              name="Tablet Red EliteBook Revolve 810 G2"
-              pic="	https://electro.madrasthemes.com/wp-content/uploads/2016/03/apptablet-300x300.png"
-              price="$2,100.00"
-              productBorderRight="product-fullBorder"
-            /> */}
             {products &&
               products.slice(0, 2).map((product) => (
                 <div key={product._id}>

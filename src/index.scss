@@ -326,7 +326,6 @@ body {
 }
 .BestDeal-nav-item {
   .BestDeal-nav-link {
-    padding: 9px 0 13px;
     text-align: center;
     color: #333e48;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -495,4 +494,12 @@ body {
 
 .carousel-root .carousel .control-dots .dot {
   background-color: #333e48;
+}
+
+.relatedCard-container .ant-card .ant-card-body {
+  min-height: 140px;
+}
+
+.list-group-item a.label.label-default.label-pill.pull-xs-right {
+  color: #00a3ff;
 }
