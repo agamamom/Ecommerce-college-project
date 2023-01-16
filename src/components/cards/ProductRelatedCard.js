@@ -9,6 +9,7 @@ const { Meta } = Card;
 
 const ProductRelatedCard = ({ product }) => {
   // destructure
+
   const { images, title, description, slug } = product;
   return (
     <>

@@ -5,7 +5,7 @@ import SingleProduct from "../components/SingleProductInfo/SingleProductInfo";
 import { useSelector } from "react-redux";
 import { getRelated } from "../functions/product";
 import ProductRelatedCard from "../components/cards/ProductRelatedCard";
-
+import { useStateValue } from "../StateProvider";
 const Product = () => {
   let { slug } = useParams();
   const [star, setStar] = useState(0);
