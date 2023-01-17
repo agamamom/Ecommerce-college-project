@@ -1,9 +1,10 @@
 const Product = require("../models/product.js");
+const Category = require("../models/category");
+const User = require("../models/user");
 const slugify = require("slugify");
 
 exports.create = async (req, res) => {
   try {
-    console.log(req.body);
     req.body.slug = slugify(req.body.title);
     const newProduct = await new Product(req.body).save();
     res.json(newProduct);
@@ -44,4 +45,167 @@ exports.read = async (req, res) => {
     .populate("subs")
     .exec();
   res.json(product);
+};
+
+exports.listBrands = async (req, res) => {
+  const brands = await Product.find({})
+    .sort({ createdAt: -1 })
+    .populate("category")
+    .exec();
+  res.json(brands);
+};
+
+exports.update = async (req, res) => {
+  try {
+    if (req.body.title) {
+      req.body.slug = slugify(req.body.title);
+    }
+    const updated = await Product.findOneAndUpdate(
+      { slug: req.params.slug },
+      req.body,
+      { new: true }
+    ).exec();
+    res.json(updated);
+  } catch (err) {
+    console.log("PRODUCT UPDATE ERROR ----> ", err);
+    // return res.status(400).send("Product update failed");
+    res.status(400).json({
+      err: err.message,
+    });
+  }
+};
+
+// WITHOUT PAGINATION
+// exports.list = async (req, res) => {
+//   try {
+//     // createdAt/updatedAt, desc/asc, 3
+//     const { sort, order, limit } = req.body;
+//     const products = await Product.find({})
+//       .populate("category")
+//       .populate("subs")
+//       .sort([[sort, order]])
+//       .limit(limit)
+//       .exec();
+
+//     res.json(products);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+// WITH PAGINATION
+exports.list = async (req, res) => {
+  try {
+    // createdAt/updatedAt, desc/asc, 3
+    const { sort, order, page } = req.body;
+    const currentPage = page || 1;
+    const perPage = 7; // 3
+
+    const products = await Product.find({})
+      .skip((currentPage - 1) * perPage)
+      .populate("category")
+      .populate("subs")
+      .sort([[sort, order]])
+      .limit(perPage)
+      .exec();
+
+    res.json(products);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.productsCount = async (req, res) => {
+  let total = await Product.find({}).estimatedDocumentCount().exec();
+  res.json(total);
+};
+
+exports.productStar = async (req, res) => {
+  const product = await Product.findById(req.params.productId).exec();
+  const user = await User.findOne({ email: req.user.email }).exec();
+  const { star } = req.body;
+
+  // who is updating?
+  // check if currently logged in user have already added rating to this product?
+  let existingRatingObject = product.ratings.find(
+    (ele) => ele.postedBy.toString() === user._id.toString()
+  );
+
+  // if user haven't left rating yet, push it
+  if (existingRatingObject === undefined) {
+    let ratingAdded = await Product.findByIdAndUpdate(
+      product._id,
+      {
+        $push: { ratings: { star, postedBy: user._id } },
+      },
+      { new: true }
+    ).exec();
+    console.log("ratingAdded", ratingAdded);
+    res.json(ratingAdded);
+  } else {
+    // if user have already left rating, update it
+    const ratingUpdated = await Product.updateOne(
+      {
+        ratings: { $elemMatch: existingRatingObject },
+      },
+      { $set: { "ratings.$.star": star } },
+      { new: true }
+    ).exec();
+    console.log("ratingUpdated", ratingUpdated);
+    res.json(ratingUpdated);
+  }
+};
+
+exports.listRelated = async (req, res) => {
+  const product = await Product.findById(req.params.productId).exec();
+  const related = await Product.find({
+    _id: { $ne: product._id },
+    category: product.category,
+  })
+    .limit(6)
+    .populate("category")
+    .populate("subs")
+    .populate("postedBy")
+    .exec();
+
+  res.json(related);
+};
+
+exports.listAllByCategory = async (req, res) => {
+  try {
+    const slug = req.body.slug;
+    const category = await Category.find({ slug: slug }).exec();
+    console.log("req.body", req);
+    const relatedProductByCategory = await Product.find({
+      category: category._id,
+    })
+      .populate("category")
+      .populate("subs")
+      .exec();
+
+    res.json(relatedProductByCategory);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// SERACH / FILTER
+
+const handleQuery = async (req, res, query) => {
+  const products = await Product.find({ $text: { $search: query } })
+    .populate("category", "_id name")
+    .populate("subs", "_id name")
+    .populate("postedBy", "_id name")
+    .exec();
+
+  res.json(products);
+};
+
+exports.searchFilters = async (req, res) => {
+  const { query } = req.body;
+
+  if (query) {
+    console.log("query", query);
+    await handleQuery(req, res, query);
+  }
 };
