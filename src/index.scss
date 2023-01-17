@@ -503,3 +503,14 @@ body {
 .list-group-item a.label.label-default.label-pill.pull-xs-right {
   color: #00a3ff;
 }
+
+.ChangeView {
+  & .MuiBox-root.css-1gsv261 {
+    background-color: #efefef;
+  }
+  & .css-1t4lqmc-MuiButtonBase-root-MuiTab-root {
+    font-size: 20px;
+    padding: 10px;
+    color: rgb(0 0 0 / 29%);
+  }
+}

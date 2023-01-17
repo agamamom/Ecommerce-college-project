@@ -15,7 +15,7 @@ const CategoryHome = () => {
   useEffect(() => {
     setLoading(true);
     getCategory(slug).then((c) => {
-      setCategory(c.data);
+      setCategory(c.data.products);
     });
   }, []);
 
@@ -36,7 +36,7 @@ const CategoryHome = () => {
           <Sidebar />
         </div>
         <div className="col-span-4 w-full ">
-          <ListProductType slug={slug} />
+          <ListProductType slug={slug} allProductByCategory={category} />
         </div>
       </div>
     </div>

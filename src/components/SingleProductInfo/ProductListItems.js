@@ -30,13 +30,9 @@ const ProductListItems = ({ product }) => {
         <li className="list-group-item">
           Sub Categories
           {subs.map((s) => (
-            <Link
-              key={s._id}
-              to={`/sub/${s.slug}`}
-              className="label label-default label-pill pull-xs-right"
-            >
+            <div className="label label-default label-pill pull-xs-right">
               {s.name}
-            </Link>
+            </div>
           ))}
         </li>
       )}

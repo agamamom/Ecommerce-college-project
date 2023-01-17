@@ -27,15 +27,16 @@ const SingleProduct = ({ product, onStarClick, star }) => {
               />
             ))}
         </Carousel>
-
-        <Tabs type="card">
-          <TabPane tab="Description" key="1">
-            {description && description}
-          </TabPane>
-          <TabPane tab="More" key="2">
-            Call use on xxxx xxx xxx to learn more about this product.
-          </TabPane>
-        </Tabs>
+        <div className="min-h-[150px]">
+          <Tabs type="card">
+            <TabPane tab="Description" key="1">
+              {description && description}
+            </TabPane>
+            <TabPane tab="More" key="2">
+              Call use on xxxx xxx xxx to learn more about this product.
+            </TabPane>
+          </Tabs>
+        </div>
       </div>
 
       <div className="col-md-5">

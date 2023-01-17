@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 import { getRelated } from "../functions/product";
 import ProductRelatedCard from "../components/cards/ProductRelatedCard";
 import { useStateValue } from "../StateProvider";
+import Brand from "../components/brand/Brand";
+import Newletter from "../components/newletter/Newletter";
+import Footer from "../components/footer/Footer";
 const Product = () => {
   let { slug } = useParams();
   const [star, setStar] = useState(0);
@@ -72,6 +75,9 @@ const Product = () => {
           <div className="text-center col">No Products Found</div>
         )}
       </div>
+      <Brand />
+      <Newletter />
+      <Footer />
     </div>
   );
 };

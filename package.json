@@ -6,6 +6,7 @@
     "@david.kucsai/react-pdf-table": "^0.3.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/lab": "^5.0.0-alpha.115",
     "@mui/material": "^5.10.16",
     "@react-pdf/renderer": "^1.6.11",
     "@stripe/react-stripe-js": "^1.1.2",

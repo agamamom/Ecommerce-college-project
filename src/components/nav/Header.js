@@ -20,6 +20,9 @@ const Header = () => {
   const [handleDropDown, setHandleDropDown] = useState(false);
   const [handleAccountDropDown, setHandleAccountDropDown] = useState(false);
   const [handleNavMobileDropDown, setHandleNavMobileDropDown] = useState(false);
+  const { search } = useSelector((state) => ({ ...state }));
+  const { text } = search;
+
   const handleMouseOver = (e) => {
     setHandleDropDown(true);
   };
@@ -32,6 +35,18 @@ const Header = () => {
   };
   const handleOnBlur = (e) => {
     setHandleDropDown(false);
+  };
+
+  const handleChange = (e) => {
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: e.target.value },
+    });
+  };
+
+  const handleSubmit = (e) => {
+    if (e.key === "Enter") e.preventDefault();
+    navigate(`/shop?${text}`);
   };
 
   const logout = () => {
@@ -200,9 +215,12 @@ const Header = () => {
               />
               <div className="flex border-b-2 w-full py-[20px] items-center">
                 <input
-                  type="text"
+                  type="search"
+                  value={text}
                   placeholder="Search our product "
                   className="input-search-field w-full"
+                  onChange={handleChange}
+                  onKeyDown={() => handleSubmit()}
                 />
                 <AiOutlineSearch className="text-[28px] text-gray-500 cursor-pointer" />
               </div>
