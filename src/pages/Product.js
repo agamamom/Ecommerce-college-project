@@ -16,6 +16,12 @@ const Product = () => {
   const { user } = useSelector((state) => ({ ...state }));
   const [related, setRelated] = useState([]);
 
+  console.log("slug", slug);
+
+  useEffect(() => {
+    loadSingleProduct();
+  }, [slug]);
+
   const loadSingleProduct = () => {
     getProduct(slug).then((res) => {
       setProduct(res.data);
@@ -23,10 +29,6 @@ const Product = () => {
       getRelated(res.data._id).then((res) => setRelated(res.data));
     });
   };
-
-  useEffect(() => {
-    loadSingleProduct();
-  }, [slug]);
 
   useEffect(() => {
     if (product.ratings && user) {
@@ -41,7 +43,6 @@ const Product = () => {
     setStar(newRating);
     // console.table(newRating, name);
     productStar(name, newRating, user.token).then((res) => {
-      console.log("rating clicked", res.data);
       loadSingleProduct(); // if you want to show updated rating in real time
     });
   };

@@ -4,7 +4,7 @@ import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
-import { getProducts } from "../../functions/product";
+import { getProductsByPage } from "../../functions/product";
 import LoadingBestDealCard from "../cards/LoadingBestDealCard";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../functions/category";
@@ -30,7 +30,7 @@ const BestDeal = () => {
   const loadAllProducts = () => {
     setLoading(true);
     // sort, order, limit
-    getProducts("sold", "desc", 7).then((res) => {
+    getProductsByPage("sold", "desc", 7).then((res) => {
       setProducts(res.data);
       setLoading(false);
     });

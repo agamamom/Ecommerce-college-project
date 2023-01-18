@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { StarOutlined } from "@ant-design/icons";
@@ -16,12 +16,6 @@ const RatingModal = ({ children }) => {
     if (user && user.token) {
       setModalVisible(true);
     } else {
-      // navigate({
-      //   to: "/login",
-      //   state: { from: `/product/${slug}` },
-      // });
-      // history.push(`/product/${slug}`, { some: "state" });
-      // history.push({ pathname: "/login", state: { from: `/product/${slug}` } });
       history.push(`/product/${slug}`);
       navigate("/login");
     }

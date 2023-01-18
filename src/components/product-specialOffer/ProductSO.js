@@ -6,11 +6,6 @@ import ReactTooltip from "react-tooltip";
 import { Link } from "react-router-dom";
 
 const ProductSO = ({ productBorder, productBorderRight, product }) => {
-  const [img, setImg] = useState([]);
-
-  const SubsWithSpaces = (array, separator = " ") => {
-    return array.join(separator);
-  };
   const arrSubs = [];
   if (product) {
     product.subs.map((proSubs) => {
@@ -19,20 +14,12 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
   }
   const result = arrSubs.join(", ");
 
-  // arrSubs.map((proSubs) => {
-  //   return (
-  //     <a href="#" rel="tag" className="text-[#768b9e]">
-  //       {proSubs}
-  //     </a>
-  //   );
-  // })
-
   return (
     <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
       <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
         <div className="relative">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
-            <div href="#" rel="tag" className="text-[#768b9e]">
+            <div rel="tag" className="text-[#768b9e]">
               {result}
             </div>
           </span>
@@ -41,13 +28,12 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
               {product &&
                 `${product.title && product.title.substring(0, 25)}...`}
             </h2>
-            <div class="mb-[10px] w-full relative">
+            <div class="mb-[10px] w-full relative min-h-[300px] d-flex">
               {product && (
                 <img
                   width="300"
-                  height="300"
                   src={product.images && product.images[2].url}
-                  class="max-w-[100%] max-h-[100%] w-auto h-auto m-auto align-middle"
+                  class="max-w-[100%] w-auto h-auto m-auto align-middle"
                   alt=""
                   loading="lazy"
                 />
