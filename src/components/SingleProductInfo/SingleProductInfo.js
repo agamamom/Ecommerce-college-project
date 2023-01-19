@@ -42,7 +42,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       <div className="col-md-5">
         <h1 className="bg-info p-3">{title}</h1>
 
-        <div className="py-[18px]">
+        <div className="py-[18px] flex justify-center">
           {product && product.ratings && product.ratings.length > 0 ? (
             showAverage(product)
           ) : (

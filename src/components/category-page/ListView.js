@@ -29,8 +29,12 @@ const ListView = () => {
   };
 
   return (
-    <div className="h-[1350px] relative">
-      <div className="container absolute">
+    <div className="">
+      <div
+        className={`container ${
+          products.length > 6 ? "min-h-[1650px]" : "h-0"
+        }`}
+      >
         {loading ? (
           <LoadingCard count={3} />
         ) : (
@@ -47,7 +51,7 @@ const ListView = () => {
         )}
       </div>
 
-      <div className="row mb-[14px] absolute -bottom-[100px] w-full">
+      <div className="row mb-[14px] w-full">
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             current={page}

@@ -4,7 +4,7 @@ import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import laptop from "../../images/laptop.png";
 import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
-
+import StarRating from "react-star-ratings";
 const { Meta } = Card;
 
 const ProductRelatedCard = ({ product }) => {
@@ -13,11 +13,26 @@ const ProductRelatedCard = ({ product }) => {
   const { images, title, description, slug } = product;
   return (
     <>
-      {product && product.ratings && product.ratings.length > 0 ? (
-        showAverage(product)
-      ) : (
-        <div className="text-center pt-1 pb-3">No rating yet</div>
-      )}
+      <div className="py-[18px] flex justify-center">
+        {product && product.ratings && product.ratings.length > 0 ? (
+          showAverage(product)
+        ) : (
+          <div className="flex items-center">
+            <div className="">
+              <StarRating
+                starDimension="18px"
+                starSpacing="1px"
+                starRatedColor="yellow"
+                rating={0}
+                editing={false}
+              />
+            </div>
+            <div className="text-[16px] ml-[7px]">
+              ({product.ratings.length})
+            </div>
+          </div>
+        )}
+      </div>
 
       <Card
         cover={
