@@ -27,6 +27,7 @@ export const updateProduct = async (slug, product, authtoken) =>
     },
   });
 
+//Home Page
 export const getProductsByPage = async (sort, order, limit) =>
   await axios.post(`${process.env.REACT_APP_API}/products`, {
     sort,
@@ -34,8 +35,17 @@ export const getProductsByPage = async (sort, order, limit) =>
     limit,
   });
 
-export const getProducts = async (sort, order, page) =>
-  await axios.post(`${process.env.REACT_APP_API}/products`, {
+//Shop
+export const getProductsInShopByPage = async (sort, order, page) =>
+  await axios.post(`${process.env.REACT_APP_API}/products/shop`, {
+    sort,
+    order,
+    page,
+  });
+
+//Category page
+export const getProducts = async (sort, order, page, slug) =>
+  await axios.post(`${process.env.REACT_APP_API}/products/${slug}`, {
     sort,
     order,
     page,
@@ -63,3 +73,6 @@ export const getAllByCategory = async (slug) =>
 
 export const getBrands = async (productId) =>
   await axios.get(`${process.env.REACT_APP_API}/product/brands/${productId}`);
+
+export const fetchProductsByFilter = async (arg) =>
+  await axios.post(`${process.env.REACT_APP_API}/search/filters`, arg);

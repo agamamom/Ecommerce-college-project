@@ -28,7 +28,7 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
               {product &&
                 `${product.title && product.title.substring(0, 25)}...`}
             </h2>
-            <div class="mb-[10px] w-full relative min-h-[300px] d-flex">
+            <div class="mb-[10px] w-full relative min-h-[240px] d-flex">
               {product && (
                 <img
                   width="300"

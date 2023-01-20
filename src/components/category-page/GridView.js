@@ -4,7 +4,7 @@ import { getProducts, getProductsCount } from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
 import ProductSO from "../product-specialOffer/ProductSO";
 
-const GridView = () => {
+const GridView = ({ slug }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
@@ -12,7 +12,7 @@ const GridView = () => {
 
   useEffect(() => {
     loadAllProducts();
-  }, [page]);
+  }, [page, slug]);
 
   useEffect(() => {
     getProductsCount().then((res) => setProductsCount(res.data));
@@ -23,8 +23,9 @@ const GridView = () => {
   const loadAllProducts = () => {
     setLoading(true);
     // sort, order, limit
-    getProducts("createdAt", "desc", page).then((res) => {
+    getProducts("createdAt", "desc", page, slug).then((res) => {
       setProducts(res.data);
+      console.log("products", products);
       setLoading(false);
     });
   };

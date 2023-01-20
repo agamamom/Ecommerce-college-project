@@ -78,7 +78,7 @@ const BestDeal = () => {
                   <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
                     Game Console Controller + USB 3.0 Cable
                   </h2>
-                  <div class="mb-[10px] w-full relative">
+                  <div class="my-[40px] w-full relative">
                     <img
                       width="300"
                       height="300"

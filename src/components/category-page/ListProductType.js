@@ -42,10 +42,10 @@ const ListProductType = ({ slug, allProductByCategory }) => {
               </TabList>
             </Box>
             <TabPanel value="1">
-              <ListView />
+              <ListView slug={slug} />
             </TabPanel>
             <TabPanel value="2">
-              <GridView />
+              <GridView slug={slug} />
             </TabPanel>
           </TabContext>
         </Box>

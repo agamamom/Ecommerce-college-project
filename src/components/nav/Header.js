@@ -45,8 +45,11 @@ const Header = () => {
   };
 
   const handleSubmit = (e) => {
-    if (e.key === "Enter") e.preventDefault();
-    navigate(`/shop?${text}`);
+    if (e.key === "Enter") {
+      e.preventDefault();
+      setHandleSearch(!handleSearch);
+      navigate(`/shop?${text}`);
+    }
   };
 
   const logout = () => {
@@ -220,7 +223,7 @@ const Header = () => {
                   placeholder="Search our product "
                   className="input-search-field w-full"
                   onChange={handleChange}
-                  onKeyDown={() => handleSubmit()}
+                  onKeyDown={(e) => handleSubmit(e)}
                 />
                 <AiOutlineSearch className="text-[28px] text-gray-500 cursor-pointer" />
               </div>
