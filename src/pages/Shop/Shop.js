@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Sidebar from "../../components/category-page/Sidebar";
+import SidebarShopFilter from "../../components/shop-page/SidebarShopFilter";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getProductsByCount,
@@ -11,7 +11,11 @@ import ProductSO from "../../components/product-specialOffer/ProductSO";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [price, setPrice] = useState([0, 0]);
+  const [ok, setOk] = useState(false);
+  const [categoryIds, setCategoryIds] = useState([]);
 
+  let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
 
@@ -47,11 +51,35 @@ const Home = () => {
     });
   };
 
+  // 3. load products based on price range
+  useEffect(() => {
+    fetchProducts({ price });
+  }, [ok]);
+
+  const handleSlider = (value) => {
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setCategoryIds([]);
+    setPrice(value);
+    setTimeout(() => {
+      setOk(!ok);
+    }, 300);
+  };
+
   return (
     <div className="px-[45px] mt-[40px]">
       <div className="grid grid-cols-5 gap-7">
         <div className="col-span-1 w-full ">
-          <Sidebar />
+          <SidebarShopFilter
+            handleSlider={handleSlider}
+            price={price}
+            setPrice={setPrice}
+            fetchProducts={fetchProducts}
+            categoryIds={categoryIds}
+            setCategoryIds={setCategoryIds}
+          />
         </div>
         <div className="col-span-4 w-full ">
           {products.length < 1 && <p>No products found</p>}
