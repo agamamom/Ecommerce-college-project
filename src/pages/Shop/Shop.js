@@ -14,6 +14,8 @@ const Home = () => {
   const [price, setPrice] = useState([0, 0]);
   const [ok, setOk] = useState(false);
   const [categoryIds, setCategoryIds] = useState([]);
+  const [star, setStar] = useState("");
+  const [sub, setSub] = useState("");
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -63,6 +65,8 @@ const Home = () => {
     });
     setCategoryIds([]);
     setPrice(value);
+    setStar("");
+    setSub("");
     setTimeout(() => {
       setOk(!ok);
     }, 300);
@@ -79,6 +83,9 @@ const Home = () => {
             fetchProducts={fetchProducts}
             categoryIds={categoryIds}
             setCategoryIds={setCategoryIds}
+            star={star}
+            setStar={setStar}
+            setSub={setSub}
           />
         </div>
         <div className="col-span-4 w-full ">

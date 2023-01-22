@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getCategories } from "../../functions/category";
+import { getSubs } from "../../functions/sub";
 import { Link } from "react-router-dom";
 import { getBrands } from "../../functions/product";
 import { Menu, Slider, Checkbox } from "antd";
-import { DollarOutlined, DownSquareOutlined } from "@ant-design/icons";
+import {
+  DollarOutlined,
+  DownSquareOutlined,
+  StarOutlined,
+} from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
+import Star from "../../components/forms/Star";
 
 const { SubMenu, ItemGroup } = Menu;
 
@@ -15,17 +21,24 @@ const SidebarShopFilter = ({
   fetchProducts,
   categoryIds,
   setCategoryIds,
+  setStar,
+  star,
+  setSub,
+  sub,
 }) => {
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [subs, setSubs] = useState([]);
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
+  const { text } = search;
 
   useEffect(() => {
     getCategories().then((c) => {
       setCategories(c.data);
     });
+    getSubs().then((res) => setSubs(res.data));
   }, []);
 
   useEffect(() => {
@@ -56,6 +69,8 @@ const SidebarShopFilter = ({
       payload: { text: "" },
     });
     setPrice([0, 0]);
+    setStar("");
+    setSub("");
     let inTheState = [...categoryIds];
     let justChecked = e.target.value;
     let foundInTheState = inTheState.indexOf(justChecked); // index or -1
@@ -69,8 +84,58 @@ const SidebarShopFilter = ({
     }
 
     setCategoryIds(inTheState);
-    console.log(inTheState);
+
     fetchProducts({ category: inTheState });
+  };
+
+  // 5. show products by star rating
+  const handleStarClick = (num) => {
+    console.log(num);
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar(num);
+    setSub("");
+    fetchProducts({ stars: num });
+  };
+
+  const showStars = () => (
+    <div className="pr-4 pl-4 pb-2">
+      <Star starClick={handleStarClick} numberOfStars={5} />
+      <Star starClick={handleStarClick} numberOfStars={4} />
+      <Star starClick={handleStarClick} numberOfStars={3} />
+      <Star starClick={handleStarClick} numberOfStars={2} />
+      <Star starClick={handleStarClick} numberOfStars={1} />
+    </div>
+  );
+
+  // 6. show products by sub category
+  const showSubs = () =>
+    subs.map((s) => (
+      <div
+        key={s._id}
+        onClick={() => handleSub(s)}
+        className="p-1 m-1 badge badge-secondary"
+        style={{ cursor: "pointer" }}
+      >
+        {s.name}
+      </div>
+    ));
+
+  const handleSub = (sub) => {
+    // console.log("SUB", sub);
+    setSub(sub);
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar("");
+    fetchProducts({ sub, categoryIds });
   };
 
   return (
@@ -79,7 +144,7 @@ const SidebarShopFilter = ({
         <h4>Search/Filter</h4>
         <hr />
 
-        <Menu defaultOpenKeys={["1", "2"]} mode="inline">
+        <Menu defaultOpenKeys={["1", "2", "3", "4"]} mode="inline">
           {/* price */}
           <SubMenu
             key="1"
@@ -97,7 +162,7 @@ const SidebarShopFilter = ({
                 range
                 value={price}
                 onChange={handleSlider}
-                max="4999"
+                max="999"
               />
             </div>
           </SubMenu>
@@ -113,6 +178,34 @@ const SidebarShopFilter = ({
             }
           >
             <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
+          </SubMenu>
+
+          {/* stars */}
+          <SubMenu
+            key="3"
+            title={
+              <div className="flex items-center">
+                <StarOutlined />
+                <span className="">Rating</span>
+              </div>
+            }
+          >
+            <div style={{ maringTop: "-10px" }}>{showStars()}</div>
+          </SubMenu>
+
+          {/* sub category */}
+          <SubMenu
+            key="4"
+            title={
+              <div className="flex items-center">
+                <DownSquareOutlined />
+                <span className="">Sub Categories</span>
+              </div>
+            }
+          >
+            <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+              {showSubs()}
+            </div>
           </SubMenu>
         </Menu>
       </div>
