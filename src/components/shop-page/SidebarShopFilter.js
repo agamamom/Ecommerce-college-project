@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getCategories } from "../../functions/category";
 import { getSubs } from "../../functions/sub";
+
 import { Link } from "react-router-dom";
 import { getBrands } from "../../functions/product";
-import { Menu, Slider, Checkbox } from "antd";
+import { Menu, Slider, Checkbox, Radio } from "antd";
 import {
   DollarOutlined,
   DownSquareOutlined,
@@ -25,10 +26,19 @@ const SidebarShopFilter = ({
   star,
   setSub,
   sub,
+  setBrand,
+  brand,
 }) => {
   const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
+  // const [brands, setBrands] = useState([]);
   const [subs, setSubs] = useState([]);
+  const [brands, setBrands] = useState([
+    "Apple",
+    "Samsung",
+    "Microsoft",
+    "Lenovo",
+    "ASUS",
+  ]);
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -41,11 +51,11 @@ const SidebarShopFilter = ({
     getSubs().then((res) => setSubs(res.data));
   }, []);
 
-  useEffect(() => {
-    getBrands().then((c) => {
-      setBrands(c.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getBrands().then((c) => {
+  //     setBrands(c.data);
+  //   });
+  // }, []);
 
   const showCategories = () =>
     categories.map((c) => (
@@ -113,17 +123,22 @@ const SidebarShopFilter = ({
   );
 
   // 6. show products by sub category
-  const showSubs = () =>
-    subs.map((s) => (
-      <div
-        key={s._id}
-        onClick={() => handleSub(s)}
-        className="p-1 m-1 badge badge-secondary"
-        style={{ cursor: "pointer" }}
-      >
-        {s.name}
-      </div>
-    ));
+  const showSubs = () => {
+    sub ? (
+      sub?.map((s) => (
+        <div
+          key={s._id}
+          onClick={() => handleSub(s)}
+          className="p-1 m-1 badge badge-secondary"
+          style={{ cursor: "pointer" }}
+        >
+          {s.name}
+        </div>
+      ))
+    ) : (
+      <div>No Sub</div>
+    );
+  };
 
   const handleSub = (sub) => {
     // console.log("SUB", sub);
@@ -133,9 +148,36 @@ const SidebarShopFilter = ({
       payload: { text: "" },
     });
     setPrice([0, 0]);
+    // setCategoryIds([]);
+    setStar("");
+    fetchProducts({ sub });
+  };
+
+  // 7. show products based on brand name
+  const showBrands = () =>
+    brands.map((b) => (
+      <Radio
+        value={b}
+        name={b}
+        checked={b === brand}
+        onChange={handleBrand}
+        className="pb-1 pl-4 pr-4"
+      >
+        {b}
+      </Radio>
+    ));
+
+  const handleBrand = (e) => {
+    setSub("");
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
     setCategoryIds([]);
     setStar("");
-    fetchProducts({ sub, categoryIds });
+    setBrand(e.target.value);
+    fetchProducts({ brand: e.target.value });
   };
 
   return (

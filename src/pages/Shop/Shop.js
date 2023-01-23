@@ -15,7 +15,8 @@ const Home = () => {
   const [ok, setOk] = useState(false);
   const [categoryIds, setCategoryIds] = useState([]);
   const [star, setStar] = useState("");
-  const [sub, setSub] = useState("");
+  const [sub, setSub] = useState([]);
+  const [brand, setBrand] = useState("");
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -86,6 +87,9 @@ const Home = () => {
             star={star}
             setStar={setStar}
             setSub={setSub}
+            sub={sub}
+            setBrand={setBrand}
+            brand={brand}
           />
         </div>
         <div className="col-span-4 w-full ">
