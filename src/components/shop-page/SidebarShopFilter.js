@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getCategories } from "../../functions/category";
+import { getCategories, getCategorySubs } from "../../functions/category";
 import { getSubs } from "../../functions/sub";
-
 import { Link } from "react-router-dom";
 import { getBrands } from "../../functions/product";
 import { Menu, Slider, Checkbox, Radio } from "antd";
@@ -20,8 +19,6 @@ const SidebarShopFilter = ({
   price,
   setPrice,
   fetchProducts,
-  categoryIds,
-  setCategoryIds,
   setStar,
   star,
   setSub,
@@ -30,16 +27,9 @@ const SidebarShopFilter = ({
   brand,
 }) => {
   const [categories, setCategories] = useState([]);
-  // const [brands, setBrands] = useState([]);
-  const [subs, setSubs] = useState([]);
-  const [brands, setBrands] = useState([
-    "Apple",
-    "Samsung",
-    "Microsoft",
-    "Lenovo",
-    "ASUS",
-  ]);
-
+  const [brands, setBrands] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [subOptions, setSubOptions] = useState([]);
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
@@ -48,27 +38,20 @@ const SidebarShopFilter = ({
     getCategories().then((c) => {
       setCategories(c.data);
     });
-    getSubs().then((res) => setSubs(res.data));
   }, []);
-
-  // useEffect(() => {
-  //   getBrands().then((c) => {
-  //     setBrands(c.data);
-  //   });
-  // }, []);
 
   const showCategories = () =>
     categories.map((c) => (
       <div key={c._id}>
-        <Checkbox
-          onChange={handleCheck}
-          className="pb-2 pl-4 pr-4"
+        <Radio
           value={c._id}
-          name="category"
-          checked={categoryIds.includes(c._id)}
+          name={c.name}
+          checked={c._id === category}
+          onChange={handleCheck}
+          className="py-[10px] pl-4 pr-4"
         >
           {c.name}
-        </Checkbox>
+        </Radio>
         <br />
       </div>
     ));
@@ -81,21 +64,16 @@ const SidebarShopFilter = ({
     setPrice([0, 0]);
     setStar("");
     setSub("");
-    let inTheState = [...categoryIds];
-    let justChecked = e.target.value;
-    let foundInTheState = inTheState.indexOf(justChecked); // index or -1
+    setCategory(e.target.value);
 
-    // indexOf method ?? if not found returns -1 else return index [1,2,3,4,5]
-    if (foundInTheState === -1) {
-      inTheState.push(justChecked);
-    } else {
-      // if found pull out one item from index
-      inTheState.splice(foundInTheState, 1);
-    }
+    fetchProducts({ category: e.target.value });
+    getCategorySubs(e.target.value).then((res) => {
+      setSubOptions(res.data);
+    });
 
-    setCategoryIds(inTheState);
-
-    fetchProducts({ category: inTheState });
+    getBrands(e.target.value).then((res) => {
+      setBrands(res.data);
+    });
   };
 
   // 5. show products by star rating
@@ -106,14 +84,14 @@ const SidebarShopFilter = ({
       payload: { text: "" },
     });
     setPrice([0, 0]);
-    setCategoryIds([]);
+
     setStar(num);
     setSub("");
     fetchProducts({ stars: num });
   };
 
   const showStars = () => (
-    <div className="pr-4 pl-4 pb-2">
+    <div className="pr-4 pl-4 py-[10px]">
       <Star starClick={handleStarClick} numberOfStars={5} />
       <Star starClick={handleStarClick} numberOfStars={4} />
       <Star starClick={handleStarClick} numberOfStars={3} />
@@ -122,50 +100,17 @@ const SidebarShopFilter = ({
     </div>
   );
 
-  // 6. show products by sub category
-  const showSubs = () => {
-    sub ? (
-      sub?.map((s) => (
-        <div
-          key={s._id}
-          onClick={() => handleSub(s)}
-          className="p-1 m-1 badge badge-secondary"
-          style={{ cursor: "pointer" }}
-        >
-          {s.name}
-        </div>
-      ))
-    ) : (
-      <div>No Sub</div>
-    );
-  };
-
   const handleSub = (sub) => {
-    // console.log("SUB", sub);
     setSub(sub);
     dispatch({
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
     setPrice([0, 0]);
-    // setCategoryIds([]);
+
     setStar("");
     fetchProducts({ sub });
   };
-
-  // 7. show products based on brand name
-  const showBrands = () =>
-    brands.map((b) => (
-      <Radio
-        value={b}
-        name={b}
-        checked={b === brand}
-        onChange={handleBrand}
-        className="pb-1 pl-4 pr-4"
-      >
-        {b}
-      </Radio>
-    ));
 
   const handleBrand = (e) => {
     setSub("");
@@ -174,11 +119,21 @@ const SidebarShopFilter = ({
       payload: { text: "" },
     });
     setPrice([0, 0]);
-    setCategoryIds([]);
+
     setStar("");
     setBrand(e.target.value);
     fetchProducts({ brand: e.target.value });
   };
+
+  const tesst = [];
+  const withoutDuplicates = [];
+  if (brands) {
+    brands.map((b) => tesst.push(b.brand));
+    console.log("tesst", tesst);
+    const withoutDuplicates1 = [...new Set(tesst)];
+    withoutDuplicates1.map((w) => withoutDuplicates.push(w));
+    console.log("withoutDuplicates", withoutDuplicates);
+  }
 
   return (
     <>
@@ -186,10 +141,23 @@ const SidebarShopFilter = ({
         <h4>Search/Filter</h4>
         <hr />
 
-        <Menu defaultOpenKeys={["1", "2", "3", "4"]} mode="inline">
-          {/* price */}
+        <Menu defaultOpenKeys={["1", "2", "3", "4", "5"]} mode="inline">
+          {/* category */}
           <SubMenu
             key="1"
+            title={
+              <div className="flex items-center">
+                <DownSquareOutlined />
+                <span className="">Categories</span>
+              </div>
+            }
+          >
+            <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
+          </SubMenu>
+
+          {/* price */}
+          <SubMenu
+            key="2"
             title={
               <div className="flex items-baseline">
                 <DollarOutlined />
@@ -209,19 +177,6 @@ const SidebarShopFilter = ({
             </div>
           </SubMenu>
 
-          {/* category */}
-          <SubMenu
-            key="2"
-            title={
-              <div className="flex items-center">
-                <DownSquareOutlined />
-                <span className="">Categories</span>
-              </div>
-            }
-          >
-            <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
-          </SubMenu>
-
           {/* stars */}
           <SubMenu
             key="3"
@@ -236,19 +191,65 @@ const SidebarShopFilter = ({
           </SubMenu>
 
           {/* sub category */}
-          <SubMenu
-            key="4"
-            title={
-              <div className="flex items-center">
-                <DownSquareOutlined />
-                <span className="">Sub Categories</span>
+          {subOptions.length ? (
+            <SubMenu
+              key="4"
+              title={
+                <div className="flex items-center">
+                  <DownSquareOutlined />
+                  <span className="">Sub Categories</span>
+                </div>
+              }
+            >
+              <div
+                style={{ maringTop: "-10px" }}
+                className="pl-4 pr-4 py-[10px]"
+              >
+                {subOptions.map((s) => (
+                  <div
+                    key={s._id}
+                    onClick={() => handleSub(s)}
+                    className="p-1 m-1 badge badge-secondary"
+                    style={{ cursor: "pointer" }}
+                  >
+                    {s.name}
+                  </div>
+                ))}
               </div>
-            }
-          >
-            <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
-              {showSubs()}
-            </div>
-          </SubMenu>
+            </SubMenu>
+          ) : (
+            <div className="d-none"></div>
+          )}
+
+          {/* brands */}
+          {brands.length ? (
+            <SubMenu
+              key="5"
+              title={
+                <div className="flex items-center">
+                  <StarOutlined />
+                  <span className="">Brands</span>
+                </div>
+              }
+            >
+              <div style={{ maringTop: "-10px" }} className="pr-10 py-[10px]">
+                {withoutDuplicates.map((b, index) => (
+                  <Radio
+                    value={b}
+                    name={b}
+                    checked={b === brand}
+                    onChange={handleBrand}
+                    className="pb-1 pl-4 pr-4"
+                    key={index}
+                  >
+                    {b}
+                  </Radio>
+                ))}
+              </div>
+            </SubMenu>
+          ) : (
+            <div className="d-none"></div>
+          )}
         </Menu>
       </div>
     </>

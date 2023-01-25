@@ -10,13 +10,11 @@ const Sidebar = () => {
     getCategories().then((c) => {
       setCategories(c.data);
     });
-  }, []);
-
-  useEffect(() => {
     getBrands().then((c) => {
       setBrands(c.data);
     });
   }, []);
+  console.log("categories", categories);
 
   return (
     <>
@@ -35,6 +33,14 @@ const Sidebar = () => {
         </div>
         <div className="border-b border-solid border-[#75737389] w-full">
           <div className="p-[20px]"> Featured Brands</div>
+        </div>
+        <div className="my-[15px] w-full">
+          {brands &&
+            brands?.map((c) => (
+              <div className="w-[90%] py-[10px] mx-auto border-b border-solid border-[#7573735a]">
+                <div className="ml-[20px]">{c.brand}</div>
+              </div>
+            ))}
         </div>
       </div>
     </>

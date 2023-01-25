@@ -13,7 +13,6 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 0]);
   const [ok, setOk] = useState(false);
-  const [categoryIds, setCategoryIds] = useState([]);
   const [star, setStar] = useState("");
   const [sub, setSub] = useState([]);
   const [brand, setBrand] = useState("");
@@ -64,7 +63,6 @@ const Home = () => {
       type: "SEARCH_QUERY",
       payload: { text: "" },
     });
-    setCategoryIds([]);
     setPrice(value);
     setStar("");
     setSub("");
@@ -82,8 +80,6 @@ const Home = () => {
             price={price}
             setPrice={setPrice}
             fetchProducts={fetchProducts}
-            categoryIds={categoryIds}
-            setCategoryIds={setCategoryIds}
             star={star}
             setStar={setStar}
             setSub={setSub}

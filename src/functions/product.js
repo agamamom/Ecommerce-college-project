@@ -71,8 +71,8 @@ export const getRelated = async (productId) =>
 export const getAllByCategory = async (slug) =>
   await axios.get(`${process.env.REACT_APP_API}/product/related`, { slug });
 
-export const getBrands = async (productId) =>
-  await axios.get(`${process.env.REACT_APP_API}/product/brands/${productId}`);
+export const getBrands = async (_id) =>
+  await axios.post(`${process.env.REACT_APP_API}/product/brands/${_id}`);
 
 export const fetchProductsByFilter = async (arg) =>
   await axios.post(`${process.env.REACT_APP_API}/search/filters`, arg);

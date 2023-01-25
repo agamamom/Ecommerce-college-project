@@ -16,8 +16,6 @@ const Product = () => {
   const { user } = useSelector((state) => ({ ...state }));
   const [related, setRelated] = useState([]);
 
-  console.log("slug", slug);
-
   useEffect(() => {
     loadSingleProduct();
   }, [slug]);
