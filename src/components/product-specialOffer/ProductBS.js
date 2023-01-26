@@ -12,6 +12,27 @@ const ProductBS = ({
   productBorder,
   productBorderRight,
 }) => {
+  const handleAddToCart = () => {};
+  // const handleAddToCart = () => {
+  //   // create cart array
+  //   let cart = [];
+  //   if (typeof window !== "undefined") {
+  //     // if cart is in local storage GET it
+  //     if (localStorage.getItem("cart")) {
+  //       cart = JSON.parse(localStorage.getItem("cart"));
+  //     }
+  //     // push new product to cart
+  //     cart.push({
+  //       ...product,
+  //       count: 1,
+  //     });
+  //     // remove duplicates
+  //     let unique = _.uniqWith(cart, _.isEqual);
+  //     // save to local storage
+  //     // console.log('unique', unique)
+  //     localStorage.setItem("cart", JSON.stringify(unique));
+  //   }
+  // };
   return (
     <div
       className={`h-full ${productBorder} ${productBorderRight} relative mb-[15px]`}
@@ -48,7 +69,10 @@ const ProductBS = ({
           </a>
           <div className="mb-[12px] mt-[16px] clear-both flex justify-between items-center h-[36px]">
             <span className="text-[20px] relative">{price}</span>
-            <div className="p-[12px] cart-icon-container rounded-[50%]">
+            <div
+              className="p-[12px] cart-icon-container rounded-[50%]"
+              onClick={handleAddToCart}
+            >
               <p data-tip data-for="happyFace">
                 <MdOutlineAddShoppingCart className="text-[17px] text-white" />
               </p>

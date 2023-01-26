@@ -4,15 +4,45 @@ import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 import { Link } from "react-router-dom";
+import _ from "lodash";
+import { useSelector, useDispatch } from "react-redux";
 
 const ProductSO = ({ productBorder, productBorderRight, product }) => {
   const arrSubs = [];
+  const { user, cart } = useSelector((state) => ({ ...state }));
+  const dispatch = useDispatch();
   if (product) {
     product.subs.map((proSubs) => {
       return arrSubs.push(proSubs["name"]);
     });
   }
   const result = arrSubs.join(", ");
+
+  const handleAddToCart = () => {
+    // create cart array
+    let cart = [];
+    if (typeof window !== "undefined") {
+      // if cart is in local storage GET it
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+      // push new product to cart
+      cart.push({
+        ...product,
+        count: 1,
+      });
+      // remove duplicates
+      let unique = _.uniqWith(cart, _.isEqual);
+      // save to local storage
+      // console.log('unique', unique)
+      localStorage.setItem("cart", JSON.stringify(unique));
+      // add to reeux state
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: unique,
+      });
+    }
+  };
 
   return (
     <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
@@ -46,7 +76,10 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
             <span className="text-[20px] relative">
               {product && product.price}$
             </span>
-            <div className="p-[12px] cart-icon-container rounded-[50%]">
+            <div
+              className="p-[12px] cart-icon-container rounded-[50%]"
+              onClick={handleAddToCart}
+            >
               <p data-tip data-for="happyFace">
                 <MdOutlineAddShoppingCart className="text-[17px] text-white" />
               </p>

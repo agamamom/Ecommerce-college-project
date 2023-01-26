@@ -14,7 +14,7 @@ import firebase from "firebase";
 
 const Header = () => {
   let dispatch = useDispatch();
-  let { user } = useSelector((state) => ({ ...state }));
+  let { user, cart } = useSelector((state) => ({ ...state }));
   const navigate = useNavigate();
   const [handleSearch, setHandleSearch] = useState(false);
   const [handleDropDown, setHandleDropDown] = useState(false);
@@ -329,12 +329,12 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="flex items-center ml-[34px] cart-field">
+            <Link className="flex items-center ml-[34px] cart-field" to="/cart">
               <BsBag className="mr-[7px] text-[22px] " />
               <div className="h-[18px] w-[18px] bg-black rounded-full text-white flex items-center justify-center text-[12px]">
-                0
+                {cart.length}
               </div>
-            </div>
+            </Link>
           </div>
         </div>
         <div
