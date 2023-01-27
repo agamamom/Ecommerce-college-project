@@ -514,3 +514,26 @@ body {
     color: rgb(0 0 0 / 29%);
   }
 }
+
+.breadcrumb-container {
+  background-image: url("../public/images/breadcrumbackground.jpg");
+  background-attachment: fixed;
+  background-color: rgb(245, 245, 245);
+  position: relative;
+  &::before {
+    background: rgba(209, 206, 206, 0.247);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    content: "";
+    height: 100%;
+    width: 100%;
+  }
+}
+
+table.table thead.thead-light tr th {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}

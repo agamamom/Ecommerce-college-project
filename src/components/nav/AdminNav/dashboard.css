@@ -301,7 +301,7 @@ table .form-check {
 }
 
 .table > :not(caption) > * > * {
-  padding: 0.8rem 0.4rem;
+  padding: 0.8rem 1.4rem;
 }
 
 .table-lg td,
