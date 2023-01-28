@@ -26,7 +26,7 @@ const Cart = () => {
           <th scope="col" className="">
             Image
           </th>
-          <th scope="col" className="w-[50%]">
+          <th scope="col" className="w-[45%]">
             Title
           </th>
           <th scope="col" className="">
@@ -35,10 +35,10 @@ const Cart = () => {
           <th scope="col" className="">
             Brand
           </th>
-          <th scope="col" className="">
+          <th scope="col" className="w-[8%]">
             Count
           </th>
-          <th scope="col" className="">
+          <th scope="col" className="w-[2%]">
             Remove
           </th>
         </tr>

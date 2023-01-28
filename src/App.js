@@ -24,7 +24,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
 import SubUpdate from "./pages/admin/sub/SubUpdate";
 import SubCreate from "./pages/admin/sub/SubCreate";
-
+import SideDrawer from "./components/drawer/SideDrawer";
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { currentUser } from "./functions/auth";
@@ -81,7 +81,7 @@ const App = () => {
         <>
           <Header />
           <ToastContainer />
-
+          <SideDrawer />
           <Routes>
             <Route index element={<Home />} />
             <Route path="shop" element={<Shop />} />

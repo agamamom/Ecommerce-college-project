@@ -63,6 +63,14 @@ const Header = () => {
     setHandleDropDown(!handleDropDown);
   };
 
+  const handleDrawer = () => {
+    // show cart items in side drawer
+    dispatch({
+      type: "SET_VISIBLE",
+      payload: true,
+    });
+  };
+
   return (
     <>
       <NavTop />
@@ -329,12 +337,15 @@ const Header = () => {
               </div>
             </div>
 
-            <Link className="flex items-center ml-[34px] cart-field" to="/cart">
+            <div
+              className="flex items-center ml-[34px] cart-field"
+              onClick={handleDrawer}
+            >
               <BsBag className="mr-[7px] text-[22px] " />
               <div className="h-[18px] w-[18px] bg-black rounded-full text-white flex items-center justify-center text-[12px]">
                 {cart.length}
               </div>
-            </Link>
+            </div>
           </div>
         </div>
         <div
