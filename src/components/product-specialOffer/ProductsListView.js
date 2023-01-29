@@ -16,6 +16,13 @@ const ProductsListView = ({ product }) => {
   }
   const result = arrSubs.join(", ");
 
+  const textPrice = product.price;
+
+  const USDPrice = textPrice.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <div className="w-full px-[10px] ">
       <div className="flex justify-between">
@@ -73,9 +80,7 @@ const ProductsListView = ({ product }) => {
         </div>
 
         <div className="">
-          <div className="text-[20px] text-[#dc3545]">
-            {product && `$${product.price}`}
-          </div>
+          <div className="text-[20px] text-[#4c4b4b]">{USDPrice} USD</div>
           <Link to={`/product/${product.slug}`} class="block my-[20px]">
             <div className="text-[14px] text-[#fff] bg-[#fed700] px-[60px] py-[10px] text-center font-bold mb-[10px] rounded-[50px]">
               Read more

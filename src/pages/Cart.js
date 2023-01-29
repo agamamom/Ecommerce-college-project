@@ -1,22 +1,37 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Breadcrumb } from "antd";
 import BreadcrumbComponent from "../components/breadcrumb/Breadcrumb";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
+import emailjs from "@emailjs/browser";
+import { SlBag } from "react-icons/sl";
+import { BsPiggyBank } from "react-icons/bs";
+import { TfiHeadphoneAlt } from "react-icons/tfi";
+import { userCart } from "../functions/user";
 
 const Cart = () => {
   const { cart, user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const form = useRef();
 
-  const getTotal = () => {
-    return cart.reduce((currentValue, nextValue) => {
-      return currentValue + nextValue.count * nextValue.price;
-    }, 0);
-  };
+  const textPrice = cart.reduce((currentValue, nextValue) => {
+    return currentValue + nextValue.count * nextValue.price;
+  }, 0);
+
+  const USDPrice = textPrice.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   const saveOrderToDb = () => {
-    //
+    userCart(cart, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        if (res.data.ok) navigate("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
   };
 
   const showCartItems = () => (
@@ -66,6 +81,27 @@ const Cart = () => {
     );
   };
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_6vbnfln",
+        "template_nkq7ts9",
+        form.current,
+        "_lpdIJEv35_o0aAwk"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <div>
       <BreadcrumbComponent>{breadCrumb()}</BreadcrumbComponent>
@@ -85,40 +121,88 @@ const Cart = () => {
               )}
             </div>
             <div className="col-md-4">
-              <div></div>
-              <h4>Order Summary</h4>
-              <hr />
-              <p>Products</p>
-              {cart.map((c, i) => (
-                <div key={i}>
-                  <p>
-                    {c.title} x {c.count} = ${c.price * c.count}
-                  </p>
+              <div className="formInstructionsForSeller p-[10px] bg-[#ebebeba4]">
+                <div className="text-[20px] font-semibold text-[#111] text-center mb-[15px] tracking-wider">
+                  Special instructions for seller
                 </div>
-              ))}
-              <hr />
-              Total: <b>${getTotal()}</b>
-              <hr />
-              {user ? (
-                <button
-                  onClick={saveOrderToDb}
-                  className="btn btn-sm btn-primary mt-2"
-                  disabled={!cart.length}
-                >
-                  Proceed to Checkout
-                </button>
-              ) : (
-                <button className="btn btn-sm btn-primary mt-2">
-                  <Link
-                    to={{
-                      pathname: "/login",
-                      state: { from: "cart" },
-                    }}
+                <form ref={form} onSubmit={sendEmail}>
+                  <input type="text" name="user_name" placeholder="Name" />
+                  <div className="pb-[10px]"></div>
+                  <input type="email" name="user_email" placeholder="Email" />
+                  <div className="pb-[10px]"></div>
+                  <textarea name="message" placeholder="Message" />
+                  <input type="submit" value="Send" />
+                </form>
+              </div>
+              <div className="p-[10px] bg-[#ebebeba4] mt-3">
+                <div className="text-[22px] font-semibold text-black text-center">
+                  Cart Total
+                </div>
+
+                <div className="font-bold py-[15px] text-center tracking-widest">
+                  {USDPrice} USD
+                </div>
+                <div className="text-center mt-[10px] text-[#666666]">
+                  Shipping, taxes, and discounts will be calculated at checkout.
+                </div>
+                {user ? (
+                  <button
+                    onClick={saveOrderToDb}
+                    className="text-center btn w-full button-slide p-0"
+                    disabled={!cart.length}
                   >
-                    Login to Checkout
-                  </Link>
-                </button>
-              )}
+                    <div className="button">Proceed to Checkout</div>
+                  </button>
+                ) : (
+                  <button className="btn btn-sm btn-primary mt-2">
+                    <Link
+                      to={{
+                        pathname: "/login",
+                        state: { from: "cart" },
+                      }}
+                    >
+                      Login to Checkout
+                    </Link>
+                  </button>
+                )}
+              </div>
+              <div className="p-[10px] bg-[#ebebeba4] mt-3">
+                <div class="float-left w-full mb-[15px] flex items-center">
+                  <SlBag className="text-[35px] text-[#000000ae] mr-[15px]" />
+                  <div class="content">
+                    <div class="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
+                      Security policy
+                    </div>
+                    <div class="policy-desc">
+                      (edit with the Customer Reassurance module)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="float-left w-full mb-[15px] flex items-center">
+                  <BsPiggyBank className="text-[35px] text-[#000000ae] mr-[15px]" />
+                  <div class="content">
+                    <div class="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
+                      Delivery policy
+                    </div>
+                    <div class="policy-desc">
+                      (edit with the Customer Reassurance module)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="float-left w-full mb-[15px] flex items-center">
+                  <TfiHeadphoneAlt className="text-[35px] text-[#000000ae] mr-[15px]" />
+                  <div class="content">
+                    <div class="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
+                      Return policy
+                    </div>
+                    <div class="policy-desc">
+                      (edit with the Customer Reassurance module)
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

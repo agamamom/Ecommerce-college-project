@@ -33,8 +33,8 @@ const ListView = ({ slug }) => {
     <div className="">
       <div
         className={`container ${
-          products.length > 6 ? "min-h-[1650px]" : "h-0"
-        }`}
+          products.length > 6 ? "min-h-[2200px]" : "h-0"
+        } ${products.length < 3 ? "min-h-[270px]" : "h-[0]"}`}
       >
         {loading ? (
           <LoadingCard count={3} />

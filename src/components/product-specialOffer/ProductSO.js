@@ -49,6 +49,13 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
     }
   };
 
+  const textPrice = product.price;
+
+  const USDPrice = textPrice.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
       <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
@@ -63,7 +70,7 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
               {product &&
                 `${product.title && product.title.substring(0, 25)}...`}
             </h2>
-            <div class="mb-[10px] w-full relative min-h-[240px] d-flex">
+            <div class="mb-[10px] w-full relative h-[300px] d-flex">
               {product && (
                 <img
                   width="300"
@@ -78,9 +85,7 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
         </div>
         <div className="">
           <div className="mb-[7px] clear-both flex justify-between items-center h-[36px]">
-            <span className="text-[20px] relative">
-              {product && product.price}$
-            </span>
+            <span className="text-[20px] relative">{USDPrice}</span>
             <div
               className="p-[12px] cart-icon-container rounded-[50%]"
               onClick={handleAddToCart}

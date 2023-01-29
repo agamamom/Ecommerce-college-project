@@ -34,6 +34,7 @@ import ProductUpdate from "./pages/admin/product/ProductUpdate";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import CategoryHome from "./pages/category/CategoryHome";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -182,6 +183,14 @@ const App = () => {
             <Route path="/product/:slug" element={<Product />} />
             <Route path="/category/:slug" element={<CategoryHome />} />
             <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/checkout"
+              element={
+                <UserRoute>
+                  <Checkout />
+                </UserRoute>
+              }
+            />
           </Routes>
         </>
       )}

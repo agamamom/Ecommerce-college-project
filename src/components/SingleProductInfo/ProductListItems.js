@@ -10,7 +10,11 @@ const ProductListItems = ({ product }) => {
       <li className="list-group-item">
         Price{" "}
         <span className="label label-default label-pill pull-xs-right">
-          $ {price}
+          {product &&
+            product.price.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
         </span>
       </li>
 

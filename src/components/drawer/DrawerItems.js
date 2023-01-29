@@ -28,6 +28,12 @@ const DrawerItems = ({ p }) => {
     }
   };
 
+  const textPrice = p.price;
+  const USDPrice = textPrice.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   const imageStyle = {
     width: "100%",
     height: "85px",
@@ -47,7 +53,7 @@ const DrawerItems = ({ p }) => {
                 {`${p.title && p.title.substring(0, 40)}...`}
                 <p className="py-[12px]">
                   <span className="font-bold text-[15px] text-black tracking-wide">
-                    $ {p.price} USD
+                    {USDPrice} USD
                   </span>{" "}
                   x {p.count}
                 </p>

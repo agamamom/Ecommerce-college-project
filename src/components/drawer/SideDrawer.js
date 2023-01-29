@@ -8,11 +8,14 @@ const SideDrawer = () => {
   const dispatch = useDispatch();
   const { drawer, cart } = useSelector((state) => ({ ...state }));
 
-  const getTotal = () => {
-    return cart.reduce((currentValue, nextValue) => {
-      return currentValue + nextValue.count * nextValue.price;
-    }, 0);
-  };
+  const textPrice = cart.reduce((currentValue, nextValue) => {
+    return currentValue + nextValue.count * nextValue.price;
+  }, 0);
+
+  const USDPrice = textPrice.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   return (
     <Drawer
@@ -37,7 +40,7 @@ const SideDrawer = () => {
             </div>
             <p className="py-[12px]">
               <span className="font-bold text-[15px] text-black tracking-wide text-[15px]">
-                $ {getTotal()} USD
+                {USDPrice} USD
               </span>{" "}
               {cart && cart.count}
             </p>

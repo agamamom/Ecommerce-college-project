@@ -34,8 +34,8 @@ const GridView = ({ slug }) => {
     <div className="">
       <div
         className={`container ${
-          products.length > 6 ? "min-h-[1350px]" : "h-0"
-        }`}
+          products.length > 6 ? "min-h-[1450px]" : "h-0"
+        } ${products.length < 3 ? "min-h-[530px]" : "h-[0]"}`}
       >
         {loading ? (
           <LoadingCard count={3} />
