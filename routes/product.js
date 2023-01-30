@@ -18,6 +18,8 @@ const {
   listBrands,
   listAllByCategory,
   searchFilters,
+  listByPage,
+  listAllInShop,
 } = require("../controllers/product");
 
 // routes
@@ -28,6 +30,11 @@ router.delete("/product/:slug", authCheck, adminCheck, remove);
 router.get("/product/:slug", read);
 router.put("/product/:slug", authCheck, adminCheck, update);
 router.post("/products", list);
+router.post("/products/shop", listAllInShop);
+router.post("/products/:slug", listByPage);
+
+listAllInShop;
+
 // rating
 router.put("/product/star/:productId", authCheck, productStar);
 // related
@@ -35,7 +42,7 @@ router.get("/product/related/:productId", listRelated);
 router.get("/product/related", listAllByCategory);
 
 //get brands
-router.get("/product/brands/:productId", listBrands);
+router.post("/product/brands/:_id", listBrands);
 //search
 router.post("/search/filters", searchFilters);
 
