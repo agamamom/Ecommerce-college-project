@@ -121,7 +121,7 @@ const Cart = () => {
               )}
             </div>
             <div className="col-md-4">
-              <div className="formInstructionsForSeller p-[10px] bg-[#ebebeba4]">
+              <div className="formInstructionsForSeller p-[10px] bg-[#ebebeb6c]">
                 <div className="text-[20px] font-semibold text-[#111] text-center mb-[15px] tracking-wider">
                   Special instructions for seller
                 </div>
@@ -134,7 +134,7 @@ const Cart = () => {
                   <input type="submit" value="Send" />
                 </form>
               </div>
-              <div className="p-[10px] bg-[#ebebeba4] mt-3">
+              <div className="p-[10px] bg-[#ebebeb6c] mt-3">
                 <div className="text-[22px] font-semibold text-black text-center">
                   Cart Total
                 </div>
@@ -166,7 +166,7 @@ const Cart = () => {
                   </button>
                 )}
               </div>
-              <div className="p-[10px] bg-[#ebebeba4] mt-3">
+              <div className="p-[10px] mt-3">
                 <div class="float-left w-full mb-[15px] flex items-center">
                   <SlBag className="text-[35px] text-[#000000ae] mr-[15px]" />
                   <div class="content">
