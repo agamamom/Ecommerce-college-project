@@ -129,10 +129,9 @@ const SidebarShopFilter = ({
   const withoutDuplicates = [];
   if (brands) {
     brands.map((b) => tesst.push(b.brand));
-    console.log("tesst", tesst);
+
     const withoutDuplicates1 = [...new Set(tesst)];
     withoutDuplicates1.map((w) => withoutDuplicates.push(w));
-    console.log("withoutDuplicates", withoutDuplicates);
   }
 
   return (
