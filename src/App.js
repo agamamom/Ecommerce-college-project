@@ -35,6 +35,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import CategoryHome from "./pages/category/CategoryHome";
 import Checkout from "./pages/Checkout";
+import CreateCouponPage from "./pages/admin/coupon/CreateCouponPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -189,6 +190,14 @@ const App = () => {
                 <UserRoute>
                   <Checkout />
                 </UserRoute>
+              }
+            />
+            <Route
+              path="/admin/coupon"
+              element={
+                <AdminRoute>
+                  <CreateCouponPage />
+                </AdminRoute>
               }
             />
           </Routes>
