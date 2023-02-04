@@ -35,6 +35,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import CategoryHome from "./pages/category/CategoryHome";
 import Checkout from "./pages/Checkout";
+import Payment from "./pages/Payment";
 import CreateCouponPage from "./pages/admin/coupon/CreateCouponPage";
 
 const App = () => {
@@ -198,6 +199,15 @@ const App = () => {
                 <AdminRoute>
                   <CreateCouponPage />
                 </AdminRoute>
+              }
+            />
+
+            <Route
+              path="/payment"
+              element={
+                <UserRoute>
+                  <Payment />
+                </UserRoute>
               }
             />
           </Routes>

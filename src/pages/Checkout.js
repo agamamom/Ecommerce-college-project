@@ -9,6 +9,7 @@ import {
 import ReactQuill from "react-quill";
 import { toast } from "react-toastify";
 import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const [products, setProducts] = useState([]);
@@ -17,9 +18,9 @@ const Checkout = () => {
   const [addressSaved, setAddressSaved] = useState(false);
   const [coupon, setCoupon] = useState("");
   // discount price
-  const [totalAfterDiscount, setTotalAfterDiscount] = useState("");
+  const [totalAfterDiscount, setTotalAfterDiscount] = useState(0);
   const [discountError, setDiscountError] = useState("");
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -49,6 +50,8 @@ const Checkout = () => {
     emptyUserCart(user.token).then((res) => {
       setProducts([]);
       setTotal(0);
+      setTotalAfterDiscount(0);
+      setCoupon("");
       toast.success("Cart is emapty. Contniue shopping.");
     });
   };
@@ -69,11 +72,19 @@ const Checkout = () => {
       if (res.data) {
         setTotalAfterDiscount(res.data);
         // update redux coupon applied
+        dispatch({
+          type: "COUPON_APPLIED",
+          payload: true,
+        });
       }
       // error
       if (res.data.err) {
         setDiscountError(res.data.err);
         // update redux coupon applied
+        dispatch({
+          type: "COUPON_APPLIED",
+          payload: false,
+        });
       }
     });
   };
@@ -100,7 +111,10 @@ const Checkout = () => {
   const showApplyCoupon = () => (
     <>
       <input
-        onChange={(e) => setCoupon(e.target.value)}
+        onChange={(e) => {
+          setCoupon(e.target.value);
+          setDiscountError("");
+        }}
         value={coupon}
         type="text"
         className="form-control"
@@ -122,6 +136,8 @@ const Checkout = () => {
         <h4>Got Coupon?</h4>
         <br />
         {showApplyCoupon()}
+        <br />
+        {discountError && <p className="bg-danger p-2">{discountError}</p>}
       </div>
 
       <div className="col-md-6">
@@ -132,12 +148,20 @@ const Checkout = () => {
         {showProductSummary()}
         <hr />
         <p>Cart Total: {USDPrice}</p>
+        <div className="py-[20px]">
+          {totalAfterDiscount > 0 && (
+            <p className="bg-success p-2 py-[20px] text-[#ffff]">
+              Discount Applied: Total Payable: ${totalAfterDiscount}
+            </p>
+          )}
+        </div>
 
         <div className="row">
           <div className="col-md-6">
             <button
               className="btn btn-primary"
               disabled={!addressSaved || !products.length}
+              onClick={() => navigate("/payment")}
             >
               Place Order
             </button>
