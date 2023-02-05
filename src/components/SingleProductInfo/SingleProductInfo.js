@@ -109,7 +109,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
             </RatingModal>,
           ]}
         >
-          <ProductListItems product={product} />
+          {product && <ProductListItems product={product} />}
         </Card>
       </div>
     </>

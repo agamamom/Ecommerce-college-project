@@ -97,10 +97,6 @@ const Header = () => {
               to="/"
               exact
               className="nav-link-border"
-              activeStyle={{
-                fontWeight: "bold",
-                color: "red",
-              }}
               style={{
                 marginRight: "37px",
                 height: "100%",
@@ -112,10 +108,6 @@ const Header = () => {
             </Link>
             <Link
               to="/shop"
-              activeStyle={{
-                fontWeight: "bold",
-                color: "red",
-              }}
               className="nav-link-border"
               style={{
                 marginRight: "37px",
@@ -152,10 +144,6 @@ const Header = () => {
 
             <Link
               to="/pages"
-              activeStyle={{
-                fontWeight: "bold",
-                color: "red",
-              }}
               className="nav-link-border"
               style={{
                 marginRight: "37px",
@@ -191,10 +179,6 @@ const Header = () => {
             </Link>
             <Link
               to="/blog"
-              activeStyle={{
-                fontWeight: "bold",
-                color: "red",
-              }}
               style={{
                 marginRight: "37px",
                 height: "100%",

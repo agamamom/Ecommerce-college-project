@@ -44,7 +44,7 @@ const TopCategories = () => {
               />
             </div>
             <div className="flex justify-center items-center flex-col h-full w-[50%]">
-              <div class="mb-[7px] font-extralight uppercase">
+              <div className="mb-[7px] font-extralight uppercase">
                 Tablets, <br />
                 Smartphones <br />
                 <strong className="font-bold">and more</strong>

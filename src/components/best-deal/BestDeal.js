@@ -44,7 +44,7 @@ const BestDeal = () => {
             <div class="active BestDeal-nav-link active">Best Deals</div>
           </li>
           {categories.map((c) => (
-            <div className="mx-[20px]">
+            <div className="mx-[20px]" key={c._id}>
               <Link to={`/category/${c.slug}`}>{c.name}</Link>
             </div>
           ))}

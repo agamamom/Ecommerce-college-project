@@ -43,6 +43,11 @@ const ProductRelatedCard = ({ product }) => {
         type: "ADD_TO_CART",
         payload: unique,
       });
+      // show cart items in side drawer
+      dispatch({
+        type: "SET_VISIBLE",
+        payload: true,
+      });
     }
   };
 
@@ -84,8 +89,8 @@ const ProductRelatedCard = ({ product }) => {
           </Link>,
           <Tooltip title={tooltip}>
             <a onClick={handleAddToCart}>
-              <ShoppingCartOutlined className="text-danger" /> <br /> Add to
-              Cart
+              <ShoppingCartOutlined className="text-danger" /> <br />
+              {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
             </a>
           </Tooltip>,
         ]}
