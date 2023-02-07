@@ -5,6 +5,7 @@ import {
   emptyUserCart,
   saveUserAddress,
   applyCoupon,
+  createCashOrderForUser,
 } from "../functions/user";
 import ReactQuill from "react-quill";
 import { toast } from "react-toastify";
@@ -22,7 +23,7 @@ const Checkout = () => {
   const [discountError, setDiscountError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => ({ ...state }));
+  const { user, COD } = useSelector((state) => ({ ...state }));
 
   const USDPrice = total.toLocaleString("en-US", {
     style: "currency",
@@ -125,6 +126,13 @@ const Checkout = () => {
     </>
   );
 
+  const createCashOrder = () => {
+    createCashOrderForUser(user.token, COD).then((res) => {
+      console.log("USER CASH ORDER CREATED RES ", res);
+      // empty cart form redux, local Storage, reset coupon, reset COD, redirect
+    });
+  };
+
   return (
     <div className="row">
       <div className="col-md-6">
@@ -158,13 +166,23 @@ const Checkout = () => {
 
         <div className="row">
           <div className="col-md-6">
-            <button
-              className="btn btn-primary"
-              disabled={!addressSaved || !products.length}
-              onClick={() => navigate("/payment")}
-            >
-              Place Order
-            </button>
+            {COD ? (
+              <button
+                className="btn btn-primary"
+                disabled={!addressSaved || !products.length}
+                onClick={createCashOrder}
+              >
+                Place Order
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary"
+                disabled={!addressSaved || !products.length}
+                onClick={() => navigate("/payment")}
+              >
+                Place Order
+              </button>
+            )}
           </div>
 
           <div className="col-md-6">

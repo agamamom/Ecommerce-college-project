@@ -34,6 +34,20 @@ const Cart = () => {
       .catch((err) => console.log("cart save err", err));
   };
 
+  const saveCashOrderToDb = () => {
+    // console.log("cart", JSON.stringify(cart, null, 4));
+    dispatch({
+      type: "COD",
+      payload: true,
+    });
+    userCart(cart, user.token)
+      .then((res) => {
+        console.log("CART POST RES", res);
+        if (res.data.ok) navigate("/checkout");
+      })
+      .catch((err) => console.log("cart save err", err));
+  };
+
   const showCartItems = () => (
     <table className="table border-[1px] border-solid border-[#e5e5e5]">
       <thead className="thead-light border-[1px] border-solid border-[#e5e5e5]">
@@ -146,13 +160,23 @@ const Cart = () => {
                   Shipping, taxes, and discounts will be calculated at checkout.
                 </div>
                 {user ? (
-                  <button
-                    onClick={saveOrderToDb}
-                    className="text-center btn w-full button-slide p-0"
-                    disabled={!cart.length}
-                  >
-                    <div className="button">Proceed to Checkout</div>
-                  </button>
+                  <>
+                    <button
+                      onClick={saveOrderToDb}
+                      className="text-center btn w-full button-slide p-0"
+                      disabled={!cart.length}
+                    >
+                      <div className="button">Proceed to Checkout</div>
+                    </button>
+                    <div className="h-[10px]"></div>
+                    <button
+                      onClick={saveCashOrderToDb}
+                      className="text-center btn w-full button-slide p-0"
+                      disabled={!cart.length}
+                    >
+                      <div className="button"> Pay Cash on Delivery</div>
+                    </button>
+                  </>
                 ) : (
                   <button className="btn btn-sm btn-primary mt-2">
                     <Link
