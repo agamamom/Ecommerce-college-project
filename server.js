@@ -9,9 +9,11 @@ const { readdirSync } = require("fs");
 // app
 const app = express();
 
+const URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@testmobile.yhuhru2.mongodb.net/test`;
+
 // db
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect(URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

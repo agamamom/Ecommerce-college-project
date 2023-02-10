@@ -12,6 +12,7 @@ const {
   read,
   update,
   list,
+  productsByCategoryCount,
   productsCount,
   productStar,
   listRelated,
@@ -24,7 +25,12 @@ const {
 
 // routes
 router.post("/product", authCheck, adminCheck, create);
+
+// get all product of count
 router.get("/products/total", productsCount);
+// get count by each Category type
+router.get("/products/totalByCategory/:slug", productsByCategoryCount);
+
 router.get("/products/:count", listAll);
 router.delete("/product/:slug", authCheck, adminCheck, remove);
 router.get("/product/:slug", read);
