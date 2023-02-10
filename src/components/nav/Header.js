@@ -92,7 +92,11 @@ const Header = () => {
                 <HiOutlineBars3 className="text-[22px] mr-[15px]" />
               </div>
             </Link>
-            <img src="/images/logo.png" alt="asd" className="mr-[32px]" />
+            <Link to="/">
+              {" "}
+              <img src="/images/logo.png" alt="asd" className="mr-[32px]" />
+            </Link>
+
             <Link
               to="/"
               exact

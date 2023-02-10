@@ -26,25 +26,28 @@ const Wishlist = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-2">
+      <div className="flex">
+        <div className="w-[300px] fixed text-[20px] admin-nav">
           <UserNav />
         </div>
-        <div className="col">
-          <h4>Wishlist</h4>
-
-          {wishlist.map((p) => (
-            <div key={p._id} className="alert alert-secondary">
-              <Link to={`/product/${p.slug}`}>{p.title}</Link>
-              <span
-                onClick={() => handleRemove(p._id)}
-                className="btn btn-sm float-right"
-              >
-                <DeleteOutlined className="text-danger" />
-              </span>
+        <main class="main-wrap">
+          <section class="content-main">
+            <div class="content-header">
+              <h4>Wishlist</h4>
+              {wishlist.map((p) => (
+                <div key={p._id} className="alert alert-secondary">
+                  <Link to={`/product/${p.slug}`}>{p.title}</Link>
+                  <span
+                    onClick={() => handleRemove(p._id)}
+                    className="btn btn-sm float-right"
+                  >
+                    <DeleteOutlined className="text-danger" />
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </section>
+        </main>
       </div>
     </div>
   );

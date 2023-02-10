@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Pagination } from "antd";
-import { getProducts, getProductsCount } from "../../functions/product";
+import {
+  getProducts,
+  getCategoryProductByCount,
+} from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
 import ProductSO from "../product-specialOffer/ProductSO";
 
@@ -15,17 +18,17 @@ const GridView = ({ slug }) => {
   }, [page, slug]);
 
   useEffect(() => {
-    getProductsCount().then((res) => setProductsCount(res.data));
+    getCategoryProductByCount(slug).then((res) => setProductsCount(res.data));
   }, []);
 
   const as = (productsCount / 3) * 10;
+  console.log("productsCount", productsCount);
 
   const loadAllProducts = () => {
     setLoading(true);
     // sort, order, limit
     getProducts("createdAt", "desc", page, slug).then((res) => {
       setProducts(res.data);
-      console.log("products", products);
       setLoading(false);
     });
   };
@@ -35,7 +38,7 @@ const GridView = ({ slug }) => {
       <div
         className={`container ${
           products.length > 6 ? "min-h-[1450px]" : "h-0"
-        } ${products.length < 3 ? "min-h-[530px]" : "h-[0]"}`}
+        } ${products.length < 4 ? "min-h-[930px]" : "h-[0]"}`}
       >
         {loading ? (
           <LoadingCard count={3} />
@@ -54,7 +57,7 @@ const GridView = ({ slug }) => {
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             current={page}
-            total={Math.round(as)}
+            total={productsCount}
             onChange={(value) => setPage(value)}
           />
         </nav>

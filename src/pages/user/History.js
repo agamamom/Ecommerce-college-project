@@ -81,16 +81,22 @@ const History = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-2">
+      <div className="flex">
+        <div className="w-[300px] fixed text-[20px] admin-nav">
           <UserNav />
         </div>
-        <div className="col text-center">
-          <h4>
-            {orders.length > 0 ? "User purchase orders" : "No purchase orders"}
-          </h4>
-          {showEachOrders()}
-        </div>
+        <main class="main-wrap">
+          <section class="content-main">
+            <div class="content-header">
+              <h4>
+                {orders.length > 0
+                  ? "User purchase orders"
+                  : "No purchase orders"}
+              </h4>
+              {showEachOrders()}
+            </div>
+          </section>
+        </main>
       </div>
     </div>
   );

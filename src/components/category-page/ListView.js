@@ -33,8 +33,8 @@ const ListView = ({ slug }) => {
     <div className="">
       <div
         className={`container ${
-          products.length > 6 ? "min-h-[2200px]" : "h-0"
-        } ${products.length < 3 ? "min-h-[270px]" : "h-[0]"}`}
+          products.length > 6 ? "min-h-[2500px]" : "h-0"
+        } ${products.length < 4 ? "min-h-[1270px]" : "h-[0]"}`}
       >
         {loading ? (
           <LoadingCard count={3} />
@@ -56,7 +56,7 @@ const ListView = ({ slug }) => {
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             current={page}
-            total={Math.round(as)}
+            total={productsCount}
             onChange={(value) => setPage(value)}
           />
         </nav>

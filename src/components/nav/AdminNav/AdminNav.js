@@ -7,51 +7,6 @@ import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import { AiOutlineBars } from "react-icons/ai";
 
 const AdminNav = () => {
-  // <nav className="w-[300px]">
-  //   <ul classNameNameName="nav flex-column">
-  //     <li classNameNameName="nav-item">
-  //       <Link to="/admin/dashboard" classNameNameName="nav-link">
-  //         Dashboard
-  //       </Link>
-  //     </li>
-
-  //     <li classNameNameName="nav-item">
-  //       <Link to="/admin/product" classNameNameName="nav-link">
-  //         Product
-  //       </Link>
-  //     </li>
-
-  //     <li classNameNameName="nav-item">
-  //       <Link to="/admin/products" classNameNameName="nav-link">
-  //         Products
-  //       </Link>
-  //     </li>
-
-  //     <li classNameNameName="nav-item">
-  //       <Link to="/admin/category" classNameNameName="nav-link">
-  //         Category
-  //       </Link>
-  //     </li>
-
-  //     <li classNameNameName="nav-item">
-  //       <Link to="/admin/sub" classNameNameName="nav-link">
-  //         Sub Category
-  //       </Link>
-  //     </li>
-
-  //     <li classNameNameName="nav-item">
-  //       <Link to="/admin/coupon" classNameNameName="nav-link">
-  //         Coupon
-  //       </Link>
-  //     </li>
-
-  //     <li classNameNameName="nav-item">
-  //       <Link to="/user/password" classNameNameName="nav-link">
-  //         Password
-  //       </Link>
-  //     </li>
-  //   </ul>
-  // </nav>
   const navigate = useNavigate();
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -82,16 +37,16 @@ const AdminNav = () => {
               title: "Product",
               itemId: "/admin/product",
 
-              subNav: [
-                {
-                  title: "Projects",
-                  itemId: "/management/projects",
-                },
-                {
-                  title: "Members",
-                  itemId: "/management/members",
-                },
-              ],
+              // subNav: [
+              //   {
+              //     title: "Projects",
+              //     itemId: "/management/projects",
+              //   },
+              //   {
+              //     title: "Members",
+              //     itemId: "/management/members",
+              //   },
+              // ],
             },
             {
               title: "Products",

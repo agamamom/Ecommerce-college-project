@@ -43,7 +43,7 @@ const ProductCreateForm = ({
 
       <div className="form-group">
         <label>Description</label>
-        <input
+        <textarea
           type="text"
           name="description"
           className="form-control"

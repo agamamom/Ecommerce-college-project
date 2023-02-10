@@ -146,7 +146,7 @@ const CategoryCreate = () => {
                               <td>
                                 <b>{c.name}</b>
                               </td>
-                              <td>Fashions for Women</td>
+                              <td>Have a lot of new products</td>
                               <td>
                                 <div className="row">
                                   <div className="col">

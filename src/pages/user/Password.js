@@ -28,7 +28,7 @@ const Password = () => {
   const passwordUpdateForm = () => (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
-        <label>Your Password</label>
+        <label className="mt-[30px] mb-[10px]">Your new Password</label>
         <input
           type="password"
           onChange={(e) => setPassword(e.target.value)}
@@ -38,7 +38,7 @@ const Password = () => {
           value={password}
         />
         <button
-          className="btn btn-primary"
+          className="btn btn-primary mt-[10px]"
           disabled={!password || password.length < 6 || loading}
         >
           Submit
@@ -49,18 +49,24 @@ const Password = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-2">
+      <div className="flex">
+        <div className="w-[300px] fixed text-[20px] admin-nav">
           <UserNav />
         </div>
-        <div className="col">
-          {loading ? (
-            <h4 className="text-danger">Loading..</h4>
-          ) : (
-            <h4>Password Update</h4>
-          )}
-          {passwordUpdateForm()}
-        </div>
+        <main class="main-wrap">
+          <section class="content-main">
+            <div class="content-header">
+              <div>
+                {loading ? (
+                  <h4 className="text-danger">Loading..</h4>
+                ) : (
+                  <h4>Password Update</h4>
+                )}
+                {passwordUpdateForm()}
+              </div>
+            </div>
+          </section>
+        </main>
       </div>
     </div>
   );
