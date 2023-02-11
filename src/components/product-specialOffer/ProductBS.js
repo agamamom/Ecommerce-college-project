@@ -58,7 +58,7 @@ const ProductBS = ({
         {/* RIght */}
         <div className="">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
-            <a href="#" rel="tag" className="text-[#768b9e]">
+            <a href="#" rel="tag" className="text-[#768b9e] whitespace-nowrap">
               {categories}
             </a>
           </span>

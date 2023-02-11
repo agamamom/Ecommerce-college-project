@@ -4,7 +4,7 @@ import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
-import { getProductsByPage } from "../../functions/product";
+import { getProductsByPage, getRandomProducts } from "../../functions/product";
 import LoadingBestDealCard from "../cards/LoadingBestDealCard";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../functions/category";
@@ -30,7 +30,11 @@ const BestDeal = () => {
   const loadAllProducts = () => {
     setLoading(true);
     // sort, order, limit
-    getProductsByPage("sold", "desc", 7).then((res) => {
+    // getProductsByPage("sold", "desc", 7).then((res) => {
+    //   setProducts(res.data);
+    //   setLoading(false);
+    // });
+    getRandomProducts().then((res) => {
       setProducts(res.data);
       setLoading(false);
     });
@@ -116,7 +120,7 @@ const BestDeal = () => {
               </div>
 
               <div className="">
-                <div className="mb-[7px] clear-both relative flex justify-between items-center h-[36px]">
+                <div className="mb-[20px] mt-[20px] clear-both relative flex justify-between items-center h-[36px]">
                   <span className="text-[20px] relative">$99.00</span>
                   <div className="p-[9px] w-[120px] cart-icon-container rounded-[40px]">
                     <p
@@ -134,7 +138,7 @@ const BestDeal = () => {
                   </div>
                 </div>
                 <div className="hover-area">
-                  <div className="flex-wrap w-full text-[13px] leading-[18px] flex justify-around items-center pt-[7.5px]">
+                  <div className="flex-wrap w-full text-[13px] leading-[18px] flex justify-around items-center mt-[40px]">
                     <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
                       <CiHeart className="mr-[3px] text-[18px]" />
                       <span>Wishlist</span>

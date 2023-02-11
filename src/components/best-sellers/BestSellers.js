@@ -82,9 +82,9 @@ const BestSellers = () => {
           >
             <AntTabTitle label="Best Sellers" {...a11yProps(0)} disabled />
             <AntTabTop20 label="Top 8" {...a11yProps(1)} disabled />
-            <AntTab label="Smart Phones & Tablets" {...a11yProps(2)} />
+            <AntTab label="Televisions & Monitor" {...a11yProps(2)} />
             {/* <Tab label="Smart Phones & Tablets"  /> */}
-            <AntTab label="Laptops & Computers" {...a11yProps(3)} />
+            <AntTab label="Networking & Laptops" {...a11yProps(3)} />
             <AntTab label="Video Cameras" {...a11yProps(4)} />
           </Tabs>
         </Box>

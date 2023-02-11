@@ -67,7 +67,7 @@ const SpecialOffer = () => {
               <a href="#" className="text-[#333e48] no-underline">
                 <div className="mb-[1.714em]">
                   <img
-                    src="/images/special-offer/xbox.png"
+                    src="/images/special-offer/game1-300x300.png"
                     width="300"
                     height="300"
                     className="max-w-full mx-auto my-auto"
@@ -92,6 +92,11 @@ const SpecialOffer = () => {
             <img
               src="https://electro.madrasthemes.com/wp-content/uploads/2019/04/two-banner-02.jpg"
               alt=""
+            />
+            <img
+              src="/images/special-offer/payment.jpg"
+              alt=""
+              className="mt-[10px]"
             />
           </div>
         </div>
@@ -127,12 +132,6 @@ const SpecialOffer = () => {
                   )}
                 </div>
               </div>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              Item Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              Item Three
             </TabPanel>
           </div>
         </div>

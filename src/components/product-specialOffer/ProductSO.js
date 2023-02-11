@@ -61,8 +61,8 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
       <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
         <div className="relative">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
-            <div rel="tag" className="text-[#768b9e]">
-              {result}
+            <div rel="tag" className="text-[#768b9e] whitespace-nowrap">
+              {result.substring(0, 25)}
             </div>
           </span>
           <Link to={`/product/${product.slug}`} class="block">
