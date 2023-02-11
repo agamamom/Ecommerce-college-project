@@ -21,6 +21,7 @@ const {
   searchFilters,
   listByPage,
   listAllInShop,
+  getRandomProducts,
 } = require("../controllers/product");
 
 // routes
@@ -39,7 +40,8 @@ router.post("/products", list);
 router.post("/products/shop", listAllInShop);
 router.post("/products/:slug", listByPage);
 
-listAllInShop;
+//get random products
+router.post("/product/random", getRandomProducts);
 
 // rating
 router.put("/product/star/:productId", authCheck, productStar);

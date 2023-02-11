@@ -154,6 +154,71 @@ exports.listAllInShop = async (req, res) => {
   }
 };
 
+// GET RANDOM PRODUCT
+exports.getRandomProducts = async (req, res) => {
+  try {
+    const products = await Product.aggregate([
+      { $sample: { size: 12 } },
+    ]).exec();
+
+    console.log("products", products);
+
+    res.json(products);
+  } catch (e) {
+    console.log(err);
+  }
+};
+
+exports.getRandomTelevisionAndMonitor = async (req, res) => {
+  try {
+    const categories = await Category.find({ name: ["Monitor", "Television"] });
+    const products = await Product.aggregate([
+      { $match: { category: { $in: [categories[0]._id, categories[1]._id] } } },
+      { $sample: { size: 8 } },
+    ]).exec();
+
+    console.log("products", products);
+
+    res.json(products);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+exports.getRandomNetworkingAndLaptop = async (req, res) => {
+  try {
+    const categories = await Category.find({ name: ["Networking", "Laptop"] });
+    const products = await Product.aggregate([
+      { $match: { category: { $in: [categories[0]._id, categories[1]._id] } } },
+      { $sample: { size: 8 } },
+    ]).exec();
+
+    console.log("products", products);
+
+    res.json(products);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+exports.getRandomDigitalCameraAndGPS = async (req, res) => {
+  try {
+    const categories = await Category.find({
+      name: ["Digital Camera", "GPS Tracker"],
+    });
+    const products = await Product.aggregate([
+      { $match: { category: { $in: [categories[0]._id, categories[1]._id] } } },
+      { $sample: { size: 8 } },
+    ]).exec();
+
+    console.log("products", products);
+
+    res.json(products);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 exports.productsByCategoryCount = async (req, res) => {
   try {
     const slug = req.params.slug;
