@@ -24,6 +24,15 @@ export const getProduct = async (slug) =>
 export const getRandomProducts = async () =>
   await axios.post(`${process.env.REACT_APP_API}/product/random`);
 
+export const getRandomTelevisionAndMonitor = async () =>
+  await axios.post(`${process.env.REACT_APP_API}/product/random/TeleAndMoni`);
+
+export const getRandomNetworkingAndLaptop = async () =>
+  await axios.post(`${process.env.REACT_APP_API}/product/random/NetAndLap`);
+
+export const getRandomDigitalCameraAndGPS = async () =>
+  await axios.post(`${process.env.REACT_APP_API}/product/random/DigitalAndGPS`);
+
 export const updateProduct = async (slug, product, authtoken) =>
   await axios.put(`${process.env.REACT_APP_API}/product/${slug}`, product, {
     headers: {

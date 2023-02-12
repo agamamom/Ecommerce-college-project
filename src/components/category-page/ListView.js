@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Pagination } from "antd";
 import { getProducts, getProductsCount } from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
@@ -17,7 +17,12 @@ const ListView = ({ slug }) => {
     getProductsCount().then((res) => setProductsCount(res.data));
   }, []);
 
-  const as = (productsCount / 3) * 10;
+  const ref = useRef(null);
+
+  const handleClick = (value) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+    setPage(value);
+  };
 
   const loadAllProducts = () => {
     setLoading(true);
@@ -32,9 +37,10 @@ const ListView = ({ slug }) => {
   return (
     <div className="">
       <div
+        ref={ref}
         className={`container ${
           products.length > 6 ? "min-h-[2500px]" : "h-0"
-        } ${products.length < 4 ? "min-h-[1270px]" : "h-[0]"}`}
+        } ${products.length < 5 ? "min-h-[1270px]" : "h-[0]"}`}
       >
         {loading ? (
           <LoadingCard count={3} />
@@ -57,7 +63,8 @@ const ListView = ({ slug }) => {
           <Pagination
             current={page}
             total={productsCount}
-            onChange={(value) => setPage(value)}
+            onChange={(value) => handleClick(value)}
+            onShowSizeChange={(value) => handleClick(value)}
           />
         </nav>
       </div>

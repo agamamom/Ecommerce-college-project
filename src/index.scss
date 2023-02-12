@@ -621,3 +621,13 @@ table.table thead.thead-light tr th {
     }
   }
 }
+.ant-pagination {
+  & .ant-pagination-prev {
+    display: none;
+  }
+  & .ant-pagination-next {
+    .ant-pagination-item-link {
+      display: none;
+    }
+  }
+}

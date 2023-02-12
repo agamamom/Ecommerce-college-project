@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -8,11 +8,12 @@ import ProductBS from "../product-specialOffer/ProductBS";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Autoplay } from "swiper";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
-import ReactTooltip from "react-tooltip";
-import { IoIosGitCompare } from "react-icons/io";
-import { CiHeart } from "react-icons/ci";
+import LoadingCard from "../cards/LoadingCard";
+import {
+  getRandomTelevisionAndMonitor,
+  getRandomNetworkingAndLaptop,
+  getRandomDigitalCameraAndGPS,
+} from "../../functions/product";
 
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
@@ -66,6 +67,23 @@ function a11yProps(index) {
 
 const BestSellers = () => {
   const [value, setValue] = React.useState(2);
+  const [teleAndMoniProducts, setTeleAndMoniProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    loadAllProducts();
+  }, []);
+
+  const loadAllProducts = () => {
+    setLoading(true);
+    // sort, order, limit
+    getRandomTelevisionAndMonitor().then((res) => {
+      setTeleAndMoniProducts(res.data);
+      setLoading(false);
+    });
+  };
+
+  console.log("setTeleAndMoniProducts", teleAndMoniProducts);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -91,64 +109,21 @@ const BestSellers = () => {
         <TabPanel value={value} index={2}>
           <Swiper slidesPerView={1} spaceBetween={30} className="mySwiper">
             <SwiperSlide>
-              <div className="grid grid-cols-4">
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-                <ProductBS
-                  categories="Audio Speakers"
-                  name="Wireless Audio System Multiroom 360"
-                  pic="https://electro.madrasthemes.com/wp-content/uploads/2016/03/WirelessSound-300x300.png"
-                  price="$2,299.00"
-                  productBorderRight="product"
-                />
-              </div>
+              {loading ? (
+                <LoadingCard count={8} />
+              ) : (
+                <div className="grid grid-cols-4">
+                  {teleAndMoniProducts &&
+                    teleAndMoniProducts.map((product) => (
+                      <div key={product._id}>
+                        <ProductBS
+                          productBorderRight="product"
+                          product={product}
+                        />
+                      </div>
+                    ))}
+                </div>
+              )}
             </SwiperSlide>
           </Swiper>
         </TabPanel>
