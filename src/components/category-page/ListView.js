@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Pagination } from "antd";
-import { getProducts, getProductsCount } from "../../functions/product";
+import {
+  getProducts,
+  getCategoryProductByCount,
+} from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
 import ProductsListView from "../product-specialOffer/ProductsListView";
 
@@ -9,12 +12,13 @@ const ListView = ({ slug }) => {
   const [loading, setLoading] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
+  console.log("slug----------=====-----==", slug);
   useEffect(() => {
     loadAllProducts();
   }, [page, slug]);
 
   useEffect(() => {
-    getProductsCount().then((res) => setProductsCount(res.data));
+    getCategoryProductByCount(slug).then((res) => setProductsCount(res.data));
   }, []);
 
   const ref = useRef(null);

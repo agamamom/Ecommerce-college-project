@@ -231,7 +231,10 @@ const SidebarShopFilter = ({
                 </div>
               }
             >
-              <div style={{ maringTop: "-10px" }} className="pr-10 py-[10px]">
+              <div
+                style={{ maringTop: "-10px" }}
+                className="pr-[42px] py-[10px]"
+              >
                 {withoutDuplicates.map((b, index) => (
                   <Radio
                     value={b}

@@ -13,7 +13,7 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
   const dispatch = useDispatch();
   if (product) {
     product.subs.map((proSubs) => {
-      return arrSubs.push(proSubs["name"]), console.log("arrSubs", proSubs);
+      return arrSubs.push(proSubs["name"]);
     });
   }
   const result = arrSubs.join(", ");

@@ -20,7 +20,7 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     textTransform: "none",
   })
 );
-// div className="mr-[44px] text-[22px] font-normal flex-shrink-0 leading-[35px] pb-[8.8px] relative BestSellers-nav-link active"
+
 const AntTabTitle = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
     textTransform: "none",
@@ -29,9 +29,7 @@ const AntTabTitle = styled((props) => <Tab disableRipple {...props} />)(
     lineHeight: 35,
   })
 );
-{
-  /* <div className="border-[2px] border-[#fed400] rounded-[20px] px-[16px] py-[2px] text-[16px] font-semibold"></div> */
-}
+
 const AntTabTop20 = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
     textTransform: "none",
@@ -68,6 +66,9 @@ function a11yProps(index) {
 const BestSellers = () => {
   const [value, setValue] = React.useState(2);
   const [teleAndMoniProducts, setTeleAndMoniProducts] = useState([]);
+  const [networkingAndLaptopProducts, setNetworkingAndLaptopProducts] =
+    useState([]);
+  const [cameraAndGPSProducts, setCameraAndGPSProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -79,6 +80,14 @@ const BestSellers = () => {
     // sort, order, limit
     getRandomTelevisionAndMonitor().then((res) => {
       setTeleAndMoniProducts(res.data);
+      setLoading(false);
+    });
+    getRandomNetworkingAndLaptop().then((res) => {
+      setNetworkingAndLaptopProducts(res.data);
+      setLoading(false);
+    });
+    getRandomDigitalCameraAndGPS().then((res) => {
+      setCameraAndGPSProducts(res.data);
       setLoading(false);
     });
   };
@@ -128,10 +137,46 @@ const BestSellers = () => {
           </Swiper>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <SwiperSlide>Slide 2</SwiperSlide>
+          <Swiper slidesPerView={1} spaceBetween={30} className="mySwiper">
+            <SwiperSlide>
+              {loading ? (
+                <LoadingCard count={8} />
+              ) : (
+                <div className="grid grid-cols-4">
+                  {networkingAndLaptopProducts &&
+                    networkingAndLaptopProducts.map((product) => (
+                      <div key={product._id}>
+                        <ProductBS
+                          productBorderRight="product"
+                          product={product}
+                        />
+                      </div>
+                    ))}
+                </div>
+              )}
+            </SwiperSlide>
+          </Swiper>
         </TabPanel>
         <TabPanel value={value} index={4}>
-          <SwiperSlide>Slide 3</SwiperSlide>
+          <Swiper slidesPerView={1} spaceBetween={30} className="mySwiper">
+            <SwiperSlide>
+              {loading ? (
+                <LoadingCard count={8} />
+              ) : (
+                <div className="grid grid-cols-4">
+                  {cameraAndGPSProducts &&
+                    cameraAndGPSProducts.map((product) => (
+                      <div key={product._id}>
+                        <ProductBS
+                          productBorderRight="product"
+                          product={product}
+                        />
+                      </div>
+                    ))}
+                </div>
+              )}
+            </SwiperSlide>
+          </Swiper>
         </TabPanel>
       </div>
       <div className="mb-[39px] mt-[50px]">

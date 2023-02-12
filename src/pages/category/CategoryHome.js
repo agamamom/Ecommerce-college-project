@@ -8,6 +8,7 @@ import BreadcrumbComponent from "../../components/breadcrumb/Breadcrumb";
 
 const CategoryHome = () => {
   const { slug } = useParams();
+
   const slugToString = JSON.stringify(slug);
 
   const [category, setCategory] = useState({});
@@ -19,7 +20,7 @@ const CategoryHome = () => {
     getCategory(slug).then((c) => {
       setCategory(c.data.products);
     });
-  }, []);
+  }, [slug]);
 
   const breadCrumb = () => {
     return (
