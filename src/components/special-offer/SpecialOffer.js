@@ -51,6 +51,7 @@ const SpecialOffer = () => {
       setLoading(false);
     });
   };
+  console.log("product+++++++++++++++++", products);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

@@ -12,7 +12,7 @@ const ListView = ({ slug }) => {
   const [loading, setLoading] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
-  console.log("slug----------=====-----==", slug);
+
   useEffect(() => {
     loadAllProducts();
   }, [page, slug]);

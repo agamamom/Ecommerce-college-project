@@ -5,7 +5,6 @@ import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 import { getProductsByPage, getRandomProducts } from "../../functions/product";
-import LoadingBestDealCard from "../cards/LoadingBestDealCard";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../functions/category";
 
@@ -14,6 +13,8 @@ const BestDeal = () => {
   const [loading, setLoading] = useState(false);
   const [loadingTitle, setLoadingTitle] = useState(false);
   const [categories, setCategories] = useState([]);
+
+  console.log("product______------------", products);
 
   useEffect(() => {
     loadAllProducts();
@@ -29,11 +30,6 @@ const BestDeal = () => {
 
   const loadAllProducts = () => {
     setLoading(true);
-    // sort, order, limit
-    // getProductsByPage("sold", "desc", 7).then((res) => {
-    //   setProducts(res.data);
-    //   setLoading(false);
-    // });
     getRandomProducts().then((res) => {
       setProducts(res.data);
       setLoading(false);

@@ -371,7 +371,7 @@ const Header = () => {
                     )}
 
                     <Link
-                      to="/wishlist"
+                      to="/user/wishlist"
                       className="py-[6px] pl-[10px]"
                       onClick={(e) => handleClickAccount(e)}
                       onmousedown={(e) => handleOnBlur(e)}
