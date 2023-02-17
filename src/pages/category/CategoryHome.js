@@ -5,6 +5,7 @@ import Sidebar from "../../components/category-page/Sidebar";
 import ListProductType from "../../components/category-page/ListProductType";
 import { Breadcrumb } from "antd";
 import BreadcrumbComponent from "../../components/breadcrumb/Breadcrumb";
+import ScrollToTop from "react-scroll-to-top";
 
 const CategoryHome = () => {
   const { slug } = useParams();
@@ -20,6 +21,7 @@ const CategoryHome = () => {
     getCategory(slug).then((c) => {
       setCategory(c.data.products);
     });
+    window.scrollTo(0, 0);
   }, [slug]);
 
   const breadCrumb = () => {
@@ -51,6 +53,7 @@ const CategoryHome = () => {
           </div>
         </div>
       </div>
+      <ScrollToTop smooth />
     </div>
   );
 };

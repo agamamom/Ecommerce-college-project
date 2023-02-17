@@ -9,6 +9,7 @@ import { SlBag } from "react-icons/sl";
 import { BsPiggyBank } from "react-icons/bs";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { userCart } from "../functions/user";
+import ScrollToTop from "react-scroll-to-top";
 
 const Cart = () => {
   const { cart, user } = useSelector((state) => ({ ...state }));
@@ -35,7 +36,6 @@ const Cart = () => {
   };
 
   const saveCashOrderToDb = () => {
-    // console.log("cart", JSON.stringify(cart, null, 4));
     dispatch({
       type: "COD",
       payload: true,
@@ -231,6 +231,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
+      <ScrollToTop smooth />
     </div>
   );
 };

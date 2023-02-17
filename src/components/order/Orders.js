@@ -42,13 +42,18 @@ const Orders = ({ orders, handleStatusChange }) => {
   return (
     <>
       {orders.map((order) => (
-        <div key={order._id} className="row pb-5">
+        <div
+          key={order._id}
+          className="row pb-5 border-b-[3px] border-[#0000005a] mb-[20px] border-dashed"
+        >
           <div className="btn btn-block bg-light">
             <ShowPaymentInfo order={order} showStatus={false} />
 
             <div className="row">
-              <div className="col-md-4">Delivery Status</div>
-              <div className="col-md-8">
+              <div className="col-md-2 flex items-center font-bold">
+                Delivery Status:
+              </div>
+              <div className="col-md-3">
                 <select
                   onChange={(e) =>
                     handleStatusChange(order._id, e.target.value)

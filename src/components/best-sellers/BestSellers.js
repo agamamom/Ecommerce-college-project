@@ -92,8 +92,6 @@ const BestSellers = () => {
     });
   };
 
-  console.log("setTeleAndMoniProducts", teleAndMoniProducts);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

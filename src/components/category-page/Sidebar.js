@@ -14,7 +14,6 @@ const Sidebar = () => {
       setBrands(c.data);
     });
   }, []);
-  console.log("categories", categories);
 
   return (
     <>

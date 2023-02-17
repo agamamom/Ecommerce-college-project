@@ -101,10 +101,13 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
           </div>
           <div className="hover-area">
             <div className="flex-wrap w-full text-[13px] leading-[18px] flex justify-around items-center pt-[7.5px]">
-              <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
+              <Link
+                to={`/product/${product.slug}`}
+                className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black"
+              >
                 <CiHeart className="mr-[3px] text-[18px]" />
                 <span>Wishlist</span>
-              </div>
+              </Link>
               <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
                 <IoIosGitCompare className="mr-[3px] text-[18px]" />
                 <span>Compare</span>

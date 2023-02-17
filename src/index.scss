@@ -631,3 +631,28 @@ table.table thead.thead-light tr th {
     }
   }
 }
+
+button.scroll-to-top {
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 20px;
+  svg {
+    width: 22px;
+  }
+}
+
+.product-thumbnail-quantity {
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 10%) inset;
+  }
+}

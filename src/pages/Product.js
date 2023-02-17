@@ -8,6 +8,7 @@ import ProductRelatedCard from "../components/cards/ProductRelatedCard";
 import Brand from "../components/brand/Brand";
 import Newletter from "../components/newletter/Newletter";
 import Footer from "../components/footer/Footer";
+import ScrollToTop from "react-scroll-to-top";
 const Product = () => {
   let { slug } = useParams();
   const [star, setStar] = useState(0);
@@ -41,7 +42,7 @@ const Product = () => {
     setStar(newRating);
     console.table(newRating, name);
     productStar(name, newRating, user.token).then((res) => {
-      loadSingleProduct(); // if you want to show updated rating in real time
+      loadSingleProduct();
     });
   };
 
@@ -77,6 +78,7 @@ const Product = () => {
       <Brand />
       <Newletter />
       <Footer />
+      <ScrollToTop smooth />
     </div>
   );
 };

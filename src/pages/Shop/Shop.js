@@ -9,6 +9,7 @@ import {
 import ProductSO from "../../components/product-specialOffer/ProductSO";
 import { Breadcrumb } from "antd";
 import BreadcrumbComponent from "../../components/breadcrumb/Breadcrumb";
+import ScrollToTop from "react-scroll-to-top";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -120,6 +121,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <ScrollToTop smooth />
     </div>
   );
 };

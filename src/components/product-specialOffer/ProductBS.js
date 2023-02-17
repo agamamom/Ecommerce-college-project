@@ -5,6 +5,7 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 const ProductBS = ({ product, productBorderRight, productBorder }) => {
   const arrSubs = [];
@@ -69,7 +70,7 @@ const ProductBS = ({ product, productBorderRight, productBorder }) => {
                 width="300"
                 height="170"
                 src={product.images && product.images[2].url}
-                class="max-w-[65%] max-h-[100%] w-auto h-auto m-auto align-middle"
+                class="w-[100px] h-[100px] m-auto align-middle"
                 alt=""
                 loading="lazy"
               />
@@ -80,7 +81,7 @@ const ProductBS = ({ product, productBorderRight, productBorder }) => {
         {/* LEFT */}
 
         {/* RIght */}
-        <div className="">
+        <div className="min-w-[180px]">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
             <a href="#" rel="tag" className="text-[#768b9e] whitespace-nowrap">
               {result.substring(0, 25)}
@@ -109,10 +110,13 @@ const ProductBS = ({ product, productBorderRight, productBorder }) => {
           </div>
           <div className="hover-area">
             <div className="flex-wrap w-full text-[13px] leading-[18px] flex justify-around items-center pt-[7.5px]">
-              <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
+              <Link
+                to={`/product/${product.slug}`}
+                className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black"
+              >
                 <CiHeart className="mr-[3px] text-[18px]" />
                 <span>Wishlist</span>
-              </div>
+              </Link>
               <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
                 <IoIosGitCompare className="mr-[3px] text-[18px]" />
                 <span>Compare</span>

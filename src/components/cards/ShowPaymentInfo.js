@@ -2,7 +2,7 @@ import React from "react";
 
 const ShowPaymentInfo = ({ order }) => (
   <div>
-    <p>
+    <p className="whitespace-normal text-left">
       <span>Order Id: {order.paymentIntent.id}</span>
       {" / "}
       <span>
