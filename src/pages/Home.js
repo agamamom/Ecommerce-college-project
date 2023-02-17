@@ -7,6 +7,7 @@ import Footer from "../components/footer/Footer";
 import Newletter from "../components/newletter/Newletter";
 import SpecialOffer from "../components/special-offer/SpecialOffer";
 import TopCategories from "../components/top-categories/TopCategories";
+import ScrollToTop from "react-scroll-to-top";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Brand />
       <Newletter />
       <Footer />
+      <ScrollToTop smooth />
     </div>
   );
 };

@@ -5,7 +5,6 @@ import SingleProduct from "../components/SingleProductInfo/SingleProductInfo";
 import { useSelector } from "react-redux";
 import { getRelated } from "../functions/product";
 import ProductRelatedCard from "../components/cards/ProductRelatedCard";
-import { useStateValue } from "../StateProvider";
 import Brand from "../components/brand/Brand";
 import Newletter from "../components/newletter/Newletter";
 import Footer from "../components/footer/Footer";
@@ -35,7 +34,8 @@ const Product = () => {
       );
       existingRatingObject && setStar(existingRatingObject.star); // current user's star
     }
-  });
+    window.scrollTo(0, 0);
+  }, []);
 
   const onStarClick = (newRating, name) => {
     setStar(newRating);

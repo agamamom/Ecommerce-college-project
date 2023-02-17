@@ -14,8 +14,6 @@ const BestDeal = () => {
   const [loadingTitle, setLoadingTitle] = useState(false);
   const [categories, setCategories] = useState([]);
 
-  console.log("product______------------", products);
-
   useEffect(() => {
     loadAllProducts();
   }, []);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Tooltip } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import laptop from "../../images/laptop.png";
@@ -16,6 +16,11 @@ const ProductRelatedCard = ({ product }) => {
 
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
+  const { images, title, description, slug } = product;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   const handleAddToCart = () => {
     // create cart array
@@ -51,7 +56,6 @@ const ProductRelatedCard = ({ product }) => {
     }
   };
 
-  const { images, title, description, slug } = product;
   return (
     <>
       <div className="py-[18px] flex justify-center">
