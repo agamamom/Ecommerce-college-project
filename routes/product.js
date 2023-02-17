@@ -22,6 +22,9 @@ const {
   listByPage,
   listAllInShop,
   getRandomProducts,
+  getRandomTelevisionAndMonitor,
+  getRandomNetworkingAndLaptop,
+  getRandomDigitalCameraAndGPS,
 } = require("../controllers/product");
 
 // routes
@@ -42,6 +45,9 @@ router.post("/products/:slug", listByPage);
 
 //get random products
 router.post("/product/random", getRandomProducts);
+router.post("/product/random/TeleAndMoni", getRandomTelevisionAndMonitor);
+router.post("/product/random/NetAndLap", getRandomNetworkingAndLaptop);
+router.post("/product/random/DigitalAndGPS", getRandomDigitalCameraAndGPS);
 
 // rating
 router.put("/product/star/:productId", authCheck, productStar);

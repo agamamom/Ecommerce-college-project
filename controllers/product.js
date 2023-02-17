@@ -157,13 +157,18 @@ exports.listAllInShop = async (req, res) => {
 // GET RANDOM PRODUCT
 exports.getRandomProducts = async (req, res) => {
   try {
-    const products = await Product.aggregate([
-      { $sample: { size: 12 } },
-    ]).exec();
-
-    console.log("products", products);
-
-    res.json(products);
+    const products = await Product.aggregate([{ $sample: { size: 12 } }]).exec(
+      (err, aggregates) => {
+        if (err) console.log("AGGREGATE ERROR", err);
+        Product.find({ _id: aggregates })
+          .populate("category", "_id name")
+          .populate("subs", "_id name")
+          .exec((err, products) => {
+            if (err) console.log("PRODUCT AGGREGATE ERROR", err);
+            res.json(products);
+          });
+      }
+    );
   } catch (e) {
     console.log(err);
   }
@@ -175,11 +180,16 @@ exports.getRandomTelevisionAndMonitor = async (req, res) => {
     const products = await Product.aggregate([
       { $match: { category: { $in: [categories[0]._id, categories[1]._id] } } },
       { $sample: { size: 8 } },
-    ]).exec();
-
-    console.log("products", products);
-
-    res.json(products);
+    ]).exec((err, aggregates) => {
+      if (err) console.log("AGGREGATE ERROR", err);
+      Product.find({ _id: aggregates })
+        .populate("category", "_id name")
+        .populate("subs", "_id name")
+        .exec((err, products) => {
+          if (err) console.log("PRODUCT AGGREGATE ERROR", err);
+          res.json(products);
+        });
+    });
   } catch (e) {
     console.log(e);
   }
@@ -193,7 +203,7 @@ exports.getRandomNetworkingAndLaptop = async (req, res) => {
       { $sample: { size: 8 } },
     ]).exec();
 
-    console.log("products", products);
+    console.log("products===================Laptop", products);
 
     res.json(products);
   } catch (e) {
@@ -210,8 +220,6 @@ exports.getRandomDigitalCameraAndGPS = async (req, res) => {
       { $match: { category: { $in: [categories[0]._id, categories[1]._id] } } },
       { $sample: { size: 8 } },
     ]).exec();
-
-    console.log("products", products);
 
     res.json(products);
   } catch (e) {
