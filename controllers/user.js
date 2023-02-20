@@ -59,7 +59,7 @@ exports.getUserCart = async (req, res) => {
   const user = await User.findOne({ email: req.user.email }).exec();
 
   let cart = await Cart.findOne({ orderdBy: user._id })
-    .populate("products.product", "_id title price totalAfterDiscount")
+    .populate("products.product", "_id title price images totalAfterDiscount")
     .exec();
 
   const { products, cartTotal, totalAfterDiscount } = cart;
@@ -93,7 +93,6 @@ exports.applyCouponToUserCart = async (req, res) => {
       err: "Invalid coupon",
     });
   }
-  console.log("VALID COUPON", validCoupon);
 
   const user = await User.findOne({ email: req.user.email }).exec();
 
