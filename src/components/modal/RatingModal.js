@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { StarOutlined } from "@ant-design/icons";
 import { useNavigate, useParams } from "react-router-dom";
 import { createBrowserHistory } from "history";
+
 const RatingModal = ({ children }) => {
   const { user } = useSelector((state) => ({ ...state }));
   const [modalVisible, setModalVisible] = useState(false);

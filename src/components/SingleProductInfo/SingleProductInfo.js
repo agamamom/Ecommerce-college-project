@@ -12,8 +12,8 @@ import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist } from "../../functions/user";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { createBrowserHistory } from "history";
 const { TabPane } = Tabs;
 
 const SingleProduct = ({ product, onStarClick, star }) => {
@@ -21,11 +21,11 @@ const SingleProduct = ({ product, onStarClick, star }) => {
   const [tooltip, setTooltip] = useState("Click to add");
 
   const navigate = useNavigate();
-
+  let history = createBrowserHistory();
   // redux
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
-
+  const { slug } = useParams();
   const handleAddToCart = () => {
     // create cart array
     let cart = [];
@@ -61,11 +61,15 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 
   const handleAddToWishlist = (e) => {
     e.preventDefault();
-    addToWishlist(product._id, user.token).then((res) => {
-      console.log("ADDED TO WISHLIST", res.data);
-      toast.success("Added to wishlist");
-      navigate("/user/wishlist");
-    });
+    if (user && user.token) {
+      addToWishlist(product._id, user.token).then((res) => {
+        toast.success("Added to wishlist");
+        navigate("/user/wishlist");
+      });
+    } else {
+      history.push(`/product/${slug}`);
+      navigate("/login");
+    }
   };
 
   return (
