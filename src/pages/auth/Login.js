@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import { toast } from "react-toastify";
-import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { FiMail } from "react-icons/fi";
 import { BsGoogle } from "react-icons/bs";
 import { useNavigate, Link } from "react-router-dom";
 import { createOrUpdateUser } from "../../functions/auth";
 import { createBrowserHistory } from "history";
+import { Button, Checkbox, Form, Input } from "antd";
 const Login = () => {
-  const [email, setEmail] = useState("nightoverskill@gmail.com");
-  const [password, setPassword] = useState("1234567");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
@@ -105,45 +105,86 @@ const Login = () => {
       });
   };
 
+  // const loginForm = () => (
+  //   <form onSubmit={handleSubmit}>
+  //     <div className="form-group">
+  //       <input
+  //         type="email"
+  //         className="form-control"
+  //         value={email}
+  //         onChange={(e) => setEmail(e.target.value)}
+  //         placeholder="Your email"
+  //         autoFocus
+  //       />
+  //     </div>
+
+  //     <div className="form-group">
+  //       <input
+  //         type="password"
+  //         className="form-control"
+  //         value={password}
+  //         onChange={(e) => setPassword(e.target.value)}
+  //         placeholder="Your password"
+  //       />
+  //     </div>
+
+  //     <br />
+  //     <Button
+  //       onClick={handleSubmit}
+  //       type="primary"
+  //       className="mb-3"
+  //       block
+  //       shape="round"
+  //       size="large"
+  //       disabled={!email || password.length < 6}
+  //     >
+  //       <div className="flex justify-center items-center">
+  //         <FiMail className="mr-[10px] text-[20px]" />
+  //         <span>Login with Email/Password</span>
+  //       </div>
+  //     </Button>
+  //   </form>
+  // );
+
   const loginForm = () => (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <input
-          type="email"
-          className="form-control"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Your email"
-          autoFocus
-        />
-      </div>
+    <Form
+      name="basic"
+      labelCol={{ span: 3 }}
+      wrapperCol={{ span: 21 }}
+      initialValues={{ remember: true }}
+      onFinish={handleSubmit}
+      autoComplete="off"
+    >
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[{ required: true, message: "Please input your username!" }]}
+      >
+        <Input />
+      </Form.Item>
 
-      <div className="form-group">
-        <input
-          type="password"
-          className="form-control"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Your password"
-        />
-      </div>
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: "Please input your password!" }]}
+      >
+        <Input.Password />
+      </Form.Item>
 
-      <br />
       <Button
-        onClick={handleSubmit}
         type="primary"
+        htmlType="submit"
         className="mb-3"
         block
         shape="round"
         size="large"
-        disabled={!email || password.length < 6}
       >
         <div className="flex justify-center items-center">
           <FiMail className="mr-[10px] text-[20px]" />
           <span>Login with Email/Password</span>
         </div>
       </Button>
-    </form>
+    </Form>
   );
 
   return (
@@ -151,11 +192,13 @@ const Login = () => {
       <div className="row">
         <div className="col-md-6 offset-md-3">
           {loading ? (
-            <h4 className="text-danger text-[30px] uppercase tracking-wider">
+            <h4 className="text-danger mb-[10px] text-[30px] uppercase tracking-wider">
               Loading...
             </h4>
           ) : (
-            <h1 className="text-[30px] uppercase tracking-wider">Login</h1>
+            <h1 className="text-[30px] mb-[10px] uppercase tracking-wider">
+              Login
+            </h1>
           )}
 
           {loginForm()}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../../../src/index.scss";
 import MobileNavDropDown from "./MobileNavDropDown/MobileNavDropDown";
 import { HiOutlineBars3 } from "react-icons/hi2";
@@ -22,6 +22,22 @@ const Header = () => {
   const [handleNavMobileDropDown, setHandleNavMobileDropDown] = useState(false);
   const { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setHandleDropDown(false);
+        setHandleAccountDropDown(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const handleMouseOver = (e) => {
     setHandleDropDown(true);
@@ -315,6 +331,7 @@ const Header = () => {
                     ? "visible scale-y-100"
                     : "invisible scale-y-0"
                 }`}
+                ref={dropdownRef}
               >
                 {!user ? (
                   <>
