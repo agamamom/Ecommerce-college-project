@@ -11,6 +11,7 @@ import NavTop from "../nav/NavTop";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import firebase from "firebase";
+import { getCategories } from "../../functions/category";
 
 const Header = () => {
   let dispatch = useDispatch();
@@ -20,14 +21,18 @@ const Header = () => {
   const [handleDropDown, setHandleDropDown] = useState(false);
   const [handleAccountDropDown, setHandleAccountDropDown] = useState(false);
   const [handleNavMobileDropDown, setHandleNavMobileDropDown] = useState(false);
+  const [categories, setCategories] = useState([]);
   const { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
 
   const dropdownRef = useRef(null);
+  console.log("dropdownRef", dropdownRef.current);
+  const dropdownCateRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        console.log("dropdownRef", dropdownRef.current.contains(event.target));
         setHandleDropDown(false);
         setHandleAccountDropDown(false);
       }
@@ -39,8 +44,35 @@ const Header = () => {
     };
   }, [dropdownRef]);
 
+  // HANDLE HOVER SHOP AND PAGE
+  useEffect(() => {
+    function handleMoveOutSide(event) {
+      if (
+        dropdownCateRef.current &&
+        !dropdownCateRef.current.contains(event.target)
+      ) {
+        setHandleDropDown(false);
+        setHandleAccountDropDown(false);
+      }
+    }
+
+    document.addEventListener("mouseleave", handleMoveOutSide);
+    return () => {
+      document.removeEventListener("mouseleave", handleMoveOutSide);
+    };
+  }, [dropdownCateRef]);
+
+  useEffect(() => {
+    getCategories().then((c) => {
+      setCategories(c.data);
+    });
+  }, []);
+
   const handleMouseOver = (e) => {
     setHandleDropDown(true);
+  };
+  const handleOnBlur = (e) => {
+    setHandleDropDown(false);
   };
   const handleClickAccount = (e) => {
     setHandleAccountDropDown(!handleAccountDropDown);
@@ -48,9 +80,6 @@ const Header = () => {
   };
   const handleClickNavMobile = (e) => {
     setHandleNavMobileDropDown(!handleNavMobileDropDown);
-  };
-  const handleOnBlur = (e) => {
-    setHandleDropDown(false);
   };
 
   const handleChange = (e) => {
@@ -208,15 +237,15 @@ const Header = () => {
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
-                <Link to="/1" className="py-[4px] pl-[10px]">
-                  Fashion1
-                </Link>
-                <Link to="/2" className="py-[4px] pl-[10px]">
-                  Fashion2
-                </Link>
-                <Link to="/3" className="py-[4px] pl-[10px]">
-                  Fashion3
-                </Link>
+                {categories.map((c) => (
+                  <Link
+                    to={`/category/${c.slug}`}
+                    className="capitalize py-[4px] pl-[10px]"
+                    onMouseDown={(e) => handleOnBlur(e)}
+                  >
+                    {c.name}
+                  </Link>
+                ))}
               </div>
             </Link>
 
@@ -316,7 +345,7 @@ const Header = () => {
               <AiOutlineSearch className="mr-[10px]" />
               Search
             </div>
-            <div className="">
+            <div className="" ref={dropdownRef}>
               <div
                 className="flex items-center cursor-pointer nav-link"
                 onClick={(e) => handleClickAccount(e)}
@@ -331,7 +360,6 @@ const Header = () => {
                     ? "visible scale-y-100"
                     : "invisible scale-y-0"
                 }`}
-                ref={dropdownRef}
               >
                 {!user ? (
                   <>

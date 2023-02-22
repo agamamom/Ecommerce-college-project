@@ -45,7 +45,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // console.table(email, password);
+
     try {
       const result = await auth.signInWithEmailAndPassword(email, password);
       // console.log(result);
@@ -105,86 +105,45 @@ const Login = () => {
       });
   };
 
-  // const loginForm = () => (
-  //   <form onSubmit={handleSubmit}>
-  //     <div className="form-group">
-  //       <input
-  //         type="email"
-  //         className="form-control"
-  //         value={email}
-  //         onChange={(e) => setEmail(e.target.value)}
-  //         placeholder="Your email"
-  //         autoFocus
-  //       />
-  //     </div>
-
-  //     <div className="form-group">
-  //       <input
-  //         type="password"
-  //         className="form-control"
-  //         value={password}
-  //         onChange={(e) => setPassword(e.target.value)}
-  //         placeholder="Your password"
-  //       />
-  //     </div>
-
-  //     <br />
-  //     <Button
-  //       onClick={handleSubmit}
-  //       type="primary"
-  //       className="mb-3"
-  //       block
-  //       shape="round"
-  //       size="large"
-  //       disabled={!email || password.length < 6}
-  //     >
-  //       <div className="flex justify-center items-center">
-  //         <FiMail className="mr-[10px] text-[20px]" />
-  //         <span>Login with Email/Password</span>
-  //       </div>
-  //     </Button>
-  //   </form>
-  // );
-
   const loginForm = () => (
-    <Form
-      name="basic"
-      labelCol={{ span: 3 }}
-      wrapperCol={{ span: 21 }}
-      initialValues={{ remember: true }}
-      onFinish={handleSubmit}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
-      >
-        <Input />
-      </Form.Item>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <input
+          type="email"
+          className="form-control"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Your email"
+          autoFocus
+        />
+      </div>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+      <div className="form-group">
+        <input
+          type="password"
+          className="form-control"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Your password"
+        />
+      </div>
 
+      <br />
       <Button
+        onClick={handleSubmit}
         type="primary"
-        htmlType="submit"
         className="mb-3"
         block
         shape="round"
         size="large"
+        disabled={!email || password.length < 6}
       >
         <div className="flex justify-center items-center">
           <FiMail className="mr-[10px] text-[20px]" />
           <span>Login with Email/Password</span>
         </div>
       </Button>
-    </Form>
+    </form>
   );
 
   return (
