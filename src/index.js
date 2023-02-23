@@ -11,7 +11,7 @@ import rootReducer from "./reducers";
 import reducer, { initialState } from "./reducer";
 
 const store = createStore(rootReducer, composeWithDevTools());
-
+document.title = "Electro-shop";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
