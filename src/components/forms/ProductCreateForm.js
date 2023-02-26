@@ -18,13 +18,9 @@ const ProductCreateForm = ({
     description,
     price,
     categories,
-    category,
     subs,
-    shipping,
     quantity,
-    images,
     colors,
-    color,
     brand,
   } = values;
 

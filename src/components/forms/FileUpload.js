@@ -8,7 +8,6 @@ const FileUpload = ({ values, setValues, setLoading }) => {
   const { user } = useSelector((state) => ({ ...state }));
 
   const fileUploadAndResize = (e) => {
-    // console.log(e.target.files);
     // resize
     let files = e.target.files; // 3
     let allUploadedFiles = values.images;
@@ -24,7 +23,6 @@ const FileUpload = ({ values, setValues, setLoading }) => {
           100,
           0,
           (uri) => {
-            // console.log(uri);
             axios
               .post(
                 `${process.env.REACT_APP_API}/uploadimages`,
@@ -51,13 +49,10 @@ const FileUpload = ({ values, setValues, setLoading }) => {
         );
       }
     }
-    // send back to server to upload to cloudinary
-    // set url to images[] in the parent component state - ProductCreate
   };
 
   const handleImageRemove = (public_id) => {
     setLoading(true);
-    // console.log("remove image", public_id);
     axios
       .post(
         `${process.env.REACT_APP_API}/removeimage`,

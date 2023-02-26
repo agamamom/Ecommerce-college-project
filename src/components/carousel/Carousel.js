@@ -8,7 +8,6 @@ import {
   fadeIn4,
   staggerTextContainer,
 } from "../../variants";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper";
@@ -50,7 +49,7 @@ const Carousel = () => {
                 className="border-b-[1px] border-[#fff] py-[16px] w-[133.55px] absolute mt-[10px] -translate-x-[50%]"
               >
                 <a
-                  href="#"
+                  href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
                   Shop Now
@@ -89,7 +88,7 @@ const Carousel = () => {
                 className="border-b-[1px] border-[#fff] py-[16px] w-[133.55px] absolute mt-[10px] -translate-x-[50%]"
               >
                 <a
-                  href="#"
+                  href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
                   Shop Now
@@ -128,7 +127,7 @@ const Carousel = () => {
                 className="border-b-[1px] border-[#fff] py-[16px] w-[133.55px] absolute mt-[10px] -translate-x-[50%]"
               >
                 <a
-                  href="#"
+                  href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
                   Shop Now
@@ -167,7 +166,7 @@ const Carousel = () => {
                 className="border-b-[1px] border-[#fff] py-[16px] w-[133.55px] absolute mt-[10px] -translate-x-[50%]"
               >
                 <a
-                  href="#"
+                  href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
                   Shop Now

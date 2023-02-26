@@ -3,13 +3,12 @@ import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 
 const ProductBS = ({ product, productBorderRight, productBorder }) => {
   const arrSubs = [];
-  const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
   if (product) {
     product.subs.map((proSubs) => {
@@ -34,7 +33,6 @@ const ProductBS = ({ product, productBorderRight, productBorder }) => {
       // remove duplicates
       let unique = _.uniqWith(cart, _.isEqual);
       // save to local storage
-      // console.log('unique', unique)
       localStorage.setItem("cart", JSON.stringify(unique));
       // add to reeux state
       dispatch({
@@ -83,11 +81,11 @@ const ProductBS = ({ product, productBorderRight, productBorder }) => {
         {/* RIght */}
         <div className="min-w-[180px]">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
-            <a href="#" rel="tag" className="text-[#768b9e] whitespace-nowrap">
+            <a href="/" rel="tag" className="text-[#768b9e] whitespace-nowrap">
               {result.substring(0, 25)}
             </a>
           </span>
-          <a href="#" class="block">
+          <a href="/" class="block">
             <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[14px]">
               {product &&
                 `${product.title && product.title.substring(0, 25)}...`}

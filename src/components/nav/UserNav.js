@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../components/nav/AdminNav/dashboard.css";
 import { Navigation } from "react-minimal-side-navigation";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";

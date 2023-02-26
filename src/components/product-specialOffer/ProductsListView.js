@@ -1,8 +1,6 @@
 import React from "react";
 import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
-import ReactTooltip from "react-tooltip";
 import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
 import StarRating from "react-star-ratings";
@@ -33,7 +31,7 @@ const ProductsListView = ({ product }) => {
                 <img
                   width="300"
                   src={product.images && product.images[2].url}
-                  class="max-w-[100%] w-auto h-auto m-auto align-middle"
+                  class="max-w-[100%] w-auto max-h-[214px] m-auto align-middle"
                   alt=""
                   loading="lazy"
                 />
@@ -44,10 +42,13 @@ const ProductsListView = ({ product }) => {
                 {result}
               </div>
               <div>
-                <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
+                <Link
+                  to={`/product/${product.slug}`}
+                  class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px] cursor-pointer"
+                >
                   {product &&
                     `${product.title && product.title.substring(0, 45)}...`}
-                </h2>
+                </Link>
               </div>
               <div className="py-[18px]">
                 {product && product.ratings && product.ratings.length > 0 ? (

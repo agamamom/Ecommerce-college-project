@@ -1,5 +1,5 @@
 import React from "react";
-import { Drawer, Button } from "antd";
+import { Drawer } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import DrawerItems from "./DrawerItems";
@@ -39,7 +39,7 @@ const SideDrawer = () => {
               Cart total:
             </div>
             <p className="py-[12px]">
-              <span className="font-bold text-[15px] text-black tracking-wide text-[15px]">
+              <span className="font-bold text-[15px] text-black tracking-wide">
                 {USDPrice} USD
               </span>{" "}
               {cart && cart.count}

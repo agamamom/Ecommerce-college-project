@@ -1,10 +1,9 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { CloseOutlined } from "@ant-design/icons";
 import laptop from "../../images/laptop.png";
 const DrawerItems = ({ p }) => {
   const dispatch = useDispatch();
-  const { drawer, cart } = useSelector((state) => ({ ...state }));
   const handleRemove = () => {
     // console.log(p._id, "to remove");
     let cart = [];
@@ -46,7 +45,7 @@ const DrawerItems = ({ p }) => {
         {p.images[0] ? (
           <div className="grid grid-cols-6 gap-3 h-full">
             <div className="col-span-2">
-              <img src={p.images[0].url} style={imageStyle} />
+              <img alt="" src={p.images[0].url} style={imageStyle} />
             </div>
             <div className="col-span-3">
               <div className="text-left">
@@ -68,7 +67,7 @@ const DrawerItems = ({ p }) => {
           </div>
         ) : (
           <>
-            <img src={laptop} style={imageStyle} />
+            <img alt="" src={laptop} style={imageStyle} />
             <p className="text-center bg-secondary text-light">
               {p.title} x {p.count}
             </p>

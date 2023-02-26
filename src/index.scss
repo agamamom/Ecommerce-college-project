@@ -49,6 +49,12 @@ $easeInOut: cubic-bezier(0.42, 0, 0.58, 1);
         transform: scaleY(0);
         transform-origin: center top 0;
       }
+      .nav-up {
+        transition: all 0.3s;
+        visibility: hidden;
+        transform: scaleY(0);
+        transform-origin: center top 0;
+      }
     }
   }
   .nav-account-dropdown {

@@ -4,14 +4,13 @@ import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
-import { getProductsByPage, getRandomProducts } from "../../functions/product";
+import { getRandomProducts } from "../../functions/product";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../functions/category";
 
 const BestDeal = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [loadingTitle, setLoadingTitle] = useState(false);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -19,10 +18,8 @@ const BestDeal = () => {
   }, []);
 
   useEffect(() => {
-    setLoadingTitle(true);
     getCategories().then((c) => {
       setCategories(c.data);
-      setLoadingTitle(false);
     });
   }, []);
 
@@ -68,11 +65,11 @@ const BestDeal = () => {
             <div className="px-[24px] pt-[14px] pb-[14px] relative product-inner">
               <div className="relative">
                 <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
-                  <a href="#" rel="tag" className="text-[#768b9e]">
+                  <a href="/" rel="tag" className="text-[#768b9e]">
                     Game Console
                   </a>
                 </span>
-                <a href="#" class="block">
+                <a href="/" class="block">
                   <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
                     Game Console Controller + USB 3.0 Cable
                   </h2>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Card, Tabs, Tooltip } from "antd";
-import { Link } from "react-router-dom";
 import { HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -23,7 +22,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
   const navigate = useNavigate();
   let history = createBrowserHistory();
   // redux
-  const { user, cart } = useSelector((state) => ({ ...state }));
+  const { user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
   const { slug } = useParams();
   const handleAddToCart = () => {
@@ -79,6 +78,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
           {images &&
             images.map((i) => (
               <img
+                alt=""
                 src={i.url}
                 key={i.public_id}
                 className="h-[500px] object-contain"
@@ -111,14 +111,14 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         <Card
           actions={[
             <Tooltip title={tooltip}>
-              <a onClick={handleAddToCart}>
+              <div onClick={handleAddToCart}>
                 <ShoppingCartOutlined className="text-danger" /> <br /> Add to
                 Cart
-              </a>
+              </div>
             </Tooltip>,
-            <a onClick={handleAddToWishlist}>
+            <div onClick={handleAddToWishlist}>
               <HeartOutlined className="text-info" /> <br /> Add to Wishlist
-            </a>,
+            </div>,
             <RatingModal>
               <StarRating
                 name={_id}

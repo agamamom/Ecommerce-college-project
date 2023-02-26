@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React from "react";
 import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 import { Link } from "react-router-dom";
 import _ from "lodash";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const ProductSO = ({ productBorder, productBorderRight, product }) => {
   const arrSubs = [];
-  const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
   if (product) {
     product.subs.map((proSubs) => {
@@ -75,7 +74,7 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
                 <img
                   width="300"
                   src={product.images && product.images[2].url}
-                  class="max-w-[100%] w-auto h-auto m-auto align-middle"
+                  class="max-w-[100%] w-auto max-h-[214px] m-auto align-middle"
                   alt=""
                   loading="lazy"
                 />

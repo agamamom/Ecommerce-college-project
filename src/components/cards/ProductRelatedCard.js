@@ -5,7 +5,7 @@ import laptop from "../../images/laptop.png";
 import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
 import StarRating from "react-star-ratings";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import _ from "lodash";
 
 const { Meta } = Card;
@@ -14,7 +14,6 @@ const ProductRelatedCard = ({ product }) => {
   // destructure
   const [tooltip, setTooltip] = useState("Click to add");
 
-  const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
   const { images, title, description, slug } = product;
 
@@ -37,8 +36,7 @@ const ProductRelatedCard = ({ product }) => {
       });
       // remove duplicates
       let unique = _.uniqWith(cart, _.isEqual);
-      // save to local storage
-      // console.log('unique', unique)
+
       localStorage.setItem("cart", JSON.stringify(unique));
       // show tooltip
       setTooltip("Added");
@@ -78,32 +76,34 @@ const ProductRelatedCard = ({ product }) => {
           </div>
         )}
       </div>
-
-      <Card
-        cover={
-          <img
-            src={images && images.length ? images[0].url : laptop}
-            style={{ height: "150px", objectFit: "cover" }}
-            className="p-1"
+      <Link to={`/product/${product.slug}`}>
+        <Card
+          cover={
+            <img
+              alt=""
+              src={images && images.length ? images[0].url : laptop}
+              style={{ height: "150px", objectFit: "cover" }}
+              className="p-1"
+            />
+          }
+          actions={[
+            <Link to={`/product/${slug}`}>
+              <EyeOutlined className="text-warning" /> <br /> View Product
+            </Link>,
+            <Tooltip title={tooltip}>
+              <div onClick={handleAddToCart}>
+                <ShoppingCartOutlined className="text-danger" /> <br />
+                {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
+              </div>
+            </Tooltip>,
+          ]}
+        >
+          <Meta
+            title={title}
+            description={`${description && description.substring(0, 40)}...`}
           />
-        }
-        actions={[
-          <Link to={`/product/${slug}`}>
-            <EyeOutlined className="text-warning" /> <br /> View Product
-          </Link>,
-          <Tooltip title={tooltip}>
-            <a onClick={handleAddToCart}>
-              <ShoppingCartOutlined className="text-danger" /> <br />
-              {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
-            </a>
-          </Tooltip>,
-        ]}
-      >
-        <Meta
-          title={title}
-          description={`${description && description.substring(0, 40)}...`}
-        />
-      </Card>
+        </Card>
+      </Link>
     </>
   );
 };

@@ -9,7 +9,6 @@ const ProductCardInCheckout = ({ p }) => {
   let dispatch = useDispatch();
 
   const handleQuantityChange = (e) => {
-    // console.log("available quantity", p.quantity);
     let count = e.target.value < 1 ? 1 : e.target.value;
 
     if (count > p.quantity) {
@@ -25,7 +24,7 @@ const ProductCardInCheckout = ({ p }) => {
       }
 
       cart.map((product, i) => {
-        if (product._id == p._id) {
+        if (product._id === p._id) {
           cart[i].count = count;
         }
       });
@@ -39,7 +38,6 @@ const ProductCardInCheckout = ({ p }) => {
   };
 
   const handleRemove = () => {
-    // console.log(p._id, "to remove");
     let cart = [];
 
     if (typeof window !== "undefined") {

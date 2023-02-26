@@ -106,25 +106,25 @@ const Footer = () => {
               </div>
               <ul className="list-none mt-[25.6px]">
                 <li>
-                  <a href="#">Laptops & Computers</a>
+                  <a href="/">Laptops & Computers</a>
                 </li>
                 <li>
-                  <a href="">Cameras & Photography</a>
+                  <a href="/">Cameras & Photography</a>
                 </li>
                 <li>
-                  <a href="">Smart Phones & Tablets</a>
+                  <a href="/">Smart Phones & Tablets</a>
                 </li>
                 <li>
-                  <a href="">Video Games & Consoles</a>
+                  <a href="/">Video Games & Consoles</a>
                 </li>
                 <li>
-                  <a href="">TV & Audio</a>
+                  <a href="/">TV & Audio</a>
                 </li>
                 <li>
-                  <a href="">Gadgets</a>
+                  <a href="/">Gadgets</a>
                 </li>
                 <li>
-                  <a href="">Waterproof Headphones</a>
+                  <a href="/">Waterproof Headphones</a>
                 </li>
               </ul>
             </div>
@@ -136,22 +136,22 @@ const Footer = () => {
               </div>
               <ul className="mt-[25.6px]">
                 <li>
-                  <a href="#">About</a>
+                  <a href="/">About</a>
                 </li>
                 <li>
-                  <a href="#">Contact</a>
+                  <a href="/">Contact</a>
                 </li>
                 <li>
-                  <a href="#">Wishlist</a>
+                  <a href="/">Wishlist</a>
                 </li>
                 <li>
-                  <a href="#">Compare</a>
+                  <a href="/">Compare</a>
                 </li>
                 <li>
-                  <a href="#">FAQ</a>
+                  <a href="/">FAQ</a>
                 </li>
                 <li>
-                  <a href="#">Store Directory</a>
+                  <a href="/">Store Directory</a>
                 </li>
               </ul>
             </div>
@@ -161,22 +161,22 @@ const Footer = () => {
               </div>
               <ul className="mt-[25.6px]">
                 <li>
-                  <a href="#">My Account</a>
+                  <a href="/">My Account</a>
                 </li>
                 <li>
-                  <a href="#">Track your Order</a>
+                  <a href="/">Track your Order</a>
                 </li>
                 <li>
-                  <a href="#">Customer Service</a>
+                  <a href="/">Customer Service</a>
                 </li>
                 <li>
-                  <a href="#">Returns/Exchange</a>
+                  <a href="/">Returns/Exchange</a>
                 </li>
                 <li>
-                  <a href="#">FAQs</a>
+                  <a href="/">FAQs</a>
                 </li>
                 <li>
-                  <a href="#">Product Support</a>
+                  <a href="/">Product Support</a>
                 </li>
               </ul>
             </div>

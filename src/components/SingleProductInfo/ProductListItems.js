@@ -5,11 +5,6 @@ import FormattedCurrency from "../format-currency/FormattedCurrency";
 const ProductListItems = ({ product }) => {
   const { category, subs, shipping, color, brand, quantity, sold } = product;
 
-  // const USDPrice = product?.price.toLocaleString("en-US", {
-  //   style: "currency",
-  //   currency: "USD",
-  // });
-
   return (
     <ul className="list-group">
       <li className="list-group-item">

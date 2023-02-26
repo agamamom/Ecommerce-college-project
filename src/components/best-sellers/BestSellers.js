@@ -178,7 +178,7 @@ const BestSellers = () => {
         </TabPanel>
       </div>
       <div className="mb-[39px] mt-[50px]">
-        <a href="#">
+        <a href="/">
           <img
             src="	https://electro.madrasthemes.com/wp-content/uploads/2018/04/home-v5-banner.png"
             alt=""

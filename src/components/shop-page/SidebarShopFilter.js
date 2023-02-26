@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getCategories, getCategorySubs } from "../../functions/category";
-import { getSubs } from "../../functions/sub";
-import { Link } from "react-router-dom";
 import { getBrands } from "../../functions/product";
-import { Menu, Slider, Checkbox, Radio } from "antd";
+import { Menu, Slider, Radio } from "antd";
 import {
   DollarOutlined,
   DownSquareOutlined,
   StarOutlined,
 } from "@ant-design/icons";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Star from "../../components/forms/Star";
 
-const { SubMenu, ItemGroup } = Menu;
+const { SubMenu } = Menu;
 
 const SidebarShopFilter = ({
   handleSlider,
@@ -20,9 +18,7 @@ const SidebarShopFilter = ({
   setPrice,
   fetchProducts,
   setStar,
-  star,
   setSub,
-  sub,
   setBrand,
   brand,
 }) => {
@@ -31,8 +27,6 @@ const SidebarShopFilter = ({
   const [category, setCategory] = useState([]);
   const [subOptions, setSubOptions] = useState([]);
   let dispatch = useDispatch();
-  let { search } = useSelector((state) => ({ ...state }));
-  const { text } = search;
 
   useEffect(() => {
     getCategories().then((c) => {

@@ -26,13 +26,12 @@ const Header = () => {
   const { text } = search;
 
   const dropdownRef = useRef(null);
-  console.log("dropdownRef", dropdownRef.current);
+
   const dropdownCateRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        console.log("dropdownRef", dropdownRef.current.contains(event.target));
         setHandleDropDown(false);
         setHandleAccountDropDown(false);
       }
@@ -226,14 +225,16 @@ const Header = () => {
             >
               <div
                 className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
-                onMouseOver={(e) => handleMouseOver(e)}
-                onMouseOut={(e) => handleOnBlur(e)}
+                // onMouseOver={(e) => handleMouseOver(e)}
+                // onMouseOut={(e) => handleOnBlur(e)}
               >
                 Shop
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
               </div>
               <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid"
+                className={`absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 ${
+                  handleDropDown ? "nav-dropdown" : "nav-up"
+                } nav-dropdown nav-up z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid`}
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
