@@ -34,19 +34,11 @@ const items = [
 const rootSubmenuKeys = ["sub2", "sub4"];
 const MobileNavDropDown = () => {
   const [openKeys, setOpenKeys] = useState([""]);
-  const [currentLang, setCurrentLang] = useState("en");
   const navigate = useNavigate();
-
-  const handleLang = (lang) => {
-    setCurrentLang(lang);
-  };
 
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
-    // console.log("latestOpenKey", latestOpenKey);
-    // console.log("keys", keys);
-    // console.log("openKeys", openKeys);
-    // console.log("latestOpenKey", rootSubmenuKeys.indexOf(latestOpenKey));
+
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
       setOpenKeys(keys);
     } else {
@@ -86,7 +78,7 @@ const MobileNavDropDown = () => {
             <div className="w-[0.4px] h-[100%] left-[50%] text-[#5E5C5C] bg-[#5E5C5C] -translate-x-[50%]"></div>
           </div>
           <div className="flex items-center ">
-            <BsPercent className="text-[#ff5635] mr-[6px] " />
+            <BsPercent className="text-[#ff5635] mr-[6px]" />
             <div className="text-[#ff5635] tracking-wide font-semibold">
               Clearance Sales
             </div>

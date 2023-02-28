@@ -66,7 +66,7 @@ const ListView = ({ slug }) => {
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             current={page}
-            total={productsCount}
+            total={productsCount * 2}
             onChange={(value) => handleClick(value)}
             onShowSizeChange={(value) => handleClick(value)}
           />

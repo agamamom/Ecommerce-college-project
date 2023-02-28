@@ -19,7 +19,6 @@ const UserNav = () => {
           <img src="/images/logo.png" alt="" />
         </div>
         <Navigation
-          // you can use your own router's api to get pathname
           activeItemId={location.pathname}
           onSelect={({ itemId }) => {
             navigate(itemId);

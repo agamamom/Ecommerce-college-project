@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Pagination } from "antd";
-import { getProducts, getProductsCount } from "../../functions/product";
+import {
+  getProducts,
+  getCategoryProductByCount,
+} from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
 import ProductSO from "../product-specialOffer/ProductSO";
 
@@ -15,7 +18,7 @@ const GridView = ({ slug }) => {
   }, [page, slug]);
 
   useEffect(() => {
-    getProductsCount().then((res) => setProductsCount(res.data));
+    getCategoryProductByCount(slug).then((res) => setProductsCount(res.data));
   }, []);
 
   const ref = useRef(null);
@@ -59,7 +62,7 @@ const GridView = ({ slug }) => {
         <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             current={page}
-            total={productsCount}
+            total={productsCount * 2}
             onChange={(value) => handleClick(value)}
             onShowSizeChange={(value) => handleClick(value)}
           />
