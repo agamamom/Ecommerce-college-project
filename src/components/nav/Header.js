@@ -225,8 +225,8 @@ const Header = () => {
             >
               <div
                 className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
-                // onMouseOver={(e) => handleMouseOver(e)}
-                // onMouseOut={(e) => handleOnBlur(e)}
+                onMouseOver={(e) => handleMouseOver(e)}
+                onMouseOut={(e) => handleOnBlur(e)}
               >
                 Shop
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
