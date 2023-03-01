@@ -11,7 +11,6 @@ exports.create = async (req, res) => {
     res.json(newProduct);
   } catch (err) {
     console.log(err);
-    // res.status(400).send("Create product failed");
     res.status(400).json({
       err: err.message,
     });
@@ -76,7 +75,6 @@ exports.update = async (req, res) => {
     res.json(updated);
   } catch (err) {
     console.log("PRODUCT UPDATE ERROR ----> ", err);
-    // return res.status(400).send("Product update failed");
     res.status(400).json({
       err: err.message,
     });
@@ -203,8 +201,6 @@ exports.getRandomNetworkingAndLaptop = async (req, res) => {
       { $sample: { size: 8 } },
     ]).exec();
 
-    console.log("products===================Laptop", products);
-
     res.json(products);
   } catch (e) {
     console.log(e);
@@ -255,8 +251,6 @@ exports.productStar = async (req, res) => {
   const user = await User.findOne({ email: req.user.email }).exec();
   const { star } = req.body;
 
-  // who is updating?
-  // check if currently logged in user have already added rating to this product?
   let existingRatingObject = product.ratings.find(
     (ele) => ele.postedBy.toString() === user._id.toString()
   );
@@ -433,42 +427,34 @@ exports.searchFilters = async (req, res) => {
     req.body;
 
   if (query) {
-    console.log("query", query);
     await handleQuery(req, res, query);
   }
 
   if (price !== undefined) {
-    console.log("price ---> ", price);
     await handlePrice(req, res, price);
   }
 
   if (category) {
-    console.log("category ---> ", category);
     await handleCategory(req, res, category);
   }
 
   if (stars) {
-    console.log("stars ---> ", stars);
     await handleStar(req, res, stars);
   }
 
   if (sub) {
-    console.log("sub ---> ", sub);
     await handleSub(req, res, sub);
   }
 
   if (shipping) {
-    console.log("shipping ---> ", shipping);
     await handleShipping(req, res, shipping);
   }
 
   if (color) {
-    console.log("color ---> ", color);
     await handleColor(req, res, color);
   }
 
   if (brand) {
-    console.log("brand ---> ", brand);
     await handleBrand(req, res, brand);
   }
 };

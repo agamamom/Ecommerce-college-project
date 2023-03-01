@@ -6,8 +6,6 @@ const Sub = require("../models/sub");
 exports.create = async (req, res) => {
   try {
     const { name } = req.body;
-    // const category = await new Category({ name, slug: slugify(name) }).save();
-    // res.json(category);
     res.json(await new Category({ name, slug: slugify(name) }).save());
   } catch (err) {
     // console.log(err);
