@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import ProductSO from "../product-specialOffer/ProductSO";
-import { getProductsByPage } from "../../functions/product";
+import { getRandomProducts } from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
 
 function TabPanel(props) {
@@ -46,7 +46,7 @@ const SpecialOffer = () => {
   const loadAllProducts = () => {
     setLoading(true);
     // sort, order, limit
-    getProductsByPage("createdAt", "desc", 7).then((res) => {
+    getRandomProducts().then((res) => {
       setProducts(res.data);
       setLoading(false);
     });
