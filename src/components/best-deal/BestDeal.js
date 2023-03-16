@@ -49,7 +49,11 @@ const BestDeal = () => {
             {products &&
               products.slice(0, 2).map((product) => (
                 <div key={product._id}>
-                  <ProductSO productBorderRight="product" product={product} />
+                  <ProductSO
+                    height="h-full"
+                    productBorderRight="product"
+                    product={product}
+                  />
                 </div>
               ))}
           </div>
@@ -57,7 +61,11 @@ const BestDeal = () => {
             {products &&
               products.slice(2, 4).map((product) => (
                 <div key={product._id}>
-                  <ProductSO productBorderRight="product" product={product} />
+                  <ProductSO
+                    height="h-full"
+                    productBorderRight="product"
+                    product={product}
+                  />
                 </div>
               ))}
           </div>
@@ -147,7 +155,11 @@ const BestDeal = () => {
             {products &&
               products.slice(4, 6).map((product) => (
                 <div key={product._id}>
-                  <ProductSO productBorderRight="product" product={product} />
+                  <ProductSO
+                    height="h-full"
+                    productBorderRight="product"
+                    product={product}
+                  />
                 </div>
               ))}
           </div>
@@ -155,7 +167,11 @@ const BestDeal = () => {
             {products &&
               products.slice(6, 8).map((product) => (
                 <div key={product._id}>
-                  <ProductSO productBorderRight="product" product={product} />
+                  <ProductSO
+                    height="h-full"
+                    productBorderRight="product"
+                    product={product}
+                  />
                 </div>
               ))}
           </div>

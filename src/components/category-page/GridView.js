@@ -51,7 +51,11 @@ const GridView = ({ slug }) => {
           <div className="row">
             {products.map((product) => (
               <div key={product._id} className="col-md-4">
-                <ProductSO product={product} productBorderRight="product" />
+                <ProductSO
+                  height="h-full"
+                  product={product}
+                  productBorderRight="product"
+                />
               </div>
             ))}
           </div>
@@ -59,7 +63,7 @@ const GridView = ({ slug }) => {
       </div>
 
       <div className="row mb-[14px] w-full">
-        <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
+        <nav className=" text-center pt-5 p-3">
           <Pagination
             current={page}
             total={productsCount * 2}

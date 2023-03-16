@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import SidebarShopFilter from "../../components/shop-page/SidebarShopFilter";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getProductsByCount,
   fetchProductsByFilter,
+  getProductsCount,
+  getProductsInShopByPage,
 } from "../../functions/product";
 import ProductSO from "../../components/product-specialOffer/ProductSO";
 import { Breadcrumb } from "antd";
 import BreadcrumbComponent from "../../components/breadcrumb/Breadcrumb";
 import ScrollToTop from "react-scroll-to-top";
+import { Pagination } from "antd";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -19,20 +22,39 @@ const Home = () => {
   const [star, setStar] = useState("");
   const [sub, setSub] = useState([]);
   const [brand, setBrand] = useState("");
+  const [page, setPage] = useState(1);
+  const [productsCount, setProductsCount] = useState(0);
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
 
   useEffect(() => {
-    loadAllProducts();
+    CountOfAllProducts();
   }, []);
+
+  useEffect(() => {
+    loadAllProducts();
+  }, [page]);
+
+  const ref = useRef(null);
+
+  const handleClick = (value) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+    setPage(value);
+  };
 
   // 1. load products by default on page load
   const loadAllProducts = () => {
-    getProductsByCount(12).then((p) => {
+    getProductsInShopByPage("createdAt", "desc", page).then((p) => {
       setProducts(p.data);
       setLoading(false);
+    });
+  };
+
+  const CountOfAllProducts = () => {
+    getProductsCount().then((p) => {
+      setProductsCount(p.data);
     });
   };
 
@@ -93,7 +115,7 @@ const Home = () => {
   return (
     <div>
       <BreadcrumbComponent>{breadCrumb()}</BreadcrumbComponent>
-      <div className="px-[45px] mt-[40px]">
+      <div className="px-[45px] mt-[40px]" ref={ref}>
         <div className="grid grid-cols-5 gap-7">
           <div className="col-span-1 w-full ">
             <SidebarShopFilter
@@ -114,9 +136,23 @@ const Home = () => {
             <div className="row pb-5">
               {products.map((p) => (
                 <div key={p._id} className="col-md-3 mt-3">
-                  <ProductSO product={p} productBorderRight="product" />
+                  <ProductSO
+                    height="h-[448px]"
+                    product={p}
+                    productBorderRight="product"
+                  />
                 </div>
               ))}
+              <div className="mt-10 mb-[14px] w-full">
+                <nav className="col-md-6 offset-md-4 text-center pt-5 p-3">
+                  <Pagination
+                    current={page}
+                    total={productsCount}
+                    onChange={(value) => handleClick(value)}
+                    onShowSizeChange={(value) => handleClick(value)}
+                  />
+                </nav>
+              </div>
             </div>
           </div>
         </div>

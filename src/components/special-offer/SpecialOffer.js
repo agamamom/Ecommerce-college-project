@@ -123,6 +123,7 @@ const SpecialOffer = () => {
                         products.map((product) => (
                           <div key={product._id}>
                             <ProductSO
+                              height="h-full"
                               productBorderRight="product"
                               product={product}
                             />

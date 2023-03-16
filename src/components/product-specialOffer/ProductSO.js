@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import { useDispatch } from "react-redux";
 
-const ProductSO = ({ productBorder, productBorderRight, product }) => {
+const ProductSO = ({ productBorder, productBorderRight, product, height }) => {
   const arrSubs = [];
   const dispatch = useDispatch();
   if (product) {
@@ -56,7 +56,9 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
   });
 
   return (
-    <div className={`h-full ${productBorder} ${productBorderRight} relative`}>
+    <div
+      className={`${height} ${productBorder} ${productBorderRight} relative`}
+    >
       <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
         <div className="relative">
           <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
@@ -107,10 +109,6 @@ const ProductSO = ({ productBorder, productBorderRight, product }) => {
                 <CiHeart className="mr-[3px] text-[18px]" />
                 <span>Wishlist</span>
               </Link>
-              <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
-                <IoIosGitCompare className="mr-[3px] text-[18px]" />
-                <span>Compare</span>
-              </div>
             </div>
           </div>
         </div>
