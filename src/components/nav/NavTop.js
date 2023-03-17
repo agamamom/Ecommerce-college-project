@@ -4,7 +4,9 @@ import { BsPercent } from "react-icons/bs";
 import { SiOdnoklassniki } from "react-icons/si";
 import { MdPhoneInTalk } from "react-icons/md";
 import { IoMailOpen } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 const NavTop = () => {
+  const { t } = useTranslation();
   return (
     <div className="bg-black px-[30px] flex justify-between h-[42px] w-[100%] relative z-[200]">
       <div className="flex w-[240px] justify-between items-center">
@@ -17,13 +19,13 @@ const NavTop = () => {
         <div className="flex items-center clearance-sales">
           <BsPercent className="text-[#ff5635] mr-[6px] icon-percent transition-all duration-300" />
           <div className="text-[#ff5635] tracking-wide font-semibold hover:text-white icon-percent transition-all duration-300">
-            Clearance Sales
+            {t("clearence sales")}
           </div>
         </div>
       </div>
       <div className="text-white flex items-center text-[14px]">
         <SiOdnoklassniki className="mr-[6px]" />
-        Hurrah! Get Free Shipping on All Orders Over $99!
+        {t("hurra")}
       </div>
       <div className="flex w-[316px] justify-between items-center ">
         <div className="flex items-center text-white hover-langDropdown">

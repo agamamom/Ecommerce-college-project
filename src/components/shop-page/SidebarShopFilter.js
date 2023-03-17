@@ -13,7 +13,6 @@ import Star from "../../components/forms/Star";
 const { SubMenu } = Menu;
 
 const SidebarShopFilter = ({
-  handleSlider,
   price,
   setPrice,
   fetchProducts,
@@ -21,6 +20,9 @@ const SidebarShopFilter = ({
   setSub,
   setBrand,
   brand,
+  setIsChecked,
+  setOk,
+  ok,
 }) => {
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
@@ -65,9 +67,26 @@ const SidebarShopFilter = ({
       setSubOptions(res.data);
     });
 
+    setIsChecked(true);
+
     getBrands(e.target.value).then((res) => {
       setBrands(res.data);
     });
+  };
+
+  const handleSlider = (value) => {
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice(value);
+    setStar("");
+    setSub("");
+    setBrand("");
+    setCategory("");
+    setTimeout(() => {
+      setOk(!ok);
+    }, 300);
   };
 
   // 5. show products by star rating
@@ -78,9 +97,10 @@ const SidebarShopFilter = ({
       payload: { text: "" },
     });
     setPrice([0, 0]);
-
+    setBrand("");
     setStar(num);
     setSub("");
+    setCategory("");
     fetchProducts({ stars: num });
   };
 
@@ -101,7 +121,7 @@ const SidebarShopFilter = ({
       payload: { text: "" },
     });
     setPrice([0, 0]);
-
+    setBrand("");
     setStar("");
     fetchProducts({ sub });
   };

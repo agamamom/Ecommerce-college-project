@@ -194,8 +194,7 @@ $easeInOut: cubic-bezier(0.42, 0, 0.58, 1);
   color: #fed400;
   text-decoration: none;
   white-space: normal;
-  width: 327px;
-  height: 23px;
+
   min-height: 0px;
   min-width: 0px;
   max-height: none;
@@ -209,6 +208,7 @@ $easeInOut: cubic-bezier(0.42, 0, 0.58, 1);
   opacity: 1;
   transform: translate(0px, 0px);
   visibility: visible;
+  margin-bottom: 10px;
 }
 .timepieces-text {
   z-index: 6;

@@ -6,6 +6,7 @@ import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import { BsPercent } from "react-icons/bs";
 import { MdPhoneInTalk } from "react-icons/md";
 import { IoMailOpen } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 function GetItem(label, key, children, type, link) {
   return {
     key,
@@ -33,6 +34,7 @@ const items = [
 // submenu keys of first level
 const rootSubmenuKeys = ["sub2", "sub4"];
 const MobileNavDropDown = () => {
+  const { t } = useTranslation();
   const [openKeys, setOpenKeys] = useState([""]);
   const navigate = useNavigate();
 
@@ -80,7 +82,7 @@ const MobileNavDropDown = () => {
           <div className="flex items-center ">
             <BsPercent className="text-[#ff5635] mr-[6px]" />
             <div className="text-[#ff5635] tracking-wide font-semibold">
-              Clearance Sales
+              {t("clearence sales")}
             </div>
           </div>
         </div>

@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const LanguageDropDown = ({ className = "" }) => {
+  const { i18n } = useTranslation();
+
+  const changeLanguae = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const items = [
     {
       label: (
         <div
-          onClick={() => setChooseLang("English")}
+          onClick={() => {
+            setChooseLang("English");
+            changeLanguae("en");
+          }}
           onMouseDown={() => setArrow(!arrow)}
         >
           English
@@ -18,7 +28,10 @@ const LanguageDropDown = ({ className = "" }) => {
     {
       label: (
         <div
-          onClick={() => setChooseLang("Vietnamese")}
+          onClick={() => {
+            setChooseLang("Vietnamese");
+            changeLanguae("vi");
+          }}
           onMouseDown={() => setArrow(!arrow)}
         >
           Vietnamese

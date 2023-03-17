@@ -74,7 +74,7 @@ const History = () => {
         <ShowPaymentInfo order={order} />
         {showOrderInTable(order)}
         <div className="row">
-          <div className="col">{showDownloadLink(order)}</div>
+          <div className="col-4">{showDownloadLink(order)}</div>
         </div>
       </div>
     ));
@@ -87,13 +87,13 @@ const History = () => {
         </div>
         <main class="main-wrap">
           <section class="content-main">
-            <div class="content-header">
+            <div class="content-header flex-col">
               <h4>
                 {orders.length > 0
                   ? "User purchase orders"
                   : "No purchase orders"}
               </h4>
-              {showEachOrders()}
+              <div>{showEachOrders()}</div>
             </div>
           </section>
         </main>

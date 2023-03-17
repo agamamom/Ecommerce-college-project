@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
 import reducer, { initialState } from "./reducer";
+import "./i18n";
 
 const store = createStore(rootReducer, composeWithDevTools());
 document.title = "Electro-shop";

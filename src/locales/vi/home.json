@@ -1,0 +1,55 @@
+{
+  "clearence sales": "Xã hàng tồn",
+  "hurra": "Hoan hô! Nhận giao hàng miễn phí cho tất cả các đơn hàng trên $99!",
+  "header": {
+    "home": "Trang chủ",
+    "shop": "Cửa hàng",
+    "pages": "Thông tin",
+    "blog": "Bài viết",
+    "about us": "Về chúng tôi",
+    "contact us": "Liên hệ",
+    "search": "Tìm kiếm",
+    "Popular Search": "Tìm kiếm",
+    "Log in": "Đăng nhập",
+    "Register": "Đăng ký",
+    "Logout": "Đăng xuất",
+    "Dashboard": "Quản lý",
+    "Wishlist": "Danh sách ưa thích",
+    "looking for": "Bạn đang tìm gì?",
+    "search our products": "Tìm kiếm"
+  },
+  "banner": {
+    "SHOP TO GET": "HÃY MUA SẮM NHỮNG THỨ BẠN THÍCH",
+    "TIMEPIECES": "SỰ KIỆN ĐĂC BIỆT",
+    "MAKE A STATEMENT": "ĐANG GIẢM GIÁ",
+    "UP TO": "LÊN ĐẾN",
+    "40OFF": " 40%",
+    "shop now": "Mua ngay"
+  },
+  "top categories": {
+    "TOP CATEGORIES": "NHỮNG DANH MỤC HÀNG ĐẦU",
+    "Shop By Categories": "Mua Theo Từng Loại Danh Mục",
+    "Add our new": "Những món hàng mới nhập về trong tuần này.",
+    "Catch Big": "Nắm bắt",
+    "Deals": "đợt giảm giá",
+    "on the": "trên",
+    "Cameras": "Cameras",
+    "Tablets": "Tablets,",
+    "Smartphones": "Smartphones",
+    "and more": "và hơn thế nữa",
+    "UP": "LÊN",
+    "to": "ĐẾN",
+    "Shop the": "Những",
+    "Hottest": "Sản Phẩm",
+    "Products": "BÁN CHẠY"
+  },
+  "special offer": {
+    "Special Offer": "Mặt Hàng Đặc Biệt",
+    "Game Console": "Bộ Điều Khiển + Cổng USB 3.0",
+    "Top Rated": "Sản phẩm hàng đầu"
+  },
+  "ProductSo": {
+    "Add to cart": "Thêm vào giỏ hàng",
+    "Wishlist": "Danh sách ưa thích"
+  }
+}

@@ -12,8 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import firebase from "firebase";
 import { getCategories } from "../../functions/category";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t } = useTranslation();
   let dispatch = useDispatch();
   let { user, cart } = useSelector((state) => ({ ...state }));
   const navigate = useNavigate();
@@ -26,6 +28,8 @@ const Header = () => {
   const { text } = search;
 
   const dropdownRef = useRef(null);
+
+  const placeholder = t("header.search our products");
 
   const dropdownCateRef = useRef(null);
 
@@ -210,7 +214,9 @@ const Header = () => {
                 alignItems: "center",
               }}
             >
-              <div className="text-black font-medium text-[18px]">Home</div>
+              <div className="text-black font-medium text-[18px]">
+                {t("header.home")}
+              </div>
             </Link>
             <Link
               to="/shop"
@@ -228,7 +234,7 @@ const Header = () => {
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
-                Shop
+                {t("header.shop")}
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
               </div>
               <div
@@ -266,7 +272,7 @@ const Header = () => {
                 onMouseOver={(e) => handleMouseOver(e)}
                 onMouseOut={(e) => handleOnBlur(e)}
               >
-                Pages
+                {t("header.pages")}
                 <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
               </div>
               <div
@@ -275,10 +281,10 @@ const Header = () => {
                 onMouseOut={(e) => handleOnBlur(e)}
               >
                 <Link to="/1" className="py-[4px] pl-[10px]">
-                  About Us
+                  {t("header.about us")}
                 </Link>
                 <Link to="/2" className="py-[4px] pl-[10px]">
-                  Contact Us
+                  {t("header.contact us")}
                 </Link>
                 <Link to="/3" className="py-[4px] pl-[10px]">
                   FAQ's
@@ -296,7 +302,7 @@ const Header = () => {
               className="nav-link-border"
             >
               <div className="flex items-end leading-[16px] text-black font-medium text-[18px]">
-                Blog
+                {t("header.blog")}
               </div>
             </Link>
           </div>
@@ -308,7 +314,7 @@ const Header = () => {
               } left-0 right-0 h-auto bg-white px-[53px] z-[10] transition-all duration-700`}
             >
               <div className="capitalize text-[#666] text-left mt-[80px]">
-                What are you looking for?
+                {t("header.looking for")}
               </div>
               <IoCloseSharp
                 className="absolute top-[10%] right-[50px] text-[22px] hover:rotate-[180deg] transition-all duration-300"
@@ -320,7 +326,7 @@ const Header = () => {
                 <input
                   type="search"
                   value={text}
-                  placeholder="Search our product "
+                  placeholder={placeholder}
                   className="input-search-field w-full"
                   onChange={handleChange}
                   onKeyDown={(e) => handleSubmit(e)}
@@ -329,7 +335,7 @@ const Header = () => {
               </div>
               <div className="flex w-full justify-center mb-[30px] mt-[15px]">
                 <div className="font-semibold tracking-wide">
-                  Popular Search:
+                  {t("header.Popular Search")}
                 </div>
                 <div className="underline text-gray-500 ml-[10px]">
                   theme-nora
@@ -344,7 +350,7 @@ const Header = () => {
               }}
             >
               <AiOutlineSearch className="mr-[10px]" />
-              Search
+              {t("header.search")}
             </div>
             <div className="" ref={dropdownRef}>
               <div
@@ -372,7 +378,7 @@ const Header = () => {
                         to="/login"
                         className="py-[6px] pl-[10px] text-black"
                       >
-                        Log in
+                        {t("header.Log in")}
                       </Link>
                     </div>
 
@@ -382,7 +388,7 @@ const Header = () => {
                       onClick={(e) => handleClickAccount(e)}
                       onmousedown={(e) => handleOnBlur(e)}
                     >
-                      Register
+                      {t("header.Register")}
                     </Link>
                   </>
                 ) : (
@@ -392,7 +398,7 @@ const Header = () => {
                       onClick={logout}
                       onmousedown={(e) => handleOnBlur(e)}
                     >
-                      Logout
+                      {t("header.Logout")}
                     </Link>
 
                     {user && user.role === "subscriber" && (
@@ -402,7 +408,7 @@ const Header = () => {
                         onClick={(e) => handleClickAccount(e)}
                         onmousedown={(e) => handleOnBlur(e)}
                       >
-                        Dashboard
+                        {t("header.Dashboard")}
                       </Link>
                     )}
                     {user && user.role === "admin" && (
@@ -412,7 +418,7 @@ const Header = () => {
                         onClick={(e) => handleClickAccount(e)}
                         onmousedown={(e) => handleOnBlur(e)}
                       >
-                        Dashboard
+                        {t("header.Dashboard")}
                       </Link>
                     )}
 
@@ -422,7 +428,7 @@ const Header = () => {
                       onClick={(e) => handleClickAccount(e)}
                       onmousedown={(e) => handleOnBlur(e)}
                     >
-                      Wishlist
+                      {t("header.Wishlist")}
                     </Link>
                   </>
                 )}

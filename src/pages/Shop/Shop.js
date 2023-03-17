@@ -25,6 +25,8 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [productsCount, setProductsCount] = useState(0);
 
+  const [isChecked, setIsChecked] = useState(false);
+
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
@@ -83,19 +85,6 @@ const Home = () => {
     fetchProducts({ price });
   }, [ok]);
 
-  const handleSlider = (value) => {
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: "" },
-    });
-    setPrice(value);
-    setStar("");
-    setSub("");
-    setTimeout(() => {
-      setOk(!ok);
-    }, 300);
-  };
-
   const breadCrumb = () => {
     return (
       <div className="py-[50px] flex justify-between items-center relative z-[2px]">
@@ -119,7 +108,6 @@ const Home = () => {
         <div className="grid grid-cols-5 gap-7">
           <div className="col-span-1 w-full ">
             <SidebarShopFilter
-              handleSlider={handleSlider}
               price={price}
               setPrice={setPrice}
               fetchProducts={fetchProducts}
@@ -129,32 +117,52 @@ const Home = () => {
               sub={sub}
               setBrand={setBrand}
               brand={brand}
+              setIsChecked={setIsChecked}
+              setOk={setOk}
+              ok={ok}
             />
           </div>
-          <div className="col-span-4 w-full ">
-            {products.length < 1 && <p>No products found</p>}
-            <div className="row pb-5">
-              {products.map((p) => (
-                <div key={p._id} className="col-md-3 mt-3">
-                  <ProductSO
-                    height="h-[448px]"
-                    product={p}
-                    productBorderRight="product"
-                  />
-                </div>
-              ))}
-              <div className="mt-10 mb-[14px] w-full">
-                <nav className="col-md-6 offset-md-4 text-center pt-5 p-3">
-                  <Pagination
-                    current={page}
-                    total={productsCount}
-                    onChange={(value) => handleClick(value)}
-                    onShowSizeChange={(value) => handleClick(value)}
-                  />
-                </nav>
+          {isChecked ? (
+            <div className="col-span-4 w-full ">
+              {products.length < 1 && <p>No products found</p>}
+              <div className="row pb-5">
+                {products.map((product) => (
+                  <div key={product._id} className="col-md-3 mt-3">
+                    <ProductSO
+                      height="h-[448px]"
+                      product={product}
+                      productBorderRight="product"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="col-span-4 w-full ">
+              {products.length < 1 && <p>No products found</p>}
+              <div className="row pb-5">
+                {products.map((p) => (
+                  <div key={p._id} className="col-md-3 mt-3">
+                    <ProductSO
+                      height="h-[448px]"
+                      product={p}
+                      productBorderRight="product"
+                    />
+                  </div>
+                ))}
+                <div className="mt-10 mb-[14px] w-full">
+                  <nav className="col-md-6 offset-md-4 text-center pt-5 p-3">
+                    <Pagination
+                      current={page}
+                      total={productsCount}
+                      onChange={(value) => handleClick(value)}
+                      onShowSizeChange={(value) => handleClick(value)}
+                    />
+                  </nav>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <ScrollToTop smooth />

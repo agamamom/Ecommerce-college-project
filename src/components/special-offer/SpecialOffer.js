@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import ProductSO from "../product-specialOffer/ProductSO";
 import { getRandomProducts } from "../../functions/product";
 import LoadingCard from "../cards/LoadingCard";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -35,9 +36,13 @@ function a11yProps(index) {
 }
 
 const SpecialOffer = () => {
+  const { t } = useTranslation();
+
   const [value, setValue] = React.useState(0);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const TopRated = t("special offer.Top Rated");
 
   useEffect(() => {
     loadAllProducts();
@@ -61,7 +66,7 @@ const SpecialOffer = () => {
         <div className="col-span-3">
           <div className="border-[#fed700] border-[2px] rounded-[1.214em] px-[1.571em] py-[1.429em]">
             <header>
-              <h2 class="text-[25px]">Special Offer</h2>
+              <h2 class="text-[25px]">{t("special offer.Special Offer")}</h2>
             </header>
             <div>
               <a href="#" className="text-[#333e48] no-underline">
@@ -75,7 +80,7 @@ const SpecialOffer = () => {
                   />
                 </div>
                 <h2 class="clear-both text-center mb-[1.214em] font-bold text-[#0062bd] text-[1em] leading-[1.28572em] h-[2.57144em]">
-                  Game Console Controller + USB 3.0 Cable
+                  {t("special offer.Game Console")}
                 </h2>
               </a>
               <span className="text-center text-[2.143em] block w-full mb-[17px]">
@@ -109,7 +114,7 @@ const SpecialOffer = () => {
                 aria-label="basic tabs example"
                 centered
               >
-                <Tab label="Top Rated" {...a11yProps(0)} />
+                <Tab label={TopRated} {...a11yProps(0)} />
               </Tabs>
             </Box>
             <TabPanel value={value} index={0}>

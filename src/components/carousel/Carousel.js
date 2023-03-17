@@ -11,8 +11,10 @@ import {
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper";
+import { useTranslation } from "react-i18next";
 
 const Carousel = () => {
+  const { t } = useTranslation();
   return (
     <div className="h-[400px] carousel-container">
       <Swiper
@@ -37,12 +39,13 @@ const Carousel = () => {
             <img src="/images/carousel/anhnencarousel.jpg" alt="" />
             <div className="absolute bottom-[33%] max-w-[546px] left-[33%] -translate-x-[50%] text-center">
               <motion.div variants={fadeIn2} className="shoptoget-text">
-                SHOP TO GET WHAT YOU LOVE
+                {t("banner.SHOP TO GET")}
               </motion.div>
               <motion.div variants={fadeIn3} className="timepieces-text">
-                TIMEPIECES THAT
-                <br /> MAKE A STATEMENT
-                <br /> UP TO <strong className="font-medium">40% OFF</strong>
+                {t("banner.TIMEPIECES")}
+                <br /> {t("banner.MAKE A STATEMENT")}
+                <br /> {t("banner.UP TO")}
+                <strong className="font-medium"> {t("banner.40OFF")}</strong>
               </motion.div>
               <motion.div
                 variants={fadeIn4}
@@ -52,7 +55,7 @@ const Carousel = () => {
                   href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
-                  Shop Now
+                  {t("banner.shop now")}
                 </a>
               </motion.div>
             </div>
@@ -76,12 +79,14 @@ const Carousel = () => {
             <img src="/images/carousel/anhnencarousel.jpg" alt="" />
             <div className="absolute bottom-[33%] max-w-[546px] left-[33%] -translate-x-[50%] text-center">
               <motion.div variants={fadeIn2} className="shoptoget-text">
-                SHOP TO GET WHAT YOU LOVE
+                {t("banner.SHOP TO GET")}
               </motion.div>
               <motion.div variants={fadeIn3} className="timepieces-text">
-                TIMEPIECES THAT
-                <br /> MAKE A STATEMENT
-                <br /> UP TO <strong className="font-medium">40% OFF</strong>
+                {t("banner.TIMEPIECES")}
+                <br /> {t("banner.MAKE A STATEMENT")}
+                <br />
+                {t("banner.UP TO")}{" "}
+                <strong className="font-medium">{t("banner.40OFF")}</strong>
               </motion.div>
               <motion.div
                 variants={fadeIn4}
@@ -91,7 +96,7 @@ const Carousel = () => {
                   href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
-                  Shop Now
+                  {t("banner.shop now")}
                 </a>
               </motion.div>
             </div>
@@ -115,12 +120,13 @@ const Carousel = () => {
             <img src="/images/carousel/anhnencarousel.jpg" alt="" />
             <div className="absolute bottom-[33%] max-w-[546px] left-[33%] -translate-x-[50%] text-center">
               <motion.div variants={fadeIn2} className="shoptoget-text">
-                SHOP TO GET WHAT YOU LOVE
+                {t("banner.SHOP TO GET")}
               </motion.div>
               <motion.div variants={fadeIn3} className="timepieces-text">
-                TIMEPIECES THAT
-                <br /> MAKE A STATEMENT
-                <br /> UP TO <strong className="font-medium">40% OFF</strong>
+                {t("banner.TIMEPIECES")}
+                <br /> {t("banner.MAKE A STATEMENT")}
+                <br /> {t("banner.UP TO")}{" "}
+                <strong className="font-medium">{t("banner.40OFF")}</strong>
               </motion.div>
               <motion.div
                 variants={fadeIn4}
@@ -130,7 +136,7 @@ const Carousel = () => {
                   href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
-                  Shop Now
+                  {t("banner.shop now")}
                 </a>
               </motion.div>
             </div>
@@ -154,12 +160,14 @@ const Carousel = () => {
             <img src="/images/carousel/anhnencarousel.jpg" alt="" />
             <div className="absolute bottom-[33%] max-w-[546px] left-[33%] -translate-x-[50%] text-center">
               <motion.div variants={fadeIn2} className="shoptoget-text">
-                SHOP TO GET WHAT YOU LOVE
+                {t("banner.SHOP TO GET")}
               </motion.div>
               <motion.div variants={fadeIn3} className="timepieces-text">
-                TIMEPIECES THAT
-                <br /> MAKE A STATEMENT
-                <br /> UP TO <strong className="font-medium">40% OFF</strong>
+                {t("banner.TIMEPIECES")}
+                <br /> {t("banner.MAKE A STATEMENT")}
+                <br />
+                {t("banner.UP TO")}{" "}
+                <strong className="font-medium">{t("banner.40OFF")}</strong>
               </motion.div>
               <motion.div
                 variants={fadeIn4}
@@ -169,7 +177,7 @@ const Carousel = () => {
                   href="/"
                   className="bg-[#fff] text-[#111111] text-[16px] font-semibold py-[12px] px-[29px] mb-[5px]"
                 >
-                  Shop Now
+                  {t("banner.shop now")}
                 </a>
               </motion.div>
             </div>

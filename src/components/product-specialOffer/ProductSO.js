@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import { useDispatch } from "react-redux";
 
+import { useTranslation } from "react-i18next";
+
 const ProductSO = ({ productBorder, productBorderRight, product, height }) => {
+  const { t } = useTranslation();
   const arrSubs = [];
   const dispatch = useDispatch();
   if (product) {
@@ -96,7 +99,7 @@ const ProductSO = ({ productBorder, productBorderRight, product, height }) => {
               </p>
 
               <ReactTooltip id="happyFace" type="dark">
-                <span>Add to cart</span>
+                <span>{t("ProductSo.Add to cart")}</span>
               </ReactTooltip>
             </div>
           </div>
@@ -107,7 +110,7 @@ const ProductSO = ({ productBorder, productBorderRight, product, height }) => {
                 className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black"
               >
                 <CiHeart className="mr-[3px] text-[18px]" />
-                <span>Wishlist</span>
+                <span>{t("ProductSo.Wishlist")}</span>
               </Link>
             </div>
           </div>
