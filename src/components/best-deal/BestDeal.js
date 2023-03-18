@@ -7,8 +7,10 @@ import ReactTooltip from "react-tooltip";
 import { getRandomProducts } from "../../functions/product";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../functions/category";
+import { useTranslation } from "react-i18next";
 
 const BestDeal = () => {
+  const { t } = useTranslation();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -36,7 +38,9 @@ const BestDeal = () => {
       <div className="px-[45px] pt-[15px] pb-[30px]">
         <ul class="text-[15px] mb-[15px] border-b-[1px] border-b-[#ddd] leading-[38px] whitespace-nowrap justify-center flex flex-wrap list-none">
           <li class="BestDeal-nav-item mr-[22px]">
-            <div class="active BestDeal-nav-link active">Best Deals</div>
+            <div class="active BestDeal-nav-link active">
+              {t("BestDeal.Best Deals")}
+            </div>
           </li>
           {categories.map((c) => (
             <div className="mx-[20px]" key={c._id}>
@@ -74,12 +78,12 @@ const BestDeal = () => {
               <div className="relative">
                 <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
                   <a href="/" rel="tag" className="text-[#768b9e]">
-                    Game Console
+                    {t("BestDeal.Game Console")}
                   </a>
                 </span>
                 <a href="/" class="block">
                   <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
-                    Game Console Controller + USB 3.0 Cable
+                    {t("special offer.Game Console")}
                   </h2>
                   <div class="my-[40px] w-full relative">
                     <img
@@ -128,11 +132,11 @@ const BestDeal = () => {
                       className="flex text-white font-semibold items-center justify-around"
                     >
                       <MdOutlineAddShoppingCart className="text-[17px] text-white" />
-                      Add to cart
+                      {t("ProductSo.Add to cart")}
                     </p>
 
                     <ReactTooltip id="happyFace" type="dark">
-                      <span>Add to cart</span>
+                      <span>{t("ProductSo.Add to cart")}</span>
                     </ReactTooltip>
                   </div>
                 </div>
@@ -140,11 +144,7 @@ const BestDeal = () => {
                   <div className="flex-wrap w-full text-[13px] leading-[18px] flex justify-around items-center mt-[40px]">
                     <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
                       <CiHeart className="mr-[3px] text-[18px]" />
-                      <span>Wishlist</span>
-                    </div>
-                    <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
-                      <IoIosGitCompare className="mr-[3px] text-[18px]" />
-                      <span>Compare</span>
+                      <span>{t("ProductSo.Wishlist")}</span>
                     </div>
                   </div>
                 </div>

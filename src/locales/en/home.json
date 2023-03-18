@@ -51,5 +51,44 @@
   "ProductSo": {
     "Add to cart": "Add to cart",
     "Wishlist": "Wishlist"
+  },
+  "BestDeal": {
+    "Best Deals": "Best Deals",
+    "Game Console": "Game Console"
+  },
+  "BestSeller": {
+    "Best Sellers": "Best Sellers",
+    "Top 8": "Top 8",
+    "Televisions & Monitor": "Televisions & Monitor",
+    "Networking & Laptops": "Networking & Laptops",
+    "Video Cameras": "Video Cameras"
+  },
+  "NewLetter": {
+    "Sign up to Newsletter": "Sign up to Newsletter",
+    "and receive": "...and receive",
+    "$20 coupon for first shopping": "$20 coupon for first shopping",
+    "SignUp": "SignUp",
+    "Enter your email address": "Enter your email addres"
+  },
+  "Footer": {
+    "Got Questions": "Got Questions ? Call us 24/7!",
+    "Contact Info": "Contact Info",
+    "17 Princess Road": "17 Princess Road, London, Greater London NW1 8JR, UK",
+    "Find It Fast": "Find It Fast",
+    "Laptops & Computers": "Laptops & Computers",
+    "Cameras & Photography": "Cameras & Photography",
+    "Smart Phones & Tablets": "Smart Phones & Tablets",
+    "Video Games & Consoles": "Video Games & Consoles",
+    "TV & Audio": "TV & Audio",
+    "Gadgets": "Gadgets",
+    "Waterproof Headphones": "Waterproof Headphones",
+    "Customer Care": "Customer Care",
+    "Compare": "Compare",
+    "Store Directory": "Store Directory",
+    "My Account": "My Account",
+    "Track your Order": "Track your Order",
+    "Customer Service": "Customer Service",
+    "Returns/Exchange": "Returns/Exchange",
+    "Product Support": "Product Support"
   }
 }

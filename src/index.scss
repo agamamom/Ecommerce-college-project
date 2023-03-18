@@ -373,18 +373,18 @@ $easeInOut: cubic-bezier(0.42, 0, 0.58, 1);
     position: absolute;
     right: 38%;
   }
-  & #simple-tab-2 {
-    position: absolute;
-    right: 23%;
-  }
-  & #simple-tab-3 {
-    position: absolute;
-    right: 10%;
-  }
-  & #simple-tab-4 {
-    position: absolute;
-    right: 0;
-  }
+  // & #simple-tab-2 {
+  //   position: absolute;
+  //   right: 23%;
+  // }
+  // & #simple-tab-3 {
+  //   position: absolute;
+  //   right: 10%;
+  // }
+  // & #simple-tab-4 {
+  //   position: absolute;
+  //   right: 0;
+  // }
   & .MuiBox-root.css-1gsv261 {
     margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
@@ -409,6 +409,8 @@ $easeInOut: cubic-bezier(0.42, 0, 0.58, 1);
   height: 62px;
   align-items: center;
   position: relative;
+  display: flex;
+  justify-content: end;
 }
 
 .brand-section {

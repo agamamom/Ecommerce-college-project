@@ -6,7 +6,9 @@ import { BsPinterest } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <div className="px-[45px] pb-[25px] pt-[40px]">
       <div className="grid grid-cols-12">
@@ -78,17 +80,15 @@ const Footer = () => {
             </div>
             <div className="ml-[20px] ">
               <div className="font-thin text-[13px] leading-[18.5px]">
-                Got Questions ? Call us 24/7!
+                {t("Footer.Got Questions")}
               </div>
               <div className="text-[22px] leading-[31px]">
                 (800) 8001-8588, (0600) 874 548
               </div>
             </div>
           </div>
-          <div className="font-bold mt-[30px]">Contact Info</div>
-          <div className="">
-            17 Princess Road, London, Greater London NW1 8JR, UK
-          </div>
+          <div className="font-bold mt-[30px]">{t("Footer.Contact Info")}</div>
+          <div className="">{t("Footer.17 Princess Road")}</div>
           <div className="flex items-center mt-[20px]">
             <BsFacebook className="text-[22px] text-[#848484] cursor-pointer hover-iconSocial-facebook" />
             <BsWhatsapp className="text-[22px] text-[#848484] cursor-pointer ml-[32px] hover-iconSocial-whatsApp" />
@@ -102,81 +102,81 @@ const Footer = () => {
           <div className="grid grid-cols-3">
             <div className="">
               <div className="text-[16px] leading-[18px] font-bold">
-                Find It Fast
+                {t("Footer.Find It Fast")}
               </div>
               <ul className="list-none mt-[25.6px]">
                 <li>
-                  <a href="/">Laptops & Computers</a>
+                  <a href="/">{t("Footer.Laptops & Computers")}</a>
                 </li>
                 <li>
-                  <a href="/">Cameras & Photography</a>
+                  <a href="/">{t("Footer.Cameras & Photography")}</a>
                 </li>
                 <li>
-                  <a href="/">Smart Phones & Tablets</a>
+                  <a href="/"> {t("Footer.Smart Phones & Tablets")}</a>
                 </li>
                 <li>
-                  <a href="/">Video Games & Consoles</a>
+                  <a href="/"> {t("Footer.Video Games & Consoles")}</a>
                 </li>
                 <li>
-                  <a href="/">TV & Audio</a>
+                  <a href="/">{t("Footer.TV & Audio")}</a>
                 </li>
                 <li>
-                  <a href="/">Gadgets</a>
+                  <a href="/">{t("Footer.Gadgets")}</a>
                 </li>
                 <li>
-                  <a href="/">Waterproof Headphones</a>
+                  <a href="/">{t("Footer.Waterproof Headphones")}</a>
                 </li>
               </ul>
             </div>
             <div>
               <div className="text-[16px] leading-[18px] font-bold">
                 <div className="text-[16px] leading-[18px] font-bold text-transparent">
-                  Customer Care
+                  {t("Footer.Customer Care")}
                 </div>
               </div>
               <ul className="mt-[25.6px]">
                 <li>
-                  <a href="/">About</a>
+                  <a href="/">{t("header.about us")}</a>
                 </li>
                 <li>
-                  <a href="/">Contact</a>
+                  <a href="/">{t("header.contact us")}</a>
                 </li>
                 <li>
-                  <a href="/">Wishlist</a>
+                  <a href="/">{t("header.Wishlist")}</a>
                 </li>
                 <li>
-                  <a href="/">Compare</a>
+                  <a href="/">{t("header.Compare")}</a>
                 </li>
                 <li>
                   <a href="/">FAQ</a>
                 </li>
                 <li>
-                  <a href="/">Store Directory</a>
+                  <a href="/">{t("Footer.Store Directory")}</a>
                 </li>
               </ul>
             </div>
             <div>
               <div className="text-[16px] leading-[18px] font-bold">
-                Customer Care
+                {t("Footer.Customer Care")}
               </div>
               <ul className="mt-[25.6px]">
                 <li>
-                  <a href="/">My Account</a>
+                  <a href="/">{t("Footer.My Account")}</a>
                 </li>
                 <li>
-                  <a href="/">Track your Order</a>
+                  <a href="/">{t("Footer.Track your Order")}</a>
                 </li>
                 <li>
-                  <a href="/">Customer Service</a>
+                  <a href="/">{t("Footer.Customer Service")}</a>
                 </li>
                 <li>
-                  <a href="/">Returns/Exchange</a>
+                  <a href="/">{t("Footer.Returns/Exchange")}</a>
                 </li>
                 <li>
                   <a href="/">FAQs</a>
                 </li>
                 <li>
-                  <a href="/">Product Support</a>
+                  <a href="/">{t("Footer.Product Support")}</a>
                 </li>
               </ul>
             </div>

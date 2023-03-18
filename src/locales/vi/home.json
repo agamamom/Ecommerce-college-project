@@ -51,5 +51,44 @@
   "ProductSo": {
     "Add to cart": "Thêm vào giỏ hàng",
     "Wishlist": "Danh sách ưa thích"
+  },
+  "BestDeal": {
+    "Best Deals": "Giảm Giá",
+    "Game Console": "Bộ Điều Khiển Game"
+  },
+  "BestSeller": {
+    "Best Sellers": "Các Sản Phẩm Bán Chạy",
+    "Top 8": "8 Sản phẩm hàng đầu",
+    "Televisions & Monitor": "Tivi & Màn hình",
+    "Networking & Laptops": "Mạng & Máy tính xách tay",
+    "Video Cameras": "Máy quay"
+  },
+  "NewLetter": {
+    "Sign up to Newsletter": "Đăng nhập để nhận được thông báo",
+    "and receive": "...và nhận được",
+    "$20 coupon for first shopping": "Phiếu giảm giá 20$ cho lần đầu mua sắm",
+    "SignUp": "Đăng Ký",
+    "Enter your email address": "Điền thông tin Email"
+  },
+  "Footer": {
+    "Got Questions": "Đặt câu hỏi ? Gọi ngay, 24/7!",
+    "Contact Info": "Thông Tin Liên Lạc",
+    "17 Princess Road": " Số 163, Đường Phan Đăng Lưu, Phường 01, Quận Phú Nhuận, Thành phố Hồ Chí Minh",
+    "Find It Fast": "Tìm Kiếm Nhanh",
+    "Laptops & Computers": "Máy tính xách tay & Máy tính bàn",
+    "Cameras & Photography": "Máy quay & Máy ảnh",
+    "Smart Phones & Tablets": "Điện thoại & Máy tính bản",
+    "Video Games & Consoles": "Máy chơi game",
+    "TV & Audio": "Tivi & Máy nghe nhạc",
+    "Gadgets": "Dụng cụ",
+    "Waterproof Headphones": "Tai nghe",
+    "Customer Care": "Khách hàng có thể quan tâm",
+    "Compare": "So xánh",
+    "Store Directory": "Đường dẫn cửa hàng",
+    "My Account": "Tài khoản",
+    "Track your Order": "Theo dõi mặt hàng",
+    "Customer Service": "Dịch vụ cho khách hàng",
+    "Returns/Exchange": "Đổi/Trả",
+    "Product Support": "Bảo hành"
   }
 }

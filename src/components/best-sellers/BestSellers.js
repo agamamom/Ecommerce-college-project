@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import LoadingCard from "../cards/LoadingCard";
+import { useTranslation } from "react-i18next";
 import {
   getRandomTelevisionAndMonitor,
   getRandomNetworkingAndLaptop,
@@ -64,12 +65,19 @@ function a11yProps(index) {
 }
 
 const BestSellers = () => {
+  const { t } = useTranslation();
   const [value, setValue] = React.useState(2);
   const [teleAndMoniProducts, setTeleAndMoniProducts] = useState([]);
   const [networkingAndLaptopProducts, setNetworkingAndLaptopProducts] =
     useState([]);
   const [cameraAndGPSProducts, setCameraAndGPSProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const BS = t("BestSeller.Best Sellers");
+  const top8 = t("BestSeller.Top 8");
+  const TM = t("BestSeller.Televisions & Monitor");
+  const NL = t("BestSeller.Networking & Laptops");
+  const VC = t("BestSeller.Video Cameras");
 
   useEffect(() => {
     loadAllProducts();
@@ -105,12 +113,12 @@ const BestSellers = () => {
             aria-label="basic tabs example"
             centered
           >
-            <AntTabTitle label="Best Sellers" {...a11yProps(0)} disabled />
-            <AntTabTop20 label="Top 8" {...a11yProps(1)} disabled />
-            <AntTab label="Televisions & Monitor" {...a11yProps(2)} />
+            <AntTabTitle label={BS} {...a11yProps(0)} disabled />
+            <AntTabTop20 label={top8} {...a11yProps(1)} disabled />
+            <AntTab label={TM} {...a11yProps(2)} />
             {/* <Tab label="Smart Phones & Tablets"  /> */}
-            <AntTab label="Networking & Laptops" {...a11yProps(3)} />
-            <AntTab label="Video Cameras" {...a11yProps(4)} />
+            <AntTab label={NL} {...a11yProps(3)} />
+            <AntTab label={VC} {...a11yProps(4)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={2}>
