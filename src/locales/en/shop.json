@@ -1,0 +1,16 @@
+{
+  "Shop Page": {
+    "SHOP": "SHOP",
+    "Home": "Home",
+    "shop": "shop",
+    "No products found": "No products found"
+  },
+  "SideBar": {
+    "Search/Filter": "Search/Filter",
+    "Categories": "Categories",
+    "Price": "Price",
+    "Rating": "Rating",
+    "Sub Categories": "Sub Categories",
+    "Brands": "Brands"
+  }
+}

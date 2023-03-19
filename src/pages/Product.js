@@ -8,8 +8,10 @@ import ProductRelatedCard from "../components/cards/ProductRelatedCard";
 import Brand from "../components/brand/Brand";
 import Newletter from "../components/newletter/Newletter";
 import Footer from "../components/footer/Footer";
+import { useTranslation } from "react-i18next";
 import ScrollToTop from "react-scroll-to-top";
 const Product = () => {
+  const { t } = useTranslation(["product"]);
   let { slug } = useParams();
   const [star, setStar] = useState(0);
   const [product, setProduct] = useState({});
@@ -47,38 +49,43 @@ const Product = () => {
   };
 
   return (
-    <div className="px-[45px]">
-      <div className="row pt-4">
-        <SingleProduct
-          product={product}
-          onStarClick={onStarClick}
-          star={star}
-        />
-      </div>
-
-      <div className="row">
-        <div className="col text-center py-[15px]">
-          <hr />
-          <h4>Related Products</h4>
-          <hr />
+    <div>
+      <div className="px-[45px]">
+        <div className="row pt-4">
+          <SingleProduct
+            product={product}
+            onStarClick={onStarClick}
+            star={star}
+          />
         </div>
-      </div>
 
-      <div className="row pb-5">
-        {related.length ? (
-          related.map((r) => (
-            <div key={r._id} className="col-md-2 relatedCard-container">
-              <ProductRelatedCard product={r} />
+        <div className="row">
+          <div className="col text-center py-[15px]">
+            <hr />
+            <h4>{t("product.Related Products")}</h4>
+            <hr />
+          </div>
+        </div>
+
+        <div className="row pb-5">
+          {related.length ? (
+            related.map((r) => (
+              <div key={r._id} className="col-md-2 relatedCard-container">
+                <ProductRelatedCard product={r} />
+              </div>
+            ))
+          ) : (
+            <div className="text-center col">
+              {t("product.No Products Found")}
             </div>
-          ))
-        ) : (
-          <div className="text-center col">No Products Found</div>
-        )}
+          )}
+        </div>
+
+        <ScrollToTop smooth />
       </div>
       <Brand />
       <Newletter />
       <Footer />
-      <ScrollToTop smooth />
     </div>
   );
 };

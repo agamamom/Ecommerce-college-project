@@ -13,9 +13,13 @@ import { addToWishlist } from "../../functions/user";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { createBrowserHistory } from "history";
+import { useTranslation } from "react-i18next";
+
 const { TabPane } = Tabs;
 
 const SingleProduct = ({ product, onStarClick, star }) => {
+  const { t } = useTranslation(["product"]);
+
   const { title, description, images, _id } = product;
   const [tooltip, setTooltip] = useState("Click to add");
 
@@ -70,6 +74,8 @@ const SingleProduct = ({ product, onStarClick, star }) => {
       navigate("/login");
     }
   };
+  const More = t("SingleProduct.More");
+  const Description = t("SingleProduct.Description");
 
   return (
     <>
@@ -87,11 +93,11 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         </Carousel>
         <div className="min-h-[150px]">
           <Tabs type="card">
-            <TabPane tab="Description" key="1">
+            <TabPane tab={Description} key="1">
               {description && description}
             </TabPane>
-            <TabPane tab="More" key="2">
-              Call use on xxxx xxx xxx to learn more about this product.
+            <TabPane tab={More} key="2">
+              {t("SingleProduct.Call use on")}
             </TabPane>
           </Tabs>
         </div>
@@ -104,7 +110,9 @@ const SingleProduct = ({ product, onStarClick, star }) => {
           {product && product.ratings && product.ratings.length > 0 ? (
             showAverage(product)
           ) : (
-            <div className="text-center pt-1 pb-3">No rating yet</div>
+            <div className="text-center pt-1 pb-3">
+              {t("SingleProduct.No rating yet")}
+            </div>
           )}
         </div>
 
@@ -112,12 +120,13 @@ const SingleProduct = ({ product, onStarClick, star }) => {
           actions={[
             <Tooltip title={tooltip}>
               <div onClick={handleAddToCart}>
-                <ShoppingCartOutlined className="text-danger" /> <br /> Add to
-                Cart
+                <ShoppingCartOutlined className="text-danger" /> <br />
+                {t("SingleProduct.Add to Cart")}
               </div>
             </Tooltip>,
             <div onClick={handleAddToWishlist}>
-              <HeartOutlined className="text-info" /> <br /> Add to Wishlist
+              <HeartOutlined className="text-info" /> <br />{" "}
+              {t("SingleProduct.Add to Wishlist")}
             </div>,
             <RatingModal>
               <StarRating

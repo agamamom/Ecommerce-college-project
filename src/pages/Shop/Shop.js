@@ -13,8 +13,11 @@ import { Breadcrumb } from "antd";
 import BreadcrumbComponent from "../../components/breadcrumb/Breadcrumb";
 import ScrollToTop from "react-scroll-to-top";
 import { Pagination } from "antd";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation(["shop"]);
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState([0, 0]);
@@ -27,12 +30,15 @@ const Home = () => {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
   const { text } = search;
 
   useEffect(() => {
     CountOfAllProducts();
+  }, []);
+
+  useEffect(() => {
+    loadAllProducts();
   }, []);
 
   useEffect(() => {
@@ -88,13 +94,13 @@ const Home = () => {
   const breadCrumb = () => {
     return (
       <div className="py-[50px] flex justify-between items-center relative z-[2px]">
-        <div className="text-[30px] uppercase">SHOP</div>
+        <div className="text-[30px] uppercase">{t("Shop Page.SHOP")}</div>
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/">Home</Link>
+            <Link to="/">{t("Shop Page.Home")}</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <Link to={`/shop`}>shop</Link>
+            <Link to={`/shop`}>{t("Shop Page.shop")}</Link>
           </Breadcrumb.Item>
         </Breadcrumb>
       </div>
@@ -124,7 +130,7 @@ const Home = () => {
           </div>
           {isChecked ? (
             <div className="col-span-4 w-full ">
-              {products.length < 1 && <p>No products found</p>}
+              {products.length < 1 && <p>{t("Shop Page.No products found")}</p>}
               <div className="row pb-5">
                 {products.map((product) => (
                   <div key={product._id} className="col-md-3 mt-3">
@@ -139,7 +145,7 @@ const Home = () => {
             </div>
           ) : (
             <div className="col-span-4 w-full ">
-              {products.length < 1 && <p>No products found</p>}
+              {products.length < 1 && <p>{t("Shop Page.No products found")}</p>}
               <div className="row pb-5">
                 {products.map((p) => (
                   <div key={p._id} className="col-md-3 mt-3">

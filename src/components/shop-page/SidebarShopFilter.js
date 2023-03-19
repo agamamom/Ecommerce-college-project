@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import Star from "../../components/forms/Star";
+import { useTranslation } from "react-i18next";
 
 const { SubMenu } = Menu;
 
@@ -29,7 +30,7 @@ const SidebarShopFilter = ({
   const [category, setCategory] = useState([]);
   const [subOptions, setSubOptions] = useState([]);
   let dispatch = useDispatch();
-
+  const { t } = useTranslation(["shop"]);
   useEffect(() => {
     getCategories().then((c) => {
       setCategories(c.data);
@@ -151,7 +152,7 @@ const SidebarShopFilter = ({
   return (
     <>
       <div className=" pt-2">
-        <h4>Search/Filter</h4>
+        <h4>{t("SideBar.Search/Filter")}</h4>
         <hr />
 
         <Menu defaultOpenKeys={["1", "2", "3", "4", "5"]} mode="inline">
@@ -161,7 +162,7 @@ const SidebarShopFilter = ({
             title={
               <div className="flex items-center">
                 <DownSquareOutlined />
-                <span className="">Categories</span>
+                <span className="">{t("SideBar.Categories")}</span>
               </div>
             }
           >
@@ -174,7 +175,7 @@ const SidebarShopFilter = ({
             title={
               <div className="flex items-baseline">
                 <DollarOutlined />
-                <span>Price</span>
+                <span>{t("SideBar.Price")}</span>
               </div>
             }
           >
@@ -196,7 +197,7 @@ const SidebarShopFilter = ({
             title={
               <div className="flex items-center">
                 <StarOutlined />
-                <span className="">Rating</span>
+                <span className="">{t("SideBar.Rating")}</span>
               </div>
             }
           >
@@ -210,7 +211,7 @@ const SidebarShopFilter = ({
               title={
                 <div className="flex items-center">
                   <DownSquareOutlined />
-                  <span className="">Sub Categories</span>
+                  <span className="">{t("SideBar.Sub Categories")}</span>
                 </div>
               }
             >
@@ -241,7 +242,7 @@ const SidebarShopFilter = ({
               title={
                 <div className="flex items-center">
                   <StarOutlined />
-                  <span className="">Brands</span>
+                  <span className="">{t("SideBar.Brands")}</span>
                 </div>
               }
             >

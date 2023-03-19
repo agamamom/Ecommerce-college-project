@@ -1,0 +1,32 @@
+{
+  "product": {
+    "Related Products": "Các Sản Phẩm Liên Quan",
+    "No Products Found": "Không tìm thấy sản phẩm nào"
+  },
+  "SingleProduct": {
+    "Call use on": "Hãy gọi cho số 0123 456 789 để biết thêm thông tin chi tiết.",
+    "No rating yet": "Chưa có đánh giá",
+    "Add to Cart": "Thêm vào giỏ hàng",
+    "Add to Wishlist": "Thêm vào danh sách ưa thích",
+    "More": "Thêm Thông Tin",
+    "Description": "Chi Tiết Sản Phẩm",
+    "Leave rating": "Đánh Giá",
+    "Login to leave rating": "Đăng Nhập Để Đánh Giá",
+    "Thanks for your review. It will apper soon": "Cảm ơn bạn đã đánh giá sản phẩm"
+  },
+  "ProductListInfo": {
+    "Category": "Loại Hàng",
+    "Sub Categories": "Danh Mục Phụ",
+    "Shipping": "Vận Chuyển",
+    "Color": "Màu",
+    "Brand": "Thương Hiệu",
+    "Available": "Số Lượng Sản Phẩm",
+    "Sold": "Đã Bán"
+  },
+  "ProductRelated": {
+    "View Product": "Xem",
+    "Out of stock": "Hết Hàng",
+    "Add to Cart": "Thêm Sản Phẩm",
+    "This product is out of stock": "Sản Phẩm Này Không Còn Hàng"
+  }
+}

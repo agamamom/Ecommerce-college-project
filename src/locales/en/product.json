@@ -1,0 +1,32 @@
+{
+  "product": {
+    "Related Products": "Related Products",
+    "No Products Found": "No Products Found"
+  },
+  "SingleProduct": {
+    "Call use on": "Call use on 0123 456 789 to learn more about this product.",
+    "No rating yet": "No rating yet",
+    "Add to Cart": "Add to Cart",
+    "Add to Wishlist": "Add to Wishlist",
+    "More": "More",
+    "Description": "Description",
+    "Leave rating": "Leave rating",
+    "Login to leave rating": "Login to leave rating",
+    "Thanks for your review. It will apper soon": "Thanks for your review. It will apper soon"
+  },
+  "ProductListInfo": {
+    "Category": "Category",
+    "Sub Categories": "Sub Categories",
+    "Shipping": "Shipping",
+    "Color": "Color",
+    "Brand": "Brand",
+    "Available": "Available",
+    "Sold": "Sold"
+  },
+  "ProductRelated": {
+    "View Product": "View Product",
+    "Out of stock": "Out of stock",
+    "Add to Cart": "Add to Cart",
+    "This product is out of stock": "This product is out of stock"
+  }
+}

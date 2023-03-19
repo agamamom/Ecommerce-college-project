@@ -1,0 +1,16 @@
+{
+  "Shop Page": {
+    "SHOP": "CÁC SẢN PHẨM",
+    "Home": "Trang chủ",
+    "shop": "Cửa hàng",
+    "No products found": "Không có sản phẩm"
+  },
+  "SideBar": {
+    "Search/Filter": "Tìm/Lọc",
+    "Categories": "Danh Mục",
+    "Price": "Giá",
+    "Rating": "Đánh Giá",
+    "Sub Categories": "Danh Mục Phụ",
+    "Brands": "Thương Hiệu"
+  }
+}

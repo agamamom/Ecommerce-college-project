@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FormattedCurrency from "../format-currency/FormattedCurrency";
+import { useTranslation } from "react-i18next";
 
 const ProductListItems = ({ product }) => {
   const { category, subs, shipping, color, brand, quantity, sold } = product;
-
+  const { t } = useTranslation(["product"]);
   return (
     <ul className="list-group">
       <li className="list-group-item">
@@ -16,7 +17,7 @@ const ProductListItems = ({ product }) => {
 
       {category && (
         <li className="list-group-item">
-          Category{" "}
+          {t("ProductListInfo.Category")}{" "}
           <Link
             to={`/category/${category.slug}`}
             className="label label-default label-pill pull-xs-right"
@@ -28,7 +29,7 @@ const ProductListItems = ({ product }) => {
 
       {subs && (
         <li className="list-group-item">
-          Sub Categories
+          {t("ProductListInfo.Sub Categories")}
           {subs.map((s) => (
             <div className="label label-default label-pill pull-xs-right">
               {s.name}
@@ -38,35 +39,35 @@ const ProductListItems = ({ product }) => {
       )}
 
       <li className="list-group-item">
-        Shipping{" "}
+        {t("ProductListInfo.Shipping")}{" "}
         <span className="label label-default label-pill pull-xs-right">
           {shipping}
         </span>
       </li>
 
       <li className="list-group-item">
-        Color{" "}
+        {t("ProductListInfo.Color")}{" "}
         <span className="label label-default label-pill pull-xs-right">
           {color}
         </span>
       </li>
 
       <li className="list-group-item">
-        Brand{" "}
+        {t("ProductListInfo.Brand")}{" "}
         <span className="label label-default label-pill pull-xs-right">
           {brand}
         </span>
       </li>
 
       <li className="list-group-item">
-        Available{" "}
+        {t("ProductListInfo.Available")}{" "}
         <span className="label label-default label-pill pull-xs-right">
           {quantity}
         </span>
       </li>
 
       <li className="list-group-item">
-        Sold{" "}
+        {t("ProductListInfo.Sold")}{" "}
         <span className="label label-default label-pill pull-xs-right">
           {sold}
         </span>

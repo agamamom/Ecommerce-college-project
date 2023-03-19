@@ -7,12 +7,15 @@ import { showAverage } from "../../functions/rating";
 import StarRating from "react-star-ratings";
 import { useDispatch } from "react-redux";
 import _ from "lodash";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const { Meta } = Card;
 
 const ProductRelatedCard = ({ product }) => {
   // destructure
   const [tooltip, setTooltip] = useState("Click to add");
+  const { t } = useTranslation(["product"]);
 
   const dispatch = useDispatch();
   const { images, title, description, slug } = product;
@@ -24,6 +27,10 @@ const ProductRelatedCard = ({ product }) => {
   const handleAddToCart = () => {
     // create cart array
     let cart = [];
+    if (product.quantity < 1) {
+      toast.warning(`${OutOfStockToast}`);
+      return;
+    }
     if (typeof window !== "undefined") {
       // if cart is in local storage GET it
       if (localStorage.getItem("cart")) {
@@ -53,6 +60,9 @@ const ProductRelatedCard = ({ product }) => {
       });
     }
   };
+  const OutOfStockToast = t("ProductRelated.This product is out of stock");
+  const OutOfStock = t("ProductRelated.Out of stock");
+  const AddToCart = t("ProductRelated.Add to Cart");
 
   return (
     <>
@@ -76,7 +86,7 @@ const ProductRelatedCard = ({ product }) => {
           </div>
         )}
       </div>
-      <Link to={`/product/${product.slug}`}>
+      <div>
         <Card
           cover={
             <img
@@ -88,12 +98,13 @@ const ProductRelatedCard = ({ product }) => {
           }
           actions={[
             <Link to={`/product/${slug}`}>
-              <EyeOutlined className="text-warning" /> <br /> View Product
+              <EyeOutlined className="text-warning" /> <br />{" "}
+              {t("ProductRelated.View Product")}
             </Link>,
             <Tooltip title={tooltip}>
               <div onClick={handleAddToCart}>
                 <ShoppingCartOutlined className="text-danger" /> <br />
-                {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
+                {product.quantity < 1 ? `${OutOfStock}` : `${AddToCart}`}
               </div>
             </Tooltip>,
           ]}
@@ -103,7 +114,7 @@ const ProductRelatedCard = ({ product }) => {
             description={`${description && description.substring(0, 40)}...`}
           />
         </Card>
-      </Link>
+      </div>
     </>
   );
 };
