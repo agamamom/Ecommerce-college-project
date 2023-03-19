@@ -8,10 +8,13 @@ import ListView from "./ListView";
 import GridView from "./GridView";
 import { HiViewGrid } from "react-icons/hi";
 import { HiViewList } from "react-icons/hi";
+import { useTranslation } from "react-i18next";
 
 var slugify = require("slugify");
 
 const ListProductType = ({ slug, allProductByCategory }) => {
+  const { t } = useTranslation(["category"]);
+
   const title = slugify(slug, { replacement: " " });
 
   const [value, setValue] = React.useState("1");
@@ -26,7 +29,8 @@ const ListProductType = ({ slug, allProductByCategory }) => {
           {title}
         </div>
         <div className="text-right">
-          Showing all {allProductByCategory.length} results
+          {t("ListProductType.Showing all")} {allProductByCategory.length}{" "}
+          {t("ListProductType.results")}
         </div>
       </div>
       <div className="w-full ChangeView">

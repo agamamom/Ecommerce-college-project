@@ -6,7 +6,10 @@ import SHOP_EN from "./locales/en/shop.json";
 import SHOP_VI from "./locales/vi/shop.json";
 import PRODUCT_EN from "./locales/en/product.json";
 import PRODUCT_VI from "./locales/vi/product.json";
-
+import SLIDER_EN from "./locales/en/slider.json";
+import SLIDER_VI from "./locales/vi/slider.json";
+import CATEGORY_EN from "./locales/en/category.json";
+import CATEGORY_VI from "./locales/vi/category.json";
 export const locales = {
   en: "English",
   vi: "Tiếng Việt",
@@ -17,11 +20,15 @@ const resources = {
     home: HOME_EN,
     shop: SHOP_EN,
     product: PRODUCT_EN,
+    slider: SLIDER_EN,
+    category: CATEGORY_EN,
   },
   vi: {
     home: HOME_VI,
     shop: SHOP_VI,
     product: PRODUCT_VI,
+    slider: SLIDER_VI,
+    category: CATEGORY_VI,
   },
 };
 
@@ -32,7 +39,7 @@ i18n
   .init({
     resources,
     lng: "en", // language to use, more information here: https://www.
-    ns: ["home", "shop", "product"],
+    ns: ["home", "shop", "product", "slider", "category"],
     fallbackLng: "vi",
     defaultNS,
     interpolation: {

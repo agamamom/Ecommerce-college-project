@@ -6,10 +6,11 @@ import ListProductType from "../../components/category-page/ListProductType";
 import { Breadcrumb } from "antd";
 import BreadcrumbComponent from "../../components/breadcrumb/Breadcrumb";
 import ScrollToTop from "react-scroll-to-top";
+import { useTranslation } from "react-i18next";
 
 const CategoryHome = () => {
   const { slug } = useParams();
-
+  const { t } = useTranslation(["category"]);
   const slugToString = JSON.stringify(slug);
 
   const [category, setCategory] = useState({});
@@ -27,10 +28,10 @@ const CategoryHome = () => {
   const breadCrumb = () => {
     return (
       <div className="py-[50px] flex justify-between items-center relative z-[2px]">
-        <div className="text-[30px] uppercase">Category</div>
+        <div className="text-[30px] uppercase">{t("CaHome.Category")}</div>
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/">Home</Link>
+            <Link to="/">{t("CaHome.Home")}</Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <Link to={`/category/${slug}`}>{slug}</Link>

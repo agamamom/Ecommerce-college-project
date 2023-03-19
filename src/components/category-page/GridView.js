@@ -15,6 +15,7 @@ const GridView = ({ slug }) => {
 
   useEffect(() => {
     loadAllProducts();
+    setPage(1);
   }, [page, slug]);
 
   useEffect(() => {

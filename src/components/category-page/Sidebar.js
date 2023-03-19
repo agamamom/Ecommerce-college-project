@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { getCategories } from "../../functions/category";
 import { Link } from "react-router-dom";
 import { getBrands } from "../../functions/product";
-
+import { useTranslation } from "react-i18next";
 const Sidebar = () => {
+  const { t } = useTranslation(["category"]);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   useEffect(() => {
@@ -19,7 +20,7 @@ const Sidebar = () => {
     <>
       <div className="border border-[#514e4ee6] h-[500px] rounded-lg">
         <div className="border-b border-solid border-[#75737389] w-full">
-          <div className="p-[20px]">All Categories</div>
+          <div className="p-[20px]">{t("category.All Categories")}</div>
         </div>
         <div className="my-[15px] w-full">
           {categories.map((c) => (
@@ -30,9 +31,7 @@ const Sidebar = () => {
             </div>
           ))}
         </div>
-        <div className="border-b border-solid border-[#75737389] w-full">
-          <div className="p-[20px]"> Featured Brands</div>
-        </div>
+
         <div className="my-[15px] w-full">
           {brands &&
             brands?.map((c) => (

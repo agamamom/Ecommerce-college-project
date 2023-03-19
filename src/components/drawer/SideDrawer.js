@@ -3,8 +3,9 @@ import { Drawer } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import DrawerItems from "./DrawerItems";
-
+import { useTranslation } from "react-i18next";
 const SideDrawer = () => {
+  const { t } = useTranslation(["slider"]);
   const dispatch = useDispatch();
   const { drawer, cart } = useSelector((state) => ({ ...state }));
 
@@ -17,10 +18,12 @@ const SideDrawer = () => {
     currency: "USD",
   });
 
+  const sliderTitle = t("slider.JUST ADDED TO YOUR CART");
+
   return (
     <Drawer
       className="text-center"
-      title="JUST ADDED TO YOUR CART"
+      title={sliderTitle}
       placement="right"
       closable={false}
       width={420}
@@ -36,7 +39,7 @@ const SideDrawer = () => {
         <div>
           <div className="flex justify-between items-center px-[14px]">
             <div className="p-0 font-bold text-[14px] text-[#666666] tracking-widest">
-              Cart total:
+              {t("slider.Cart total")}
             </div>
             <p className="py-[12px]">
               <span className="font-bold text-[15px] text-black tracking-wide">
@@ -56,7 +59,9 @@ const SideDrawer = () => {
               className="text-center btn w-full button-slide"
               style={{ padding: 0 }}
             >
-              <div className="button">{`View Cart ( ${cart.length} )`}</div>
+              <div className="button">{`${t("slider.View Cart")} ( ${
+                cart.length
+              } )`}</div>
             </button>
           </Link>
         </div>
