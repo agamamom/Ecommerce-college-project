@@ -9,5 +9,9 @@
   "CaHome": {
     "Category": "Category",
     "Home": "Home"
+  },
+  "ProductListView": {
+    "Read more": "Read more",
+    "Wishlist": "Wishlist"
   }
 }

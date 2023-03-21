@@ -103,6 +103,16 @@ const SpecialOffer = () => {
               alt=""
               className="mt-[10px]"
             />
+            <img
+              src="/images/picture-sidebar1.png"
+              alt=""
+              className="mt-[10px]"
+            />
+            <img
+              src="/images/picture-sidebar2.png"
+              alt=""
+              className="mt-[10px]"
+            />
           </div>
         </div>
         <div className="col-span-9 special-offer-right">

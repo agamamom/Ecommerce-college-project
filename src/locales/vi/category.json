@@ -9,5 +9,9 @@
   "CaHome": {
     "Category": "Danh mục",
     "Home": "Trang chủ"
+  },
+  "ProductListView": {
+    "Read more": "Xem thêm",
+    "Wishlist": "Danh sách ưa thích"
   }
 }

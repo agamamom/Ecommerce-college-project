@@ -4,8 +4,9 @@ import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
 import StarRating from "react-star-ratings";
-
+import { useTranslation } from "react-i18next";
 const ProductsListView = ({ product }) => {
+  const { t } = useTranslation(["category"]);
   const arrSubs = [];
   if (product) {
     product.subs.map((proSubs) => {
@@ -84,7 +85,7 @@ const ProductsListView = ({ product }) => {
           <div className="text-[20px] text-[#4c4b4b]">{USDPrice} USD</div>
           <Link to={`/product/${product.slug}`} class="block my-[20px]">
             <div className="text-[14px] text-[#fff] bg-[#fed700] px-[60px] py-[10px] text-center font-bold mb-[10px] rounded-[50px]">
-              Read more
+              {t("ProductListView.Read more")}
             </div>
           </Link>
           <div className="flex-wrap w-full text-[13px] leading-[18px] flex justify-around items-center pt-[7.5px]">
@@ -93,12 +94,8 @@ const ProductsListView = ({ product }) => {
               className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black"
             >
               <CiHeart className="mr-[3px] text-[18px]" />
-              <span>Wishlist</span>
+              <span> {t("ProductListView.Wishlist")}</span>
             </Link>
-            <div className="m-0 p-0 text-[#8598a9] flex cursor-pointer hover-text-black">
-              <IoIosGitCompare className="mr-[3px] text-[18px]" />
-              <span>Compare</span>
-            </div>
           </div>
         </div>
       </div>
