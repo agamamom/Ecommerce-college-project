@@ -12,11 +12,21 @@ const ListView = ({ slug }) => {
   const [loading, setLoading] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [getSlug, setGetSlug] = useState(slug);
+
+  const prevSlug = useRef(getSlug);
+
+  useEffect(() => {
+    setGetSlug(slug);
+    prevSlug.current = getSlug;
+    if (prevSlug !== getSlug) {
+      setPage(1);
+    }
+  }, [slug]);
 
   useEffect(() => {
     loadAllProducts();
-    setPage(1);
-  }, [page, slug]);
+  }, [page]);
 
   useEffect(() => {
     getCategoryProductByCount(slug).then((res) => setProductsCount(res.data));

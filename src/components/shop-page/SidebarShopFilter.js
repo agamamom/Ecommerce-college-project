@@ -62,7 +62,6 @@ const SidebarShopFilter = ({
     setStar("");
     setSub("");
     setCategory(e.target.value);
-    console.log("category", category);
     fetchProducts({ category: e.target.value });
     getCategorySubs(e.target.value).then((res) => {
       setSubOptions(res.data);
