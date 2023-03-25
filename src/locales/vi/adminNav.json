@@ -1,0 +1,35 @@
+{
+   "adminNav": {
+      "Dashboard": "Trạng thái",
+      "Product": "Thêm sản phẩm",
+      "Products": "Danh sách sản phẩm",
+      "Category": "Thêm danh mục",
+      "Sub Category": "Danh mục phụ",
+      "Coupon": "Mã giảm giá",
+      "Password": "Mật khẩu"
+   },
+   "adminDashboard": {
+      "Admin Dashboard": "Quản trị đơn hàng",
+      "Title": "Tên sản phẩm",
+      "Price": "Giá",
+      "Brand": "Thương hiệu",
+      "Color": "Màu",
+      "Count": "Số lượng",
+      "Shipping": "Vân chuyển",
+      "Delivery Status": "Trạng thái",
+      "Not Processed": "Chưa xử lý",
+      "Processing": "Đang xử lý",
+      "Dispatched": "Dispatched",
+      "Cancelled": "Hủy",
+      "Completed": "Hoàn tất thanh toán"
+   },
+   "PaymentInfo": {
+      "Order Id": "Id đơn hàng",
+      "Amount": "Số lượng",
+      "Currency": "Tiền",
+      "Method": "Phương thức",
+      "Payment": "Phương thức thanh toán",
+      "Orderd on": "Giờ đặt hàng",
+      "STATUS": "TRẠNG THÁI"
+   }
+}

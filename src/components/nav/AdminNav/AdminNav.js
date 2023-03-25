@@ -1,46 +1,58 @@
 /* eslint-disable react/style-prop-object */
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../nav/AdminNav/dashboard.css";
 import { Navigation } from "react-minimal-side-navigation";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
-import { AiOutlineBars } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 const AdminNav = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  return (
-    <>
-      <div
-        className={`fixed inset-y-0 left-0 w-[300px] z-30 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
-          isSidebarOpen ? "ease-out translate-x-0" : "ease-in -translate-x-full"
-        }`}
-      >
-        <div className="flex py-[50px] px-[30px] justify-between border-b-[1px] border-[#00000026] border-solid ml-[12px]">
-          <svg
-            version="1.1"
-            x="0px"
-            y="0px"
-            width="106px"
-            height="37px"
-            viewBox="0 0 175.748 42.52"
-            enableBackground="new 0 0 175.748 42.52"
-          >
-            <ellipse
-              fillRule="evenodd"
-              clipRule="evenodd"
-              fill="#FDD700"
-              cx="170.05"
-              cy="36.341"
-              rx="5.32"
-              ry="5.367"
-            ></ellipse>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              fill="#333E48"
-              d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
+   const { t } = useTranslation(["adminNav"]);
+   const navigate = useNavigate();
+   const location = useLocation();
+   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+   const dashboard = t("adminNav.Dashboard");
+   const Product = t("adminNav.Product");
+   const Products = t("adminNav.Products");
+   const Category = t("adminNav.Category");
+   const SubCategory = t("adminNav.Sub Category");
+   const Coupon = t("adminNav.Coupon");
+   const Password = t("adminNav.Password");
+
+   return (
+      <>
+         <div
+            className={`fixed inset-y-0 left-0 w-[300px] z-30 overflow-y-auto transition duration-300 ease-out transform translate-x-0 bg-white border-r-2 lg:translate-x-0 lg:static lg:inset-0 ${
+               isSidebarOpen
+                  ? "ease-out translate-x-0"
+                  : "ease-in -translate-x-full"
+            }`}
+         >
+            <div className="flex py-[50px] px-[30px] justify-between border-b-[1px] border-[#00000026] border-solid ml-[12px]">
+               <svg
+                  version="1.1"
+                  x="0px"
+                  y="0px"
+                  width="106px"
+                  height="37px"
+                  viewBox="0 0 175.748 42.52"
+                  enableBackground="new 0 0 175.748 42.52"
+               >
+                  <ellipse
+                     fillRule="evenodd"
+                     clipRule="evenodd"
+                     fill="#FDD700"
+                     cx="170.05"
+                     cy="36.341"
+                     rx="5.32"
+                     ry="5.367"
+                  ></ellipse>
+                  <path
+                     fillRule="evenodd"
+                     clipRule="evenodd"
+                     fill="#333E48"
+                     d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
 						C30.263,0.995,29.876,1.181,29.79,1.5c-0.148,0.548,0,1.568,0,2.427v36.459c0.265,0.221,0.506,0.465,0.725,0.734h6.187
 						c0.2-0.25,0.423-0.477,0.669-0.678V1.387C37.124,1.185,36.9,0.959,36.701,0.71H30.514z M117.517,12.731
 						c-0.232-0.189-0.439-0.64-0.781-0.734c-0.754-0.209-2.039,0-3.121,0h-3.176V4.435c-0.232-0.189-0.439-0.639-0.781-0.733
@@ -75,62 +87,62 @@ const AdminNav = () => {
 						c0.404-1.031-0.365-1.502-0.891-2.088c-2.543-2.835-6.66-5.377-11.704-5.137c-6.02,0.288-10.218,3.697-12.484,7.846
 						c-1.293,2.365-1.951,5.158-1.729,8.408c0.209,3.053,1.191,5.496,2.619,7.508c2.842,4.004,7.385,6.973,13.656,6.377
 						c5.976-0.568,9.574-3.936,11.816-8.354c-0.141-0.271-0.221-0.604-0.336-0.902C92.929,31.364,90.843,30.485,88.812,29.55z"
-            ></path>
-          </svg>
-        </div>
-        <Navigation
-          // you can use your own router's api to get pathname
-          activeItemId={location.pathname}
-          onSelect={({ itemId }) => {
-            navigate(itemId);
-          }}
-          items={[
-            {
-              title: "Dashboard",
-              itemId: "/admin/dashboard",
-              // you can use your own custom Icon component as well
-              // icon is optional
-            },
-            {
-              title: "Product",
-              itemId: "/admin/product",
+                  ></path>
+               </svg>
+            </div>
+            <Navigation
+               // you can use your own router's api to get pathname
+               activeItemId={location.pathname}
+               onSelect={({ itemId }) => {
+                  navigate(itemId);
+               }}
+               items={[
+                  {
+                     title: dashboard,
+                     itemId: "/admin/dashboard",
+                     // you can use your own custom Icon component as well
+                     // icon is optional
+                  },
+                  {
+                     title: Product,
+                     itemId: "/admin/product",
 
-              // subNav: [
-              //   {
-              //     title: "Projects",
-              //     itemId: "/management/projects",
-              //   },
-              //   {
-              //     title: "Members",
-              //     itemId: "/management/members",
-              //   },
-              // ],
-            },
-            {
-              title: "Products",
-              itemId: "/admin/products",
-            },
-            {
-              title: "Category",
-              itemId: "/admin/category",
-            },
-            {
-              title: "Sub Category",
-              itemId: "/admin/sub",
-            },
-            {
-              title: "Coupon",
-              itemId: "/admin/coupon",
-            },
-            {
-              title: "Password",
-              itemId: "/user/password",
-            },
-          ]}
-        />
-      </div>
-    </>
-  );
+                     // subNav: [
+                     //   {
+                     //     title: "Projects",
+                     //     itemId: "/management/projects",
+                     //   },
+                     //   {
+                     //     title: "Members",
+                     //     itemId: "/management/members",
+                     //   },
+                     // ],
+                  },
+                  {
+                     title: Products,
+                     itemId: "/admin/products",
+                  },
+                  {
+                     title: Category,
+                     itemId: "/admin/category",
+                  },
+                  {
+                     title: SubCategory,
+                     itemId: "/admin/sub",
+                  },
+                  {
+                     title: Coupon,
+                     itemId: "/admin/coupon",
+                  },
+                  {
+                     title: Password,
+                     itemId: "/user/password",
+                  },
+               ]}
+            />
+         </div>
+      </>
+   );
 };
 
 export default AdminNav;

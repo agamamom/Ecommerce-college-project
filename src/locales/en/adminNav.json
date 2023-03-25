@@ -1,0 +1,35 @@
+{
+   "adminNav": {
+      "Dashboard": "Dashboard",
+      "Product": "Product",
+      "Products": "Products",
+      "Category": "Category",
+      "Sub Category": "Sub Category",
+      "Coupon": "Coupon",
+      "Password": "Password"
+   },
+   "adminDashboard": {
+      "Admin Dashboard": "Admin Dashboard",
+      "Title": "Title",
+      "Price": "Price",
+      "Brand": "Brand",
+      "Color": "Color",
+      "Count": "Count",
+      "Shipping": "Shipping",
+      "Delivery Status": "Delivery Status",
+      "Not Processed": "Not Processed",
+      "Processing": "Processing",
+      "Dispatched": "Dispatched",
+      "Cancelled": "Cancelled",
+      "Completed": "Completed"
+   },
+   "PaymentInfo": {
+      "Order Id": "Order Id",
+      "Amount": "Amount",
+      "Currency": "Currency",
+      "Payment": "Payment",
+      "Method": "Method",
+      "Orderd on": "Orderd on",
+      "STATUS": "STATUS"
+   }
+}
