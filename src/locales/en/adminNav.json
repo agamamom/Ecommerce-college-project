@@ -31,5 +31,23 @@
       "Method": "Method",
       "Orderd on": "Orderd on",
       "STATUS": "STATUS"
+   },
+   "ProductCreate": {
+      "Product create": "Product create",
+      "Image": "Image",
+      "Choose File": "Choose File",
+      "Title": "Title",
+      "Description": "Description",
+      "Price": "Price",
+      "Shipping": "Shipping",
+      "Please select": "Please select",
+      "No": "No",
+      "Yes": "Yes",
+      "Quantity": "Quantity",
+      "Color": "Color",
+      "Brand": "Brand",
+      "Category": "Category",
+      "Sub Categories": "Sub Categories",
+      "Save": "Save"
    }
 }

@@ -31,5 +31,23 @@
       "Payment": "Phương thức thanh toán",
       "Orderd on": "Giờ đặt hàng",
       "STATUS": "TRẠNG THÁI"
+   },
+   "ProductCreate": {
+      "Product create": "Thêm mới sản phẩm",
+      "Image": "Hình ảnh",
+      "Choose File": "Chọn tệp",
+      "Title": "Tên sản phẩm",
+      "Description": "Mô tả",
+      "Price": "Giá",
+      "Shipping": "Giao hàng",
+      "Please select": "Mời chọn",
+      "No": "không",
+      "Yes": "Có",
+      "Quantity": "Số lượng",
+      "Color": "Màu sắc",
+      "Brand": "Thương hiệu",
+      "Category": "Danh mục",
+      "Sub Categories": "Danh mục phụ",
+      "Save": "Lưu"
    }
 }
