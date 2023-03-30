@@ -10,8 +10,10 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 import { DeleteOutlined } from "@ant-design/icons";
 import AdminNav from "../../../components/nav/AdminNav/AdminNav";
+import { useTranslation } from "react-i18next";
 
 const CreateCouponPage = () => {
+   const { t } = useTranslation(["adminNav"]);
    const [name, setName] = useState("");
    const [expiry, setExpiry] = useState(new Date());
    const [discount, setDiscount] = useState("");
@@ -64,10 +66,10 @@ const CreateCouponPage = () => {
             </div>
             <main class="main-wrap">
                <section class="content-main">
-                  <h4 class="content-header mb-[20px]">Coupon</h4>
+                  <h4 class="content-header mb-[20px]">{t("coupon.Coupon")}</h4>
                   <form onSubmit={handleSubmit}>
                      <div className="form-group">
-                        <label className="text-muted">Name</label>
+                        <label className="text-muted">{t("coupon.Name")}</label>
                         <input
                            type="text"
                            className="form-control"
@@ -79,7 +81,9 @@ const CreateCouponPage = () => {
                      </div>
 
                      <div className="form-group">
-                        <label className="text-muted">Discount %</label>
+                        <label className="text-muted">
+                           {t("coupon.Discount")} %
+                        </label>
                         <input
                            type="text"
                            className="form-control"
@@ -90,7 +94,9 @@ const CreateCouponPage = () => {
                      </div>
 
                      <div className="form-group">
-                        <label className="text-muted">Expiry</label>
+                        <label className="text-muted">
+                           {t("coupon.Expiry")}
+                        </label>
                         <br />
                         <DatePicker
                            className="form-control"
@@ -100,19 +106,23 @@ const CreateCouponPage = () => {
                         />
                      </div>
 
-                     <button className="btn btn-outline-primary">Save</button>
+                     <button className="btn btn-outline-primary">
+                        {t("coupon.Save")}
+                     </button>
                   </form>
                   <br />
 
-                  <h4>{coupons.length} Coupons</h4>
+                  <h4>
+                     {coupons.length} {t("coupon.Coupons")}
+                  </h4>
 
                   <table className="table table-bordered">
                      <thead className="thead-light">
                         <tr>
-                           <th scope="col">Name</th>
-                           <th scope="col">Expiry</th>
-                           <th scope="col">Discount</th>
-                           <th scope="col">Action</th>
+                           <th scope="col">{t("coupon.Name")}</th>
+                           <th scope="col">{t("coupon.Expiry")}</th>
+                           <th scope="col">{t("coupon.Discount")}</th>
+                           <th scope="col">{t("coupon.Action")}</th>
                         </tr>
                      </thead>
 

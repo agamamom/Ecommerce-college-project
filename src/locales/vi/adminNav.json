@@ -49,5 +49,19 @@
       "Category": "Danh mục",
       "Sub Categories": "Danh mục phụ",
       "Save": "Lưu"
+   },
+   "coupon": {
+      "Coupon": "Mã giảm giá",
+      "Name": "Tên",
+      "Discount": "Giảm giá",
+      "Expiry": "Hết hạn",
+      "Save": "Lưu",
+      "Coupons": "Mã giảm giá",
+      "Action": "Hoạt động"
+   },
+   "SubCreate": {
+      "Create sub category": "Tạo danh mục phụ",
+      "Parent category": "Danh mục cha",
+      "Please select": "Mời chọn"
    }
 }

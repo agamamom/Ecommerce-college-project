@@ -49,5 +49,19 @@
       "Category": "Category",
       "Sub Categories": "Sub Categories",
       "Save": "Save"
+   },
+   "coupon": {
+      "Coupon": "Coupon",
+      "Name": "Name",
+      "Discount": "Discount",
+      "Expiry": "Expiry",
+      "Save": "Save",
+      "Coupons": "Coupons",
+      "Action": "Action"
+   },
+   "SubCreate": {
+      "Create sub category": "Create sub category",
+      "Parent category": "Parent category",
+      "Please select": "Please select"
    }
 }

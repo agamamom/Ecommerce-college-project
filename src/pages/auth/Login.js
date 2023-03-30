@@ -7,182 +7,195 @@ import { BsGoogle } from "react-icons/bs";
 import { useNavigate, Link } from "react-router-dom";
 import { createOrUpdateUser } from "../../functions/auth";
 import { createBrowserHistory } from "history";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button } from "antd";
+import { ColorRing } from "react-loader-spinner";
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const { user } = useSelector((state) => ({ ...state }));
-  let history = createBrowserHistory();
-  useEffect(() => {
-    let intended = history.location;
-    console.log("intended", intended);
-    if (intended) {
-      return;
-    } else {
-      if (user && user.token) {
-        navigate("/");
-      }
-    }
-  }, [user, navigate]);
-
-  let dispatch = useDispatch();
-
-  const roleBasedRedirect = (res) => {
-    let intended = history.location;
-    if (intended) {
-      history.back();
-    } else {
-      if (res.data.role === "admin") {
-        navigate("/admin/dashboard");
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+   const [loading, setLoading] = useState(false);
+   const navigate = useNavigate();
+   const { user } = useSelector((state) => ({ ...state }));
+   let history = createBrowserHistory();
+   useEffect(() => {
+      let intended = history.location;
+      console.log("intended", intended);
+      if (intended) {
+         return;
       } else {
-        navigate("/user/history");
+         if (user && user.token) {
+            navigate("/");
+         }
       }
-    }
-  };
+   }, [user, navigate]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+   let dispatch = useDispatch();
 
-    try {
-      const result = await auth.signInWithEmailAndPassword(email, password);
-      // console.log(result);
-      const { user } = result;
-      const idTokenResult = await user.getIdTokenResult();
+   const roleBasedRedirect = (res) => {
+      let intended = history.location;
+      if (intended) {
+         history.back();
+      } else {
+         if (res.data.role === "admin") {
+            navigate("/admin/dashboard");
+         } else {
+            navigate("/user/history");
+         }
+      }
+   };
 
-      createOrUpdateUser(idTokenResult.token)
-        .then((res) => {
-          console.log("res", res);
-          dispatch({
-            type: "LOGGED_IN_USER",
-            payload: {
-              name: res.data.name,
-              email: user.email,
-              token: idTokenResult.token,
-              role: res.data.role,
-              _id: res.data._id,
-            },
-          });
-          roleBasedRedirect(res);
-        })
-        .catch((err) => console.log(err));
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
 
-      // navigate("/");
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
-      setLoading(false);
-    }
-  };
+      try {
+         const result = await auth.signInWithEmailAndPassword(email, password);
+         // console.log(result);
+         const { user } = result;
+         const idTokenResult = await user.getIdTokenResult();
 
-  const googleLogin = async () => {
-    auth
-      .signInWithPopup(googleAuthProvider)
-      .then(async (result) => {
-        const { user } = result;
-        const idTokenResult = await user.getIdTokenResult();
-        createOrUpdateUser(idTokenResult.token)
-          .then((res) => {
-            dispatch({
-              type: "LOGGED_IN_USER",
-              payload: {
-                name: res.data.name,
-                email: user.email,
-                token: idTokenResult.token,
-                role: res.data.role,
-                _id: res.data._id,
-              },
-            });
-            roleBasedRedirect(res);
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error(err.message);
-      });
-  };
+         createOrUpdateUser(idTokenResult.token)
+            .then((res) => {
+               console.log("res", res);
+               dispatch({
+                  type: "LOGGED_IN_USER",
+                  payload: {
+                     name: res.data.name,
+                     email: user.email,
+                     token: idTokenResult.token,
+                     role: res.data.role,
+                     _id: res.data._id,
+                  },
+               });
+               roleBasedRedirect(res);
+            })
+            .catch((err) => console.log(err));
 
-  const loginForm = () => (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <input
-          type="email"
-          className="form-control"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Your email"
-          autoFocus
-        />
-      </div>
+         // navigate("/");
+      } catch (error) {
+         console.log(error);
+         toast.error(error.message);
+         setLoading(false);
+      }
+   };
 
-      <div className="form-group">
-        <input
-          type="password"
-          className="form-control"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Your password"
-        />
-      </div>
+   const googleLogin = async () => {
+      auth
+         .signInWithPopup(googleAuthProvider)
+         .then(async (result) => {
+            const { user } = result;
+            const idTokenResult = await user.getIdTokenResult();
+            createOrUpdateUser(idTokenResult.token)
+               .then((res) => {
+                  dispatch({
+                     type: "LOGGED_IN_USER",
+                     payload: {
+                        name: res.data.name,
+                        email: user.email,
+                        token: idTokenResult.token,
+                        role: res.data.role,
+                        _id: res.data._id,
+                     },
+                  });
+                  roleBasedRedirect(res);
+               })
+               .catch((err) => console.log(err));
+         })
+         .catch((err) => {
+            console.log(err);
+            toast.error(err.message);
+         });
+   };
 
-      <br />
-      <Button
-        onClick={handleSubmit}
-        type="primary"
-        className="mb-3"
-        block
-        shape="round"
-        size="large"
-        disabled={!email || password.length < 6}
-      >
-        <div className="flex justify-center items-center">
-          <FiMail className="mr-[10px] text-[20px]" />
-          <span>Login with Email/Password</span>
-        </div>
-      </Button>
-    </form>
-  );
+   const loginForm = () => (
+      <form onSubmit={handleSubmit}>
+         <div className="form-group">
+            <input
+               type="email"
+               className="form-control"
+               value={email}
+               onChange={(e) => setEmail(e.target.value)}
+               placeholder="Your email"
+               autoFocus
+            />
+         </div>
 
-  return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          {loading ? (
-            <h4 className="text-danger mb-[10px] text-[30px] uppercase tracking-wider">
-              Loading...
-            </h4>
-          ) : (
-            <h1 className="text-[30px] mb-[10px] uppercase tracking-wider">
-              Login
-            </h1>
-          )}
+         <div className="form-group">
+            <input
+               type="password"
+               className="form-control"
+               value={password}
+               onChange={(e) => setPassword(e.target.value)}
+               placeholder="Your password"
+            />
+         </div>
 
-          {loginForm()}
-
-          <Button
-            onClick={googleLogin}
-            type="danger"
+         <br />
+         <Button
+            onClick={handleSubmit}
+            type="primary"
             className="mb-3"
             block
             shape="round"
             size="large"
-          >
+            disabled={!email || password.length < 6}
+         >
             <div className="flex justify-center items-center">
-              <BsGoogle className="mr-[10px] text-[20px]" />
-              <span>Login with Google</span>
+               <FiMail className="mr-[10px] text-[20px]" />
+               <span>Login with Email/Password</span>
             </div>
-          </Button>
+         </Button>
+      </form>
+   );
 
-          <Link to="/forgot/password" className="float-right text-danger">
-            Forgot Password
-          </Link>
-        </div>
+   return (
+      <div className="container p-5">
+         <div className="row">
+            <div className="col-md-6 offset-md-3">
+               {loading ? (
+                  <ColorRing
+                     visible={true}
+                     height="80"
+                     width="80"
+                     ariaLabel="blocks-loading"
+                     wrapperStyle={{}}
+                     wrapperClass="blocks-wrapper"
+                     colors={[
+                        "#e15b64",
+                        "#f47e60",
+                        "#f8b26a",
+                        "#abbd81",
+                        "#849b87",
+                     ]}
+                  />
+               ) : (
+                  <h1 className="text-[30px] mb-[10px] uppercase tracking-wider">
+                     Login
+                  </h1>
+               )}
+
+               {loginForm()}
+
+               <Button
+                  onClick={googleLogin}
+                  type="danger"
+                  className="mb-3"
+                  block
+                  shape="round"
+                  size="large"
+               >
+                  <div className="flex justify-center items-center">
+                     <BsGoogle className="mr-[10px] text-[20px]" />
+                     <span>Login with Google</span>
+                  </div>
+               </Button>
+
+               <Link to="/forgot/password" className="float-right text-danger">
+                  Forgot Password
+               </Link>
+            </div>
+         </div>
       </div>
-    </div>
-  );
+   );
 };
 
 export default Login;
