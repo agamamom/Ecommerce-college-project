@@ -12,6 +12,8 @@ import CATEGORY_EN from "./locales/en/category.json";
 import CATEGORY_VI from "./locales/vi/category.json";
 import ADMINNAV_VI from "./locales/vi/adminNav.json";
 import ADMINNAV_EN from "./locales/en/adminNav.json";
+import LOGIN_VI from "./locales/vi/login.json";
+import LOGIN_EN from "./locales/en/login.json";
 export const locales = {
    en: "English",
    vi: "Tiếng Việt",
@@ -25,6 +27,7 @@ const resources = {
       slider: SLIDER_EN,
       category: CATEGORY_EN,
       adminNav: ADMINNAV_EN,
+      login: LOGIN_EN,
    },
    vi: {
       home: HOME_VI,
@@ -33,6 +36,7 @@ const resources = {
       slider: SLIDER_VI,
       category: CATEGORY_VI,
       adminNav: ADMINNAV_VI,
+      login: LOGIN_VI,
    },
 };
 
@@ -43,7 +47,15 @@ i18n
    .init({
       resources,
       lng: "en", // language to use, more information here: https://www.
-      ns: ["home", "shop", "product", "slider", "category", "adminNav"],
+      ns: [
+         "home",
+         "shop",
+         "product",
+         "slider",
+         "category",
+         "adminNav",
+         "login",
+      ],
       fallbackLng: "vi",
       defaultNS,
       interpolation: {

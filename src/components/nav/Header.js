@@ -15,156 +15,161 @@ import { getCategories } from "../../functions/category";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
-  const { t } = useTranslation();
-  let dispatch = useDispatch();
-  let { user, cart } = useSelector((state) => ({ ...state }));
-  const navigate = useNavigate();
-  const [handleSearch, setHandleSearch] = useState(false);
-  const [handleDropDown, setHandleDropDown] = useState(false);
-  const [handleAccountDropDown, setHandleAccountDropDown] = useState(false);
-  const [handleNavMobileDropDown, setHandleNavMobileDropDown] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const { search } = useSelector((state) => ({ ...state }));
-  const { text } = search;
+   const { t } = useTranslation();
+   let dispatch = useDispatch();
+   let { user, cart } = useSelector((state) => ({ ...state }));
+   const navigate = useNavigate();
+   const [handleSearch, setHandleSearch] = useState(false);
+   const [handleDropDown, setHandleDropDown] = useState(false);
+   const [handleAccountDropDown, setHandleAccountDropDown] = useState(false);
+   const [handleNavMobileDropDown, setHandleNavMobileDropDown] =
+      useState(false);
+   const [categories, setCategories] = useState([]);
+   const { search } = useSelector((state) => ({ ...state }));
+   const { text } = search;
 
-  const dropdownRef = useRef(null);
+   const dropdownRef = useRef(null);
 
-  const placeholder = t("header.search our products");
+   const placeholder = t("header.search our products");
 
-  const dropdownCateRef = useRef(null);
+   const dropdownCateRef = useRef(null);
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setHandleDropDown(false);
-        setHandleAccountDropDown(false);
+   useEffect(() => {
+      function handleClickOutside(event) {
+         if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target)
+         ) {
+            setHandleDropDown(false);
+            setHandleAccountDropDown(false);
+         }
       }
-    }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+         document.removeEventListener("mousedown", handleClickOutside);
+      };
+   }, [dropdownRef]);
 
-  // HANDLE HOVER SHOP AND PAGE
-  useEffect(() => {
-    function handleMoveOutSide(event) {
-      if (
-        dropdownCateRef.current &&
-        !dropdownCateRef.current.contains(event.target)
-      ) {
-        setHandleDropDown(false);
-        setHandleAccountDropDown(false);
+   // HANDLE HOVER SHOP AND PAGE
+   useEffect(() => {
+      function handleMoveOutSide(event) {
+         if (
+            dropdownCateRef.current &&
+            !dropdownCateRef.current.contains(event.target)
+         ) {
+            setHandleDropDown(false);
+            setHandleAccountDropDown(false);
+         }
       }
-    }
 
-    document.addEventListener("mouseleave", handleMoveOutSide);
-    return () => {
-      document.removeEventListener("mouseleave", handleMoveOutSide);
-    };
-  }, [dropdownCateRef]);
+      document.addEventListener("mouseleave", handleMoveOutSide);
+      return () => {
+         document.removeEventListener("mouseleave", handleMoveOutSide);
+      };
+   }, [dropdownCateRef]);
 
-  useEffect(() => {
-    getCategories().then((c) => {
-      setCategories(c.data);
-    });
-  }, []);
+   useEffect(() => {
+      getCategories().then((c) => {
+         setCategories(c.data);
+      });
+   }, []);
 
-  const handleMouseOver = (e) => {
-    setHandleDropDown(true);
-  };
-  const handleOnBlur = (e) => {
-    setHandleDropDown(false);
-  };
-  const handleClickAccount = (e) => {
-    setHandleAccountDropDown(!handleAccountDropDown);
-    setHandleDropDown(!handleDropDown);
-  };
-  const handleClickNavMobile = (e) => {
-    setHandleNavMobileDropDown(!handleNavMobileDropDown);
-  };
+   const handleMouseOver = (e) => {
+      setHandleDropDown(true);
+   };
+   const handleOnBlur = (e) => {
+      setHandleDropDown(false);
+   };
+   const handleClickAccount = (e) => {
+      setHandleAccountDropDown(!handleAccountDropDown);
+      setHandleDropDown(!handleDropDown);
+   };
+   const handleClickNavMobile = (e) => {
+      setHandleNavMobileDropDown(!handleNavMobileDropDown);
+   };
 
-  const handleChange = (e) => {
-    dispatch({
-      type: "SEARCH_QUERY",
-      payload: { text: e.target.value },
-    });
-  };
+   const handleChange = (e) => {
+      dispatch({
+         type: "SEARCH_QUERY",
+         payload: { text: e.target.value },
+      });
+   };
 
-  const handleSubmit = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      setHandleSearch(!handleSearch);
-      navigate(`/shop?${text}`);
-    }
-  };
+   const handleSubmit = (e) => {
+      if (e.key === "Enter") {
+         e.preventDefault();
+         setHandleSearch(!handleSearch);
+         navigate(`/shop?${text}`);
+      }
+   };
 
-  const logout = () => {
-    firebase.auth().signOut();
-    dispatch({
-      type: "LOGOUT",
-      payload: null,
-    });
-    navigate("/login");
-    setHandleAccountDropDown(!handleAccountDropDown);
-    setHandleDropDown(!handleDropDown);
-  };
+   const logout = () => {
+      firebase.auth().signOut();
+      dispatch({
+         type: "LOGOUT",
+         payload: null,
+      });
+      navigate("/login");
+      setHandleAccountDropDown(!handleAccountDropDown);
+      setHandleDropDown(!handleDropDown);
+      window.location.reload();
+   };
 
-  const handleDrawer = () => {
-    // show cart items in side drawer
-    dispatch({
-      type: "SET_VISIBLE",
-      payload: true,
-    });
-  };
+   const handleDrawer = () => {
+      // show cart items in side drawer
+      dispatch({
+         type: "SET_VISIBLE",
+         payload: true,
+      });
+   };
 
-  return (
-    <>
-      <NavTop />
-      <div className="h-[72px] w-full relative flex items-center">
-        <div
-          className={`bg-[#00000079] transition-all duration-700 absolute top-0 h-[100vh] w-full z-[2]  ${
-            handleSearch === true ||
-            handleDropDown === true ||
-            handleAccountDropDown === true
-              ? "opacity-100 visible"
-              : "opacity-0 invisible"
-          } `}
-        ></div>
+   return (
+      <>
+         <NavTop />
+         <div className="h-[72px] w-full relative flex items-center">
+            <div
+               className={`bg-[#00000079] transition-all duration-700 absolute top-0 h-[100vh] w-full z-[2]  ${
+                  handleSearch === true ||
+                  handleDropDown === true ||
+                  handleAccountDropDown === true
+                     ? "opacity-100 visible"
+                     : "opacity-0 invisible"
+               } `}
+            ></div>
 
-        <div className="grid grid-cols-12 px-[30px] h-full header-container relative z-[200] bg-white ">
-          <div className="col-span-9 flex items-center nav-container ">
-            <Link to="/" className="mobile:block laptop:hidden">
-              <div className="" onClick={(e) => handleClickNavMobile(e)}>
-                <HiOutlineBars3 className="text-[22px] mr-[15px]" />
-              </div>
-            </Link>
-            <Link to="/" className="mr-[40px]">
-              {" "}
-              <svg
-                version="1.1"
-                x="0px"
-                y="0px"
-                width="106px"
-                height="37px"
-                viewBox="0 0 175.748 42.52"
-                enableBackground="new 0 0 175.748 42.52"
-              >
-                <ellipse
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  fill="#FDD700"
-                  cx="170.05"
-                  cy="36.341"
-                  rx="5.32"
-                  ry="5.367"
-                ></ellipse>
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  fill="#333E48"
-                  d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
+            <div className="grid grid-cols-12 px-[30px] h-full header-container relative z-[200] bg-white ">
+               <div className="col-span-9 flex items-center nav-container ">
+                  <Link to="/" className="mobile:block laptop:hidden">
+                     <div className="" onClick={(e) => handleClickNavMobile(e)}>
+                        <HiOutlineBars3 className="text-[22px] mr-[15px]" />
+                     </div>
+                  </Link>
+                  <Link to="/" className="mr-[40px]">
+                     {" "}
+                     <svg
+                        version="1.1"
+                        x="0px"
+                        y="0px"
+                        width="106px"
+                        height="37px"
+                        viewBox="0 0 175.748 42.52"
+                        enableBackground="new 0 0 175.748 42.52"
+                     >
+                        <ellipse
+                           fillRule="evenodd"
+                           clipRule="evenodd"
+                           fill="#FDD700"
+                           cx="170.05"
+                           cy="36.341"
+                           rx="5.32"
+                           ry="5.367"
+                        ></ellipse>
+                        <path
+                           fillRule="evenodd"
+                           clipRule="evenodd"
+                           fill="#333E48"
+                           d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
 						C30.263,0.995,29.876,1.181,29.79,1.5c-0.148,0.548,0,1.568,0,2.427v36.459c0.265,0.221,0.506,0.465,0.725,0.734h6.187
 						c0.2-0.25,0.423-0.477,0.669-0.678V1.387C37.124,1.185,36.9,0.959,36.701,0.71H30.514z M117.517,12.731
 						c-0.232-0.189-0.439-0.64-0.781-0.734c-0.754-0.209-2.039,0-3.121,0h-3.176V4.435c-0.232-0.189-0.439-0.639-0.781-0.733
@@ -199,263 +204,263 @@ const Header = () => {
 						c0.404-1.031-0.365-1.502-0.891-2.088c-2.543-2.835-6.66-5.377-11.704-5.137c-6.02,0.288-10.218,3.697-12.484,7.846
 						c-1.293,2.365-1.951,5.158-1.729,8.408c0.209,3.053,1.191,5.496,2.619,7.508c2.842,4.004,7.385,6.973,13.656,6.377
 						c5.976-0.568,9.574-3.936,11.816-8.354c-0.141-0.271-0.221-0.604-0.336-0.902C92.929,31.364,90.843,30.485,88.812,29.55z"
-                ></path>
-              </svg>
-            </Link>
-
-            <Link
-              to="/"
-              exact
-              className="nav-link-border"
-              style={{
-                marginRight: "37px",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <div className="text-black font-medium text-[18px]">
-                {t("header.home")}
-              </div>
-            </Link>
-            <Link
-              to="/shop"
-              className="nav-link-border"
-              style={{
-                marginRight: "37px",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                position: "relative",
-              }}
-            >
-              <div
-                className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
-                onMouseOver={(e) => handleMouseOver(e)}
-                onMouseOut={(e) => handleOnBlur(e)}
-              >
-                {t("header.shop")}
-                <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
-              </div>
-              <div
-                className={`absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 ${
-                  handleDropDown ? "nav-dropdown" : "nav-up"
-                } nav-dropdown nav-up z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid`}
-                onMouseOver={(e) => handleMouseOver(e)}
-                onMouseOut={(e) => handleOnBlur(e)}
-              >
-                {categories.map((c) => (
-                  <Link
-                    to={`/category/${c.slug}`}
-                    className="capitalize py-[4px] pl-[10px]"
-                    onMouseDown={(e) => handleOnBlur(e)}
-                  >
-                    {c.name}
+                        ></path>
+                     </svg>
                   </Link>
-                ))}
-              </div>
-            </Link>
 
-            <Link
-              to="/pages"
-              className="nav-link-border"
-              style={{
-                marginRight: "37px",
-                position: "relative",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <div
-                className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
-                onMouseOver={(e) => handleMouseOver(e)}
-                onMouseOut={(e) => handleOnBlur(e)}
-              >
-                {t("header.pages")}
-                <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
-              </div>
-              <div
-                className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid"
-                onMouseOver={(e) => handleMouseOver(e)}
-                onMouseOut={(e) => handleOnBlur(e)}
-              >
-                <Link to="/1" className="py-[4px] pl-[10px]">
-                  {t("header.about us")}
-                </Link>
-                <Link to="/2" className="py-[4px] pl-[10px]">
-                  {t("header.contact us")}
-                </Link>
-                <Link to="/3" className="py-[4px] pl-[10px]">
-                  FAQ's
-                </Link>
-              </div>
-            </Link>
-            <Link
-              to="/blog"
-              style={{
-                marginRight: "37px",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-              }}
-              className="nav-link-border"
-            >
-              <div className="flex items-end leading-[16px] text-black font-medium text-[18px]">
-                {t("header.blog")}
-              </div>
-            </Link>
-          </div>
-          <div className="col-span-3 flex items-center place-content-end ">
-            {/* search filed */}
-            <div
-              className={`fixed ${
-                handleSearch === false ? "-top-[100%]" : "top-0"
-              } left-0 right-0 h-auto bg-white px-[53px] z-[10] transition-all duration-700`}
-            >
-              <div className="capitalize text-[#666] text-left mt-[80px]">
-                {t("header.looking for")}
-              </div>
-              <IoCloseSharp
-                className="absolute top-[10%] right-[50px] text-[22px] hover:rotate-[180deg] transition-all duration-300"
-                onClick={() => {
-                  setHandleSearch(!handleSearch);
-                }}
-              />
-              <div className="flex border-b-2 w-full py-[20px] items-center">
-                <input
-                  type="search"
-                  value={text}
-                  placeholder={placeholder}
-                  className="input-search-field w-full"
-                  onChange={handleChange}
-                  onKeyDown={(e) => handleSubmit(e)}
-                />
-                <AiOutlineSearch className="text-[28px] text-gray-500 cursor-pointer" />
-              </div>
-              <div className="flex w-full justify-center mb-[30px] mt-[15px]">
-                <div className="font-semibold tracking-wide">
-                  {t("header.Popular Search")}
-                </div>
-                <div className="underline text-gray-500 ml-[10px]">
-                  theme-nora
-                </div>
-              </div>
-            </div>
+                  <Link
+                     to="/"
+                     exact
+                     className="nav-link-border"
+                     style={{
+                        marginRight: "37px",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                     }}
+                  >
+                     <div className="text-black font-medium text-[18px]">
+                        {t("header.home")}
+                     </div>
+                  </Link>
+                  <Link
+                     to="/shop"
+                     className="nav-link-border"
+                     style={{
+                        marginRight: "37px",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        position: "relative",
+                     }}
+                  >
+                     <div
+                        className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
+                        onMouseOver={(e) => handleMouseOver(e)}
+                        onMouseOut={(e) => handleOnBlur(e)}
+                     >
+                        {t("header.shop")}
+                        <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover" />
+                     </div>
+                     <div
+                        className={`absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 ${
+                           handleDropDown ? "nav-dropdown" : "nav-up"
+                        } nav-dropdown nav-up z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid`}
+                        onMouseOver={(e) => handleMouseOver(e)}
+                        onMouseOut={(e) => handleOnBlur(e)}
+                     >
+                        {categories.map((c) => (
+                           <Link
+                              to={`/category/${c.slug}`}
+                              className="capitalize py-[4px] pl-[10px]"
+                              onMouseDown={(e) => handleOnBlur(e)}
+                           >
+                              {c.name}
+                           </Link>
+                        ))}
+                     </div>
+                  </Link>
 
-            <div
-              className="flex search-field items-center mr-[34px]"
-              onClick={() => {
-                setHandleSearch(!handleSearch);
-              }}
-            >
-              <AiOutlineSearch className="mr-[10px]" />
-              {t("header.search")}
-            </div>
-            <div className="" ref={dropdownRef}>
-              <div
-                className="flex items-center cursor-pointer nav-link"
-                onClick={(e) => handleClickAccount(e)}
-              >
-                {user?.email ? user?.email.split("@")[0] : "My Account"}
+                  <Link
+                     to="/pages"
+                     className="nav-link-border"
+                     style={{
+                        marginRight: "37px",
+                        position: "relative",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                     }}
+                  >
+                     <div
+                        className="flex items-end leading-[16px] nav-link text-black capitalize font-medium text-[18px]"
+                        onMouseOver={(e) => handleMouseOver(e)}
+                        onMouseOut={(e) => handleOnBlur(e)}
+                     >
+                        {t("header.pages")}
+                        <IoIosArrowDown className="text-[12px] ml-[6px] icon-hover " />
+                     </div>
+                     <div
+                        className="absolute w-[280px] flex flex-col p-[20px] top-[103%] left-0 nav-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid"
+                        onMouseOver={(e) => handleMouseOver(e)}
+                        onMouseOut={(e) => handleOnBlur(e)}
+                     >
+                        <Link to="/1" className="py-[4px] pl-[10px]">
+                           {t("header.about us")}
+                        </Link>
+                        <Link to="/2" className="py-[4px] pl-[10px]">
+                           {t("header.contact us")}
+                        </Link>
+                        <Link to="/3" className="py-[4px] pl-[10px]">
+                           FAQ's
+                        </Link>
+                     </div>
+                  </Link>
+                  <Link
+                     to="/blog"
+                     style={{
+                        marginRight: "37px",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                     }}
+                     className="nav-link-border"
+                  >
+                     <div className="flex items-end leading-[16px] text-black font-medium text-[18px]">
+                        {t("header.blog")}
+                     </div>
+                  </Link>
+               </div>
+               <div className="col-span-3 flex items-center place-content-end ">
+                  {/* search filed */}
+                  <div
+                     className={`fixed ${
+                        handleSearch === false ? "-top-[100%]" : "top-0"
+                     } left-0 right-0 h-auto bg-white px-[53px] z-[10] transition-all duration-700`}
+                  >
+                     <div className="capitalize text-[#666] text-left mt-[80px]">
+                        {t("header.looking for")}
+                     </div>
+                     <IoCloseSharp
+                        className="absolute top-[10%] right-[50px] text-[22px] hover:rotate-[180deg] transition-all duration-300"
+                        onClick={() => {
+                           setHandleSearch(!handleSearch);
+                        }}
+                     />
+                     <div className="flex border-b-2 w-full py-[20px] items-center">
+                        <input
+                           type="search"
+                           value={text}
+                           placeholder={placeholder}
+                           className="input-search-field w-full"
+                           onChange={handleChange}
+                           onKeyDown={(e) => handleSubmit(e)}
+                        />
+                        <AiOutlineSearch className="text-[28px] text-gray-500 cursor-pointer" />
+                     </div>
+                     <div className="flex w-full justify-center mb-[30px] mt-[15px]">
+                        <div className="font-semibold tracking-wide">
+                           {t("header.Popular Search")}
+                        </div>
+                        <div className="underline text-gray-500 ml-[10px]">
+                           theme-nora
+                        </div>
+                     </div>
+                  </div>
 
-                <IoIosArrowDown className="text-[12px] ml-[6px]" />
-              </div>
-              <div
-                className={`absolute w-[280px] flex flex-col p-[20px] top-[100%] right-0 nav-account-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid ${
-                  handleAccountDropDown === true
-                    ? "visible scale-y-100"
-                    : "invisible scale-y-0"
-                }`}
-              >
-                {!user ? (
-                  <>
-                    <div
-                      onClick={(e) => handleClickAccount(e)}
-                      onmousedown={(e) => handleOnBlur(e)}
-                    >
-                      <Link
-                        to="/login"
-                        className="py-[6px] pl-[10px] text-black"
-                      >
-                        {t("header.Log in")}
-                      </Link>
-                    </div>
-
-                    <Link
-                      to="/register"
-                      className="py-[6px] pl-[10px]"
-                      onClick={(e) => handleClickAccount(e)}
-                      onmousedown={(e) => handleOnBlur(e)}
-                    >
-                      {t("header.Register")}
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      className="py-[6px] pl-[10px] cursor-pointer text-[#000]"
-                      onClick={logout}
-                      onmousedown={(e) => handleOnBlur(e)}
-                    >
-                      {t("header.Logout")}
-                    </Link>
-
-                    {user && user.role === "subscriber" && (
-                      <Link
-                        to="/user/history"
-                        className="py-[6px] pl-[10px]"
+                  <div
+                     className="flex search-field items-center mr-[34px]"
+                     onClick={() => {
+                        setHandleSearch(!handleSearch);
+                     }}
+                  >
+                     <AiOutlineSearch className="mr-[10px]" />
+                     {t("header.search")}
+                  </div>
+                  <div className="" ref={dropdownRef}>
+                     <div
+                        className="flex items-center cursor-pointer nav-link"
                         onClick={(e) => handleClickAccount(e)}
-                        onmousedown={(e) => handleOnBlur(e)}
-                      >
-                        {t("header.Dashboard")}
-                      </Link>
-                    )}
-                    {user && user.role === "admin" && (
-                      <Link
-                        to="/admin/dashboard"
-                        className="py-[6px] pl-[10px]"
-                        onClick={(e) => handleClickAccount(e)}
-                        onmousedown={(e) => handleOnBlur(e)}
-                      >
-                        {t("header.Dashboard")}
-                      </Link>
-                    )}
+                     >
+                        {user?.email ? user?.email.split("@")[0] : "My Account"}
 
-                    <Link
-                      to="/user/wishlist"
-                      className="py-[6px] pl-[10px]"
-                      onClick={(e) => handleClickAccount(e)}
-                      onmousedown={(e) => handleOnBlur(e)}
-                    >
-                      {t("header.Wishlist")}
-                    </Link>
-                  </>
-                )}
-              </div>
+                        <IoIosArrowDown className="text-[12px] ml-[6px]" />
+                     </div>
+                     <div
+                        className={`absolute w-[280px] flex flex-col p-[20px] top-[100%] right-0 nav-account-dropdown z-[10] bg-white border-t-[1px] text-[#cdc8c078] border-solid ${
+                           handleAccountDropDown === true
+                              ? "visible scale-y-100"
+                              : "invisible scale-y-0"
+                        }`}
+                     >
+                        {!user ? (
+                           <>
+                              <div
+                                 onClick={(e) => handleClickAccount(e)}
+                                 onmousedown={(e) => handleOnBlur(e)}
+                              >
+                                 <Link
+                                    to="/login"
+                                    className="py-[6px] pl-[10px] text-black"
+                                 >
+                                    {t("header.Log in")}
+                                 </Link>
+                              </div>
+
+                              <Link
+                                 to="/register"
+                                 className="py-[6px] pl-[10px]"
+                                 onClick={(e) => handleClickAccount(e)}
+                                 onmousedown={(e) => handleOnBlur(e)}
+                              >
+                                 {t("header.Register")}
+                              </Link>
+                           </>
+                        ) : (
+                           <>
+                              <Link
+                                 className="py-[6px] pl-[10px] cursor-pointer text-[#000]"
+                                 onClick={logout}
+                                 onmousedown={(e) => handleOnBlur(e)}
+                              >
+                                 {t("header.Logout")}
+                              </Link>
+
+                              {user && user.role === "subscriber" && (
+                                 <Link
+                                    to="/user/history"
+                                    className="py-[6px] pl-[10px]"
+                                    onClick={(e) => handleClickAccount(e)}
+                                    onmousedown={(e) => handleOnBlur(e)}
+                                 >
+                                    {t("header.Dashboard")}
+                                 </Link>
+                              )}
+                              {user && user.role === "admin" && (
+                                 <Link
+                                    to="/admin/dashboard"
+                                    className="py-[6px] pl-[10px]"
+                                    onClick={(e) => handleClickAccount(e)}
+                                    onmousedown={(e) => handleOnBlur(e)}
+                                 >
+                                    {t("header.Dashboard")}
+                                 </Link>
+                              )}
+
+                              <Link
+                                 to="/user/wishlist"
+                                 className="py-[6px] pl-[10px]"
+                                 onClick={(e) => handleClickAccount(e)}
+                                 onmousedown={(e) => handleOnBlur(e)}
+                              >
+                                 {t("header.Wishlist")}
+                              </Link>
+                           </>
+                        )}
+                     </div>
+                  </div>
+
+                  <div
+                     className="flex items-center ml-[34px] cart-field"
+                     onClick={handleDrawer}
+                  >
+                     <BsBag className="mr-[7px] text-[22px] " />
+                     <div className="h-[18px] w-[18px] bg-black rounded-full text-white flex items-center justify-center text-[12px]">
+                        {cart.length}
+                     </div>
+                  </div>
+               </div>
             </div>
-
             <div
-              className="flex items-center ml-[34px] cart-field"
-              onClick={handleDrawer}
+               className={`absolute w-[100vw] nav-dropDown-mobile flex flex-col top-[72px] mobile:block laptop:hidden left-0 z-[3] border-[1px] border-solid ${
+                  handleNavMobileDropDown === false && "-top-[339px]"
+               }`}
             >
-              <BsBag className="mr-[7px] text-[22px] " />
-              <div className="h-[18px] w-[18px] bg-black rounded-full text-white flex items-center justify-center text-[12px]">
-                {cart.length}
-              </div>
+               <MobileNavDropDown />
             </div>
-          </div>
-        </div>
-        <div
-          className={`absolute w-[100vw] nav-dropDown-mobile flex flex-col top-[72px] mobile:block laptop:hidden left-0 z-[3] border-[1px] border-solid ${
-            handleNavMobileDropDown === false && "-top-[339px]"
-          }`}
-        >
-          <MobileNavDropDown />
-        </div>
-      </div>
-    </>
-  );
+         </div>
+      </>
+   );
 };
 
 export default Header;

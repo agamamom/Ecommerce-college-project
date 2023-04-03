@@ -9,7 +9,10 @@ import { createOrUpdateUser } from "../../functions/auth";
 import { createBrowserHistory } from "history";
 import { Button } from "antd";
 import { ColorRing } from "react-loader-spinner";
+import { useTranslation } from "react-i18next";
+
 const Login = () => {
+   const { t } = useTranslation(["login"]);
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [loading, setLoading] = useState(false);
@@ -106,6 +109,8 @@ const Login = () => {
          });
    };
 
+   const yourEmail = t("loginScreen.Your email");
+   const yourPassword = t("loginScreen.Your password");
    const loginForm = () => (
       <form onSubmit={handleSubmit}>
          <div className="form-group">
@@ -114,7 +119,7 @@ const Login = () => {
                className="form-control"
                value={email}
                onChange={(e) => setEmail(e.target.value)}
-               placeholder="Your email"
+               placeholder={yourEmail}
                autoFocus
             />
          </div>
@@ -125,7 +130,7 @@ const Login = () => {
                className="form-control"
                value={password}
                onChange={(e) => setPassword(e.target.value)}
-               placeholder="Your password"
+               placeholder={yourPassword}
             />
          </div>
 
@@ -141,7 +146,7 @@ const Login = () => {
          >
             <div className="flex justify-center items-center">
                <FiMail className="mr-[10px] text-[20px]" />
-               <span>Login with Email/Password</span>
+               <span>{t("loginScreen.Login with Email/Password")}</span>
             </div>
          </Button>
       </form>
@@ -169,7 +174,7 @@ const Login = () => {
                   />
                ) : (
                   <h1 className="text-[30px] mb-[10px] uppercase tracking-wider">
-                     Login
+                     {t("loginScreen.Login")}
                   </h1>
                )}
 
@@ -185,12 +190,12 @@ const Login = () => {
                >
                   <div className="flex justify-center items-center">
                      <BsGoogle className="mr-[10px] text-[20px]" />
-                     <span>Login with Google</span>
+                     <span>{t("loginScreen.Login with Google")}</span>
                   </div>
                </Button>
 
                <Link to="/forgot/password" className="float-right text-danger">
-                  Forgot Password
+                  {t("loginScreen.Forgot Password")}
                </Link>
             </div>
          </div>

@@ -136,7 +136,7 @@ const AdminNav = () => {
                   },
                   {
                      title: Password,
-                     itemId: "/user/password",
+                     itemId: "/admin/password",
                   },
                ]}
             />

@@ -1,0 +1,10 @@
+{
+   "loginScreen": {
+      "Your email": "Your email",
+      "Your password": "Your password",
+      "Login with Email/Password": "Login with Email/Password",
+      "Login": "Login",
+      "Login with Google": "Login with Google",
+      "Forgot Password": "Forgot Password"
+   }
+}

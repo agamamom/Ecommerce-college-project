@@ -1,0 +1,10 @@
+{
+   "loginScreen": {
+      "Your email": "Email",
+      "Your password": "Mật khẩu",
+      "Login with Email/Password": "Đăng nhập với Email/Mật khẩu",
+      "Login": "Đăng nhập",
+      "Login with Google": "Đăng nhập với Google",
+      "Forgot Password": "Quên mật khẩu"
+   }
+}
