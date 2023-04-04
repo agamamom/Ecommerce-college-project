@@ -1,17 +1,18 @@
 {
-  "category": {
-    "All Categories": "All Categories"
-  },
-  "ListProductType": {
-    "Showing all": "Showing all",
-    "results": "results"
-  },
-  "CaHome": {
-    "Category": "Category",
-    "Home": "Home"
-  },
-  "ProductListView": {
-    "Read more": "Read more",
-    "Wishlist": "Wishlist"
-  }
+   "category": {
+      "All Categories": "All Categories"
+   },
+   "ListProductType": {
+      "Showing all": "Showing all",
+      "results": "results"
+   },
+   "CaHome": {
+      "Category": "Category",
+      "Home": "Home"
+   },
+   "ProductListView": {
+      "Read more": "Read more",
+      "Wishlist": "Wishlist",
+      "Remove": "Remove"
+   }
 }

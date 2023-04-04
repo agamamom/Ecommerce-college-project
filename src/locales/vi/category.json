@@ -1,17 +1,18 @@
 {
-  "category": {
-    "All Categories": "Tất cả danh mục"
-  },
-  "ListProductType": {
-    "Showing all": "Có",
-    "results": "sản phẩm"
-  },
-  "CaHome": {
-    "Category": "Danh mục",
-    "Home": "Trang chủ"
-  },
-  "ProductListView": {
-    "Read more": "Xem thêm",
-    "Wishlist": "Danh sách ưa thích"
-  }
+   "category": {
+      "All Categories": "Tất cả danh mục"
+   },
+   "ListProductType": {
+      "Showing all": "Có",
+      "results": "sản phẩm"
+   },
+   "CaHome": {
+      "Category": "Danh mục",
+      "Home": "Trang chủ"
+   },
+   "ProductListView": {
+      "Read more": "Xem thêm",
+      "Wishlist": "Danh sách ưa thích",
+      "Remove": "Xóa"
+   }
 }
