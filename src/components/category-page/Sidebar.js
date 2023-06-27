@@ -4,45 +4,46 @@ import { Link } from "react-router-dom";
 import { getBrands } from "../../functions/product";
 import { useTranslation } from "react-i18next";
 const Sidebar = () => {
-  const { t } = useTranslation(["category"]);
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
-  useEffect(() => {
-    getCategories().then((c) => {
-      setCategories(c.data);
-    });
-    getBrands().then((c) => {
-      setBrands(c.data);
-    });
-  }, []);
+   const { t } = useTranslation(["category"]);
+   const [categories, setCategories] = useState([]);
+   const [brands, setBrands] = useState([]);
 
-  return (
-    <>
-      <div className="border border-[#514e4ee6] h-[500px] rounded-lg">
-        <div className="border-b border-solid border-[#75737389] w-full">
-          <div className="p-[20px]">{t("category.All Categories")}</div>
-        </div>
-        <div className="my-[15px] w-full">
-          {categories.map((c) => (
-            <div className="w-[90%] py-[10px] mx-auto border-b border-solid border-[#7573735a]">
-              <div className="ml-[20px]">
-                <Link to={`/category/${c.slug}`}>{c.name}</Link>
-              </div>
+   useEffect(() => {
+      getCategories().then((c) => {
+         setCategories(c.data);
+      });
+      getBrands().then((c) => {
+         setBrands(c.data);
+      });
+   }, []);
+
+   return (
+      <>
+         <div className="border border-[#514e4ee6] h-[500px] rounded-lg">
+            <div className="border-b border-solid border-[#75737389] w-full">
+               <div className="p-[20px]">{t("category.All Categories")}</div>
             </div>
-          ))}
-        </div>
+            <div className="my-[15px] w-full">
+               {categories.map((c) => (
+                  <div className="w-[90%] py-[10px] mx-auto border-b border-solid border-[#7573735a]">
+                     <div className="ml-[20px]">
+                        <Link to={`/category/${c.slug}`}>{c.name}</Link>
+                     </div>
+                  </div>
+               ))}
+            </div>
 
-        <div className="my-[15px] w-full">
-          {brands &&
-            brands?.map((c) => (
-              <div className="w-[90%] py-[10px] mx-auto border-b border-solid border-[#7573735a]">
-                <div className="ml-[20px]">{c.brand}</div>
-              </div>
-            ))}
-        </div>
-      </div>
-    </>
-  );
+            <div className="my-[15px] w-full">
+               {brands &&
+                  brands?.map((c) => (
+                     <div className="w-[90%] py-[10px] mx-auto border-b border-solid border-[#7573735a]">
+                        <div className="ml-[20px]">{c.brand}</div>
+                     </div>
+                  ))}
+            </div>
+         </div>
+      </>
+   );
 };
 
 export default Sidebar;

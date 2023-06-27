@@ -32,7 +32,7 @@ const CreateCouponPage = () => {
    const handleSubmit = (e) => {
       e.preventDefault();
       setLoading(true);
-      // console.table(name, expiry, discount);
+      console.table(name, expiry, discount);
       createCoupon({ name, expiry, discount }, user.token)
          .then((res) => {
             setLoading(false);
