@@ -80,7 +80,6 @@ exports.saveAddress = async (req, res) => {
 
 exports.applyCouponToUserCart = async (req, res) => {
    const { coupon } = req.body;
-   console.log("COUPON", coupon);
 
    const validCoupon = await Coupon.findOne({ name: coupon }).exec();
    if (validCoupon === null) {
@@ -115,7 +114,6 @@ exports.applyCouponToUserCart = async (req, res) => {
 };
 
 exports.createOrder = async (req, res) => {
-   // console.log(req.body);
    // return;
    const { paymentIntent } = req.body.stripeResponse;
 
