@@ -1,94 +1,95 @@
 {
-  "clearence sales": "Xã hàng tồn",
-  "hurra": "Hoan hô! Nhận giao hàng miễn phí cho tất cả các đơn hàng trên $99!",
-  "header": {
-    "home": "Trang Chủ",
-    "shop": "Cửa Hàng",
-    "pages": "Thông Tin",
-    "blog": "Bài Viết",
-    "about us": "Về chúng tôi",
-    "contact us": "Liên hệ",
-    "search": "Tìm kiếm",
-    "Popular Search": "Tìm kiếm",
-    "Log in": "Đăng nhập",
-    "Register": "Đăng ký",
-    "Logout": "Đăng xuất",
-    "Dashboard": "Quản lý",
-    "Wishlist": "Danh sách ưa thích",
-    "looking for": "Bạn đang tìm gì?",
-    "search our products": "Tìm kiếm"
-  },
-  "banner": {
-    "SHOP TO GET": "HÃY MUA SẮM NHỮNG THỨ BẠN THÍCH",
-    "TIMEPIECES": "SỰ KIỆN ĐĂC BIỆT",
-    "MAKE A STATEMENT": "ĐANG GIẢM GIÁ",
-    "UP TO": "LÊN ĐẾN",
-    "40OFF": " 40%",
-    "shop now": "Mua ngay"
-  },
-  "top categories": {
-    "TOP CATEGORIES": "NHỮNG DANH MỤC HÀNG ĐẦU",
-    "Shop By Categories": "Mua Theo Từng Loại Danh Mục",
-    "Add our new": "Những món hàng mới nhập về trong tuần này.",
-    "Catch Big": "Nắm bắt",
-    "Deals": "đợt giảm giá",
-    "on the": "trên",
-    "Cameras": "Cameras",
-    "Tablets": "Tablets,",
-    "Smartphones": "Smartphones",
-    "and more": "và hơn thế nữa",
-    "UP": "LÊN",
-    "to": "ĐẾN",
-    "Shop the": "Những",
-    "Hottest": "Sản Phẩm",
-    "Products": "BÁN CHẠY"
-  },
-  "special offer": {
-    "Special Offer": "Mặt Hàng Đặc Biệt",
-    "Game Console": "Bộ Điều Khiển + Cổng USB 3.0",
-    "Top Rated": "Sản phẩm hàng đầu"
-  },
-  "ProductSo": {
-    "Add to cart": "Thêm vào giỏ hàng",
-    "Wishlist": "Danh sách ưa thích"
-  },
-  "BestDeal": {
-    "Best Deals": "Giảm Giá",
-    "Game Console": "Bộ Điều Khiển Game"
-  },
-  "BestSeller": {
-    "Best Sellers": "Các Sản Phẩm Bán Chạy",
-    "Top 8": "8 Sản phẩm hàng đầu",
-    "Televisions & Monitor": "Tivi & Màn hình",
-    "Networking & Laptops": "Mạng & Máy tính xách tay",
-    "Video Cameras": "Máy quay"
-  },
-  "NewLetter": {
-    "Sign up to Newsletter": "Đăng nhập để nhận được thông báo",
-    "and receive": "...và nhận được",
-    "$20 coupon for first shopping": "Phiếu giảm giá 20$ cho lần đầu mua sắm",
-    "SignUp": "Đăng Ký",
-    "Enter your email address": "Điền thông tin Email"
-  },
-  "Footer": {
-    "Got Questions": "Đặt câu hỏi ? Gọi ngay, 24/7!",
-    "Contact Info": "Thông Tin Liên Lạc",
-    "17 Princess Road": " Số 163, Đường Phan Đăng Lưu, Phường 01, Quận Phú Nhuận, Thành phố Hồ Chí Minh",
-    "Find It Fast": "Tìm Kiếm Nhanh",
-    "Laptops & Computers": "Máy tính xách tay & Máy tính bàn",
-    "Cameras & Photography": "Máy quay & Máy ảnh",
-    "Smart Phones & Tablets": "Điện thoại & Máy tính bản",
-    "Video Games & Consoles": "Máy chơi game",
-    "TV & Audio": "Tivi & Máy nghe nhạc",
-    "Gadgets": "Dụng cụ",
-    "Waterproof Headphones": "Tai nghe",
-    "Customer Care": "Khách hàng có thể quan tâm",
-    "Compare": "So xánh",
-    "Store Directory": "Đường dẫn cửa hàng",
-    "My Account": "Tài khoản",
-    "Track your Order": "Theo dõi mặt hàng",
-    "Customer Service": "Dịch vụ cho khách hàng",
-    "Returns/Exchange": "Đổi/Trả",
-    "Product Support": "Bảo hành"
-  }
+   "clearence sales": "Xã hàng tồn",
+   "hurra": "Hoan hô! Nhận giao hàng miễn phí cho tất cả các đơn hàng trên $99!",
+   "header": {
+      "home": "Trang Chủ",
+      "shop": "Cửa Hàng",
+      "pages": "Thông Tin",
+      "blog": "Bài Viết",
+      "about us": "Về chúng tôi",
+      "contact us": "Liên hệ",
+      "search": "Tìm kiếm",
+      "Popular Search": "Tìm kiếm",
+      "Log in": "Đăng nhập",
+      "Register": "Đăng ký",
+      "Logout": "Đăng xuất",
+      "Dashboard": "Quản lý",
+      "Account": "Tài khoản",
+      "Wishlist": "Danh sách ưa thích",
+      "looking for": "Bạn đang tìm gì?",
+      "search our products": "Tìm kiếm"
+   },
+   "banner": {
+      "SHOP TO GET": "HÃY MUA SẮM NHỮNG THỨ BẠN THÍCH",
+      "TIMEPIECES": "SỰ KIỆN ĐĂC BIỆT",
+      "MAKE A STATEMENT": "ĐANG GIẢM GIÁ",
+      "UP TO": "LÊN ĐẾN",
+      "40OFF": " 40%",
+      "shop now": "Mua ngay"
+   },
+   "top categories": {
+      "TOP CATEGORIES": "NHỮNG DANH MỤC HÀNG ĐẦU",
+      "Shop By Categories": "Mua Theo Từng Loại Danh Mục",
+      "Add our new": "Những món hàng mới nhập về trong tuần này.",
+      "Catch Big": "Nắm bắt",
+      "Deals": "đợt giảm giá",
+      "on the": "trên",
+      "Cameras": "Cameras",
+      "Tablets": "Tablets,",
+      "Smartphones": "Smartphones",
+      "and more": "và hơn thế nữa",
+      "UP": "LÊN",
+      "to": "ĐẾN",
+      "Shop the": "Những",
+      "Hottest": "Sản Phẩm",
+      "Products": "BÁN CHẠY"
+   },
+   "special offer": {
+      "Special Offer": "Mặt Hàng Đặc Biệt",
+      "Game Console": "Bộ Điều Khiển + Cổng USB 3.0",
+      "Top Rated": "Sản phẩm hàng đầu"
+   },
+   "ProductSo": {
+      "Add to cart": "Thêm vào giỏ hàng",
+      "Wishlist": "Danh sách ưa thích"
+   },
+   "BestDeal": {
+      "Best Deals": "Giảm Giá",
+      "Game Console": "Bộ Điều Khiển Game"
+   },
+   "BestSeller": {
+      "Best Sellers": "Các Sản Phẩm Bán Chạy",
+      "Top 8": "8 Sản phẩm hàng đầu",
+      "Televisions & Monitor": "Tivi & Màn hình",
+      "Networking & Laptops": "Mạng & Máy tính xách tay",
+      "Video Cameras": "Máy quay"
+   },
+   "NewLetter": {
+      "Sign up to Newsletter": "Đăng nhập để nhận được thông báo",
+      "and receive": "...và nhận được",
+      "$20 coupon for first shopping": "Phiếu giảm giá 20$ cho lần đầu mua sắm",
+      "SignUp": "Đăng Ký",
+      "Enter your email address": "Điền thông tin Email"
+   },
+   "Footer": {
+      "Got Questions": "Đặt câu hỏi ? Gọi ngay, 24/7!",
+      "Contact Info": "Thông Tin Liên Lạc",
+      "17 Princess Road": " Số 163, Đường Phan Đăng Lưu, Phường 01, Quận Phú Nhuận, Thành phố Hồ Chí Minh",
+      "Find It Fast": "Tìm Kiếm Nhanh",
+      "Laptops & Computers": "Máy tính xách tay & Máy tính bàn",
+      "Cameras & Photography": "Máy quay & Máy ảnh",
+      "Smart Phones & Tablets": "Điện thoại & Máy tính bản",
+      "Video Games & Consoles": "Máy chơi game",
+      "TV & Audio": "Tivi & Máy nghe nhạc",
+      "Gadgets": "Dụng cụ",
+      "Waterproof Headphones": "Tai nghe",
+      "Customer Care": "Khách hàng có thể quan tâm",
+      "Compare": "So xánh",
+      "Store Directory": "Đường dẫn cửa hàng",
+      "My Account": "Tài khoản",
+      "Track your Order": "Theo dõi mặt hàng",
+      "Customer Service": "Dịch vụ cho khách hàng",
+      "Returns/Exchange": "Đổi/Trả",
+      "Product Support": "Bảo hành"
+   }
 }

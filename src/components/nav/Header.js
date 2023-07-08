@@ -413,7 +413,7 @@ const Header = () => {
                                     onClick={(e) => handleClickAccount(e)}
                                     onmousedown={(e) => handleOnBlur(e)}
                                  >
-                                    {t("header.Dashboard")}
+                                    {t("header.Account")}
                                  </Link>
                               )}
                               {user && user.role === "admin" && (
