@@ -29,9 +29,9 @@ const Wishlist = () => {
             <div className="w-[300px] fixed text-[20px] admin-nav">
                <UserNav />
             </div>
-            <main class="main-wrap">
-               <section class="content-main">
-                  <div class="">
+            <main className="main-wrap">
+               <section className="content-main">
+                  <div className="">
                      <h4>Wishlist</h4>
                      <div className="w-full">
                         {wishlist.map((p) => (

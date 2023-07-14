@@ -63,8 +63,8 @@ const CategoryUpdate = () => {
             <div className="w-[300px] fixed text-[20px] admin-nav">
                <AdminNav />
             </div>
-            <main class="main-wrap">
-               <section class="content-main">
+            <main className="main-wrap">
+               <section className="content-main">
                   <div className="">
                      {loading ? (
                         <FallingLines

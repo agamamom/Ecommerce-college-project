@@ -79,8 +79,8 @@ const ProductCreate = () => {
                <AdminNav />
             </div>
 
-            <main class="main-wrap">
-               <section class="content-main">
+            <main className="main-wrap">
+               <section className="content-main">
                   <div className="">
                      {loading ? (
                         <LoadingOutlined className="text-danger h1" />

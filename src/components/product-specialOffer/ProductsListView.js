@@ -30,12 +30,12 @@ const ProductsListView = ({ product, handleRemove }) => {
          <div className="flex justify-between">
             <div className="max-w-[700px]">
                <div className="grid grid-cols-3">
-                  <div class="mb-[10px] w-full relative min-h-[300px] d-flex col-span-1">
+                  <div className="mb-[10px] w-full relative min-h-[300px] d-flex col-span-1">
                      {product && (
                         <img
                            width="300"
                            src={product.images && product.images[2].url}
-                           class="max-w-[100%] w-auto max-h-[214px] m-auto align-middle"
+                           className="max-w-[100%] w-auto max-h-[214px] m-auto align-middle"
                            alt=""
                            loading="lazy"
                         />
@@ -48,7 +48,7 @@ const ProductsListView = ({ product, handleRemove }) => {
                      <div>
                         <Link
                            to={`/product/${product.slug}`}
-                           class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px] cursor-pointer"
+                           className="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px] cursor-pointer"
                         >
                            {product &&
                               `${
@@ -91,7 +91,10 @@ const ProductsListView = ({ product, handleRemove }) => {
 
             <div className="">
                <div className="text-[20px] text-[#4c4b4b]">{USDPrice} USD</div>
-               <Link to={`/product/${product.slug}`} class="block my-[20px]">
+               <Link
+                  to={`/product/${product.slug}`}
+                  className="block my-[20px]"
+               >
                   <div className="text-[14px] text-[#fff] bg-[#fed700] px-[60px] py-[10px] text-center font-bold mb-[10px] rounded-[50px]">
                      {t("ProductListView.Read more")}
                   </div>

@@ -33,8 +33,8 @@ const AdminDashboard = () => {
             <div className="w-[300px] fixed text-[20px] admin-nav">
                <AdminNav />
             </div>
-            <main class="main-wrap text-[20px]">
-               <section class="content-main">
+            <main className="main-wrap text-[20px]">
+               <section className="content-main">
                   <h4>{t("adminDashboard.Admin Dashboard")}</h4>
                   <Orders
                      orders={orders}

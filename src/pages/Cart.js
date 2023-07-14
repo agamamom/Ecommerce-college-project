@@ -204,37 +204,37 @@ const Cart = () => {
                         )}
                      </div>
                      <div className="p-[10px] mt-3">
-                        <div class="float-left w-full mb-[15px] flex items-center">
+                        <div className="float-left w-full mb-[15px] flex items-center">
                            <SlBag className="text-[35px] text-[#000000ae] mr-[15px]" />
-                           <div class="content">
-                              <div class="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
+                           <div className="content">
+                              <div className="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
                                  Security policy
                               </div>
-                              <div class="policy-desc">
+                              <div className="policy-desc">
                                  (edit with the Customer Reassurance module)
                               </div>
                            </div>
                         </div>
 
-                        <div class="float-left w-full mb-[15px] flex items-center">
+                        <div className="float-left w-full mb-[15px] flex items-center">
                            <BsPiggyBank className="text-[35px] text-[#000000ae] mr-[15px]" />
-                           <div class="content">
-                              <div class="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
+                           <div className="content">
+                              <div className="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
                                  Delivery policy
                               </div>
-                              <div class="policy-desc">
+                              <div className="policy-desc">
                                  (edit with the Customer Reassurance module)
                               </div>
                            </div>
                         </div>
 
-                        <div class="float-left w-full mb-[15px] flex items-center">
+                        <div className="float-left w-full mb-[15px] flex items-center">
                            <TfiHeadphoneAlt className="text-[35px] text-[#000000ae] mr-[15px]" />
-                           <div class="content">
-                              <div class="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
+                           <div className="content">
+                              <div className="policy-title float-left w-full font-semibold text-[17px] text-[#222]">
                                  Return policy
                               </div>
-                              <div class="policy-desc">
+                              <div className="policy-desc">
                                  (edit with the Customer Reassurance module)
                               </div>
                            </div>

@@ -53,9 +53,9 @@ const Password = () => {
             <div className="w-[300px] fixed text-[20px] admin-nav">
                <UserNav />
             </div>
-            <main class="main-wrap">
-               <section class="content-main">
-                  <div class="content-header">
+            <main className="main-wrap">
+               <section className="content-main">
+                  <div className="content-header">
                      <div>
                         {loading ? (
                            <FallingLines

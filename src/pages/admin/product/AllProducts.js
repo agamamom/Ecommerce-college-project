@@ -52,8 +52,8 @@ const AllProducts = () => {
             <div className="w-[300px] fixed text-[20px] admin-nav">
                <AdminNav />
             </div>
-            <main class="main-wrap text-[20px]">
-               <section class="content-main">
+            <main className="main-wrap text-[20px]">
+               <section className="content-main">
                   {loading ? (
                      <FallingLines
                         color="#4fa94d"

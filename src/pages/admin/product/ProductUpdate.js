@@ -10,154 +10,154 @@ import { useNavigate, useParams } from "react-router-dom";
 import ProductUpdateForm from "../../../components/forms/ProductUpdateForm";
 
 const initialState = {
-  title: "",
-  description: "",
-  price: "",
-  category: "",
-  subs: [],
-  shipping: "",
-  quantity: "",
-  images: [],
-  colors: ["Black", "Brown", "Silver", "White", "Blue"],
-  brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
-  color: "",
-  brand: "",
+   title: "",
+   description: "",
+   price: "",
+   category: "",
+   subs: [],
+   shipping: "",
+   quantity: "",
+   images: [],
+   colors: ["Black", "Brown", "Silver", "White", "Blue"],
+   brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
+   color: "",
+   brand: "",
 };
 
 const ProductUpdate = () => {
-  const [values, setValues] = useState(initialState);
-  const [categories, setCategories] = useState([]);
-  const [subOptions, setSubOptions] = useState([]);
-  const [arrayOfSubs, setArrayOfSubs] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [loading, setLoading] = useState(false);
+   const [values, setValues] = useState(initialState);
+   const [categories, setCategories] = useState([]);
+   const [subOptions, setSubOptions] = useState([]);
+   const [arrayOfSubs, setArrayOfSubs] = useState([]);
+   const [selectedCategory, setSelectedCategory] = useState("");
+   const [loading, setLoading] = useState(false);
 
-  const { user } = useSelector((state) => ({ ...state }));
-  // router
-  let { slug } = useParams();
-  const navigate = useNavigate();
+   const { user } = useSelector((state) => ({ ...state }));
+   // router
+   let { slug } = useParams();
+   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadProduct();
-    loadCategories();
-  }, []);
-
-  const loadProduct = () => {
-    getProduct(slug).then((p) => {
-      // console.log("single product", p);
-      // 1 load single proudct
-      setValues({ ...values, ...p.data });
-      // 2 load single product category subs
-      getCategorySubs(p.data.category._id).then((res) => {
-        setSubOptions(res.data); // on first load, show default subs
-      });
-      // 3 prepare array of sub ids to show as default sub values in antd Select
-      let arr = [];
-      p.data.subs.map((s) => {
-        arr.push(s._id);
-      });
-      console.log("ARR", arr);
-      setArrayOfSubs((prev) => arr); // required for ant design select to work
-    });
-  };
-
-  const loadCategories = () =>
-    getCategories().then((c) => {
-      console.log("GET CATEGORIES IN UPDATE PRODUCT", c.data);
-      setCategories(c.data);
-    });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    values.subs = arrayOfSubs;
-    values.category = selectedCategory ? selectedCategory : values.category;
-
-    updateProduct(slug, values, user.token)
-      .then((res) => {
-        setLoading(false);
-        toast.success(`"${res.data.title}" is updated`);
-        navigate("/admin/products");
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-        toast.error(err.response.data.err);
-      });
-  };
-
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    // console.log(e.target.name, " ----- ", e.target.value);
-  };
-
-  const handleCategoryChange = (e) => {
-    e.preventDefault();
-    console.log("CLICKED CATEGORY", e.target.value);
-    setValues({ ...values, subs: [] });
-
-    setSelectedCategory(e.target.value);
-
-    getCategorySubs(e.target.value).then((res) => {
-      console.log("SUB OPTIONS ON CATGORY CLICK", res);
-      setSubOptions(res.data);
-    });
-
-    console.log("EXISTING CATEGORY values.category", values.category);
-
-    // if user clicks back to the original category
-    // show its sub categories in default
-    if (values.category._id === e.target.value) {
+   useEffect(() => {
       loadProduct();
-    }
-    // clear old sub category ids
-    setArrayOfSubs([]);
-  };
+      loadCategories();
+   }, []);
 
-  return (
-    <div className="container-fluid">
-      <div className="flex">
-        <div className="w-[300px] fixed text-[20px] admin-nav">
-          <AdminNav />
-        </div>
+   const loadProduct = () => {
+      getProduct(slug).then((p) => {
+         // console.log("single product", p);
+         // 1 load single proudct
+         setValues({ ...values, ...p.data });
+         // 2 load single product category subs
+         getCategorySubs(p.data.category._id).then((res) => {
+            setSubOptions(res.data); // on first load, show default subs
+         });
+         // 3 prepare array of sub ids to show as default sub values in antd Select
+         let arr = [];
+         p.data.subs.map((s) => {
+            arr.push(s._id);
+         });
+         console.log("ARR", arr);
+         setArrayOfSubs((prev) => arr); // required for ant design select to work
+      });
+   };
 
-        <main class="main-wrap">
-          <section class="content-main">
-            <div className="">
-              {loading ? (
-                <LoadingOutlined className="text-danger h1" />
-              ) : (
-                <h4>Product update</h4>
-              )}
+   const loadCategories = () =>
+      getCategories().then((c) => {
+         console.log("GET CATEGORIES IN UPDATE PRODUCT", c.data);
+         setCategories(c.data);
+      });
 
-              <div className="p-3">
-                <FileUpload
-                  values={values}
-                  setValues={setValues}
-                  setLoading={setLoading}
-                />
-              </div>
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setLoading(true);
 
-              <ProductUpdateForm
-                handleSubmit={handleSubmit}
-                handleChange={handleChange}
-                setValues={setValues}
-                values={values}
-                handleCategoryChange={handleCategoryChange}
-                categories={categories}
-                subOptions={subOptions}
-                arrayOfSubs={arrayOfSubs}
-                setArrayOfSubs={setArrayOfSubs}
-                selectedCategory={selectedCategory}
-              />
-              <hr />
+      values.subs = arrayOfSubs;
+      values.category = selectedCategory ? selectedCategory : values.category;
+
+      updateProduct(slug, values, user.token)
+         .then((res) => {
+            setLoading(false);
+            toast.success(`"${res.data.title}" is updated`);
+            navigate("/admin/products");
+         })
+         .catch((err) => {
+            console.log(err);
+            setLoading(false);
+            toast.error(err.response.data.err);
+         });
+   };
+
+   const handleChange = (e) => {
+      setValues({ ...values, [e.target.name]: e.target.value });
+      // console.log(e.target.name, " ----- ", e.target.value);
+   };
+
+   const handleCategoryChange = (e) => {
+      e.preventDefault();
+      console.log("CLICKED CATEGORY", e.target.value);
+      setValues({ ...values, subs: [] });
+
+      setSelectedCategory(e.target.value);
+
+      getCategorySubs(e.target.value).then((res) => {
+         console.log("SUB OPTIONS ON CATGORY CLICK", res);
+         setSubOptions(res.data);
+      });
+
+      console.log("EXISTING CATEGORY values.category", values.category);
+
+      // if user clicks back to the original category
+      // show its sub categories in default
+      if (values.category._id === e.target.value) {
+         loadProduct();
+      }
+      // clear old sub category ids
+      setArrayOfSubs([]);
+   };
+
+   return (
+      <div className="container-fluid">
+         <div className="flex">
+            <div className="w-[300px] fixed text-[20px] admin-nav">
+               <AdminNav />
             </div>
-          </section>
-        </main>
+
+            <main className="main-wrap">
+               <section className="content-main">
+                  <div className="">
+                     {loading ? (
+                        <LoadingOutlined className="text-danger h1" />
+                     ) : (
+                        <h4>Product update</h4>
+                     )}
+
+                     <div className="p-3">
+                        <FileUpload
+                           values={values}
+                           setValues={setValues}
+                           setLoading={setLoading}
+                        />
+                     </div>
+
+                     <ProductUpdateForm
+                        handleSubmit={handleSubmit}
+                        handleChange={handleChange}
+                        setValues={setValues}
+                        values={values}
+                        handleCategoryChange={handleCategoryChange}
+                        categories={categories}
+                        subOptions={subOptions}
+                        arrayOfSubs={arrayOfSubs}
+                        setArrayOfSubs={setArrayOfSubs}
+                        selectedCategory={selectedCategory}
+                     />
+                     <hr />
+                  </div>
+               </section>
+            </main>
+         </div>
       </div>
-    </div>
-  );
+   );
 };
 
 export default ProductUpdate;

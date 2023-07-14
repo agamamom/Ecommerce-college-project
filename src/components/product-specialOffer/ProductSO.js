@@ -63,22 +63,22 @@ const ProductSO = ({ productBorder, productBorderRight, product, height }) => {
       >
          <div className="px-[24px] pt-[20px] pb-[14px] relative product-inner">
             <div className="relative">
-               <span class="mb-[12px] text-[12px] leading-[13px] h-[13px]">
+               <span className="mb-[12px] text-[12px] leading-[13px] h-[13px]">
                   <div rel="tag" className="text-[#768b9e] whitespace-nowrap">
                      {result.substring(0, 25)}
                   </div>
                </span>
-               <Link to={`/product/${product.slug}`} class="block">
-                  <h2 class="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
+               <Link to={`/product/${product.slug}`} className="block">
+                  <h2 className="text-[14px] leading-[18px] h-[36px] font-bold text-[#0062bd] mt-[6px]">
                      {product &&
                         `${product.title && product.title.substring(0, 25)}...`}
                   </h2>
-                  <div class="mb-[10px] w-full relative h-[300px] d-flex">
+                  <div className="mb-[10px] w-full relative h-[300px] d-flex">
                      {product && (
                         <img
                            width="300"
                            src={product.images && product.images[2].url}
-                           class="max-w-[100%] w-auto max-h-[214px] m-auto align-middle"
+                           className="max-w-[100%] w-auto max-h-[214px] m-auto align-middle"
                            alt=""
                            loading="lazy"
                         />

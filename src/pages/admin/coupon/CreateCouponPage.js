@@ -64,9 +64,11 @@ const CreateCouponPage = () => {
             <div className="w-[300px] fixed text-[20px] admin-nav">
                <AdminNav />
             </div>
-            <main class="main-wrap">
-               <section class="content-main">
-                  <h4 class="content-header mb-[20px]">{t("coupon.Coupon")}</h4>
+            <main className="main-wrap">
+               <section className="content-main">
+                  <h4 className="content-header mb-[20px]">
+                     {t("coupon.Coupon")}
+                  </h4>
                   <form onSubmit={handleSubmit}>
                      <div className="form-group">
                         <label className="text-muted">{t("coupon.Name")}</label>
