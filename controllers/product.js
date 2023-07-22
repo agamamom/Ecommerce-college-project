@@ -330,11 +330,10 @@ exports.listAllByCategory = async (req, res) => {
 
 const handleQuery = async (req, res, query) => {
    const products = await Product.find({ $text: { $search: query } })
-      .populate("category", "_id name")
-      .populate("subs", "_id name")
-      .populate("postedBy", "_id name")
+      .populate("category", "name")
+      .populate("subs", "name")
       .exec();
-
+   console.log("wwwww", products);
    res.json(products);
 };
 

@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const { readdirSync } = require("fs");
+const Product = require("./models/product");
+const Category = require("./models/category");
+const Sub = require("./models/sub");
 
 // app
 const app = express();
@@ -13,14 +16,16 @@ const URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}
 
 // db
 mongoose
-  .connect(URI, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("DB CONNECTED"))
-  .catch((err) => console.log("DB CONNECTION ERR", err));
+   .connect(URI, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+   })
+   .then(() => {
+      console.log("DB CONNECTED");
+   })
+   .catch((err) => console.log("DB CONNECTION ERR", err));
 
 // middlewares
 app.use(morgan("dev"));
